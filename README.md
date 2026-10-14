@@ -17,7 +17,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 
 bash run.sh --cpu haswell --pin-cpu 0 --sizes 2048 4096 \
-  --repetitions 5 --min-time 0.2s --output results
+  --repetitions 12 --min-time 3x --output results
 ```
 
 Use the same `--cpu haswell` across AVX2 machines to keep the target ISA
@@ -40,6 +40,24 @@ The single-file alternative embeds all Python helpers:
 ```bash
 python reproduce.pyz --cpu haswell --sizes 2048 4096 --output results
 ```
+
+## Recheck existing binaries
+
+A second run can reuse the exact modules and inputs from the first run. Its
+order cycles each variant through every position, reversing the base order
+every four rounds:
+
+```bash
+python benchmark_existing.py --input results --output results-recheck \
+  --pin-cpu 0 --repetitions 12 --min-time 3x
+python analyze_runs.py results results-recheck --output combined.json
+```
+
+`3x` fixes each native batch at three timed GEMM invocations. Two runs of
+12 rounds yield 24 batch averages and 72 timed invocations per version and
+matrix size. The analysis reports pooled/group medians, empirical p10–p90
+ranges, and speed ratios paired within each round. These ranges describe
+observed variation; they are not statistical confidence intervals.
 
 ## Four versions
 
@@ -69,7 +87,46 @@ cover `60×64` input chunks; B pack tasks cover `64×64`. The final M microtile
 is zero-padded and output unpack clips to the real rows. New kernel geometry
 requires a corresponding packed layout, but packing stays before compute.
 
-## Reference results
+## Confirmation with IREE 3.12.0
+
+The updated scripts were rerun with the pinned 3.12.0 packages (the compiler
+reports build `3.12.0rc20260917`, LLVM 24), Python 3.11, Clang 22.1.3,
+`alderlake`, logical CPU 0, and single-threaded `local-sync`.
+
+Two independent runs each used 12 rounds and three timed invocations per
+native batch: 24 batch averages and **72 timed GEMMs per version and size**.
+Run A alternated forward/reverse order; run B reused the exact binaries and
+rotated the variant order. All module hashes were checked, and all 192 raw
+native reports contain three iterations, one benchmark thread, and no errors.
+All four versions passed float64-reference validation at both sizes.
+
+| Version | 2048³ median | Speedup | 4096³ median | Speedup |
+| --- | ---: | ---: | ---: | ---: |
+| Original | 146.79 ms | 1.000× | 2178.14 ms | 1.000× |
+| Panel packing | 146.21 ms | 1.004× | 1311.32 ms | 1.661× |
+| Panel packing + custom kernel | 129.42 ms | 1.134× | 1161.38 ms | 1.875× |
+| Complete packing + custom kernel | 117.40 ms | 1.250× | 2414.16 ms | 0.902× |
+
+The 4096³ ranking was consistent in all 24 paired rounds: panel packing
+beats the original, the custom kernel improves the panel variant, and
+complete packing with the custom kernel loses to the original. The combined
+panel/kernel version is about **1.88×** faster than the original; its separate
+run medians are 1162.27 and 1161.20 ms.
+
+At 2048³, panel packing alone is effectively tied with the original. Its
+run speedups are 1.007× and 0.999×, and it wins only 16 of 24 paired rounds.
+The custom-kernel variants improve consistently, with complete packing plus
+the kernel fastest at this size in every paired round. These results narrow
+the earlier claim: changing packing/scheduling helps clearly at 4096³, but
+not reliably at 2048³.
+
+The CPU governor was `powersave`; frequency was not locked. Empirical p10–p90
+batch ranges, separate-run medians, and same-round ratios are recorded in
+[combined.json](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/combined.json) and [summary.csv](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/summary.csv).
+All new MLIR/LLVM IR and raw timings are in [run-a](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/run-a);
+the balanced-order repeat is in [run-b](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/run-b).
+
+## Earlier July RC reference
 
 These archived measurements and IR were produced with the earlier
 `3.12.0rc20260713` packages. The runnable scripts now target the pinned
@@ -99,7 +156,7 @@ a batch. Every sample and machine/compiler details are recorded in
 
 ## MLIR and LLVM IR
 
-Complete generated artifacts for both matrix sizes are under
+The earlier July RC artifacts for both matrix sizes are under
 [reference/i5-14600kf-alderlake](reference/i5-14600kf-alderlake).
 
 | 4096³ version | Editable source | Readable SCF calls | Final LLVM dialect MLIR |

@@ -1,0 +1,338 @@
+{
+  "method": "each sample is one native batch; intervals describe observed variation, not a confidence interval",
+  "groups": [
+    "run-a",
+    "run-b"
+  ],
+  "metadata": {
+    "target_cpu": "alderlake",
+    "logical_cpu": 0,
+    "platform": "Linux-6.12.85-1-MANJARO-x86_64-with-glibc2.43",
+    "cpu_description": "",
+    "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+    "clang": "clang version 22.1.3\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin\n",
+    "driver": "local-sync",
+    "dtype": "float32",
+    "sizes": [
+      2048,
+      4096
+    ],
+    "rounds": 12,
+    "minimum_time": "3x",
+    "scope": "native invocation including runtime packing, dispatch and output allocation; repeated runtime inputs, no cache flush",
+    "variants": {
+      "01_original": "unmodified IREE data-tiling, complete A/B packing, target-selected ukernel (8x8x1 for tested AVX2 targets)",
+      "02_panel_pack": "NC/KC/MC panel packing interleaved with compute, original 8x8x1 ukernel; MC=64 NC=128 KC=256",
+      "03_panel_pack_kernel": "same panel schedule with row-major 6x16 output kernel, K unrolled by 8; MC=60 NC=128 KC=256",
+      "04_full_pack_kernel": "complete A/B packing in separate encoding dispatches; 6x16 output kernel, full K reduction; original distribution granularity of one M tile and two N tiles per workgroup"
+    },
+    "validation": "float64 NumPy reference, rtol=1e-3 atol=1e-3",
+    "lscpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           39 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  20\nOn-line CPU(s) list:                     0-19\nVendor ID:                               GenuineIntel\nModel name:                              Intel(R) Core(TM) i5-14600KF\nCPU family:                              6\nModel:                                   183\nThread(s) per core:                      2\nCore(s) per socket:                      14\nSocket(s):                               1\nStepping:                                1\nMicrocode version:                       0x12b\nCPU(s) scaling MHz:                      82%\nCPU max MHz:                             5300.0000\nCPU min MHz:                             800.0000\nBogoMIPS:                                6991.00\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize arch_lbr ibt flush_l1d arch_capabilities\nVirtualization:                          VT-x\nL1d cache:                               544 KiB (14 instances)\nL1i cache:                               704 KiB (14 instances)\nL2 cache:                                20 MiB (8 instances)\nL3 cache:                                24 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-19\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Mitigation; Clear Register File\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace\n"
+  },
+  "rows": [
+    {
+      "size": 2048,
+      "variant": "01_original",
+      "times_ms": {
+        "median": 146.79245150182396,
+        "p10": 145.942830335116,
+        "p90": 150.80352714673305,
+        "min": 145.81848164865127,
+        "max": 155.66310168166333,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        147.01765665085986,
+        146.60190067176399
+      ],
+      "speedup_vs_original": 1.0
+    },
+    {
+      "size": 2048,
+      "variant": "02_panel_pack",
+      "times_ms": {
+        "median": 146.21248982924345,
+        "p10": 145.47328727979524,
+        "p90": 148.70315533480607,
+        "min": 145.24751434025043,
+        "max": 152.36434200778604,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        146.00777350521335,
+        146.714419000394
+      ],
+      "speedup_vs_original": 1.0039665672423597
+    },
+    {
+      "size": 2048,
+      "variant": "03_panel_pack_kernel",
+      "times_ms": {
+        "median": 129.41854664434987,
+        "p10": 128.5087559100551,
+        "p90": 134.9181366347087,
+        "min": 128.23143603357798,
+        "max": 136.35229965439066,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        129.70072182361037,
+        129.27333949483
+      ],
+      "speedup_vs_original": 1.1342458658975567
+    },
+    {
+      "size": 2048,
+      "variant": "04_full_pack_kernel",
+      "times_ms": {
+        "median": 117.39552964960846,
+        "p10": 116.63438182052535,
+        "p90": 124.83225761097856,
+        "min": 116.27276932510237,
+        "max": 126.75181000183026,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        117.2260346550805,
+        117.56363767199218
+      ],
+      "speedup_vs_original": 1.250409210128842
+    },
+    {
+      "size": 4096,
+      "variant": "01_original",
+      "times_ms": {
+        "median": 2178.140761670268,
+        "p10": 2154.971218590314,
+        "p90": 2200.998195000769,
+        "min": 2096.676521022649,
+        "max": 2206.6313789885803,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        2187.1421166482223,
+        2170.7254685073467
+      ],
+      "speedup_vs_original": 1.0
+    },
+    {
+      "size": 4096,
+      "variant": "02_panel_pack",
+      "times_ms": {
+        "median": 1311.3204116525594,
+        "p10": 1304.649711730114,
+        "p90": 1315.011425219321,
+        "min": 1302.246064316326,
+        "max": 1316.431385697797,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        1310.042054664033,
+        1311.8671474997732
+      ],
+      "speedup_vs_original": 1.6610286412954707
+    },
+    {
+      "size": 4096,
+      "variant": "03_panel_pack_kernel",
+      "times_ms": {
+        "median": 1161.382921835563,
+        "p10": 1157.1994191850536,
+        "p90": 1168.3791945901855,
+        "min": 1154.5997676827635,
+        "max": 1176.0664080114414,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        1162.270825181622,
+        1161.2024669884704
+      ],
+      "speedup_vs_original": 1.8754716646149074
+    },
+    {
+      "size": 4096,
+      "variant": "04_full_pack_kernel",
+      "times_ms": {
+        "median": 2414.164285660566,
+        "p10": 2391.114552053235,
+        "p90": 2459.5121369600142,
+        "min": 2318.617695302237,
+        "max": 2472.6103953435086,
+        "samples": 24
+      },
+      "group_medians_ms": [
+        2432.404024351854,
+        2405.1057295000646
+      ],
+      "speedup_vs_original": 0.9022338598113605
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "size": 2048,
+      "baseline": "01_original",
+      "candidate": "02_panel_pack",
+      "speed_ratios": {
+        "median": 1.0051344899609238,
+        "p10": 0.990172501137469,
+        "p90": 1.0341675223049824,
+        "min": 0.9617248131180598,
+        "max": 1.067275657437778,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 16,
+      "rounds": 24
+    },
+    {
+      "size": 2048,
+      "baseline": "01_original",
+      "candidate": "03_panel_pack_kernel",
+      "speed_ratios": {
+        "median": 1.1318993898649934,
+        "p10": 1.0943033571090348,
+        "p90": 1.1694588281097424,
+        "min": 1.0746615107681148,
+        "max": 1.2029670183155667,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 24,
+      "rounds": 24
+    },
+    {
+      "size": 2048,
+      "baseline": "01_original",
+      "candidate": "04_full_pack_kernel",
+      "speed_ratios": {
+        "median": 1.2513553339832368,
+        "p10": 1.1739542813537966,
+        "p90": 1.2909602198776522,
+        "min": 1.1560589812577688,
+        "max": 1.3293479982210967,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 24,
+      "rounds": 24
+    },
+    {
+      "size": 2048,
+      "baseline": "02_panel_pack",
+      "candidate": "03_panel_pack_kernel",
+      "speed_ratios": {
+        "median": 1.1263893309868993,
+        "p10": 1.0940396048776395,
+        "p90": 1.1455535562526287,
+        "min": 1.0778957999718013,
+        "max": 1.1551730198147805,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 24,
+      "rounds": 24
+    },
+    {
+      "size": 2048,
+      "baseline": "04_full_pack_kernel",
+      "candidate": "03_panel_pack_kernel",
+      "speed_ratios": {
+        "median": 0.9081100244787483,
+        "p10": 0.8769044978462115,
+        "p90": 0.9546897590588996,
+        "min": 0.8662316272105614,
+        "max": 0.966860524201112,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 0,
+      "rounds": 24
+    },
+    {
+      "size": 4096,
+      "baseline": "01_original",
+      "candidate": "02_panel_pack",
+      "speed_ratios": {
+        "median": 1.664608139777307,
+        "p10": 1.644510751911206,
+        "p90": 1.6795655687275473,
+        "min": 1.5993588131847372,
+        "max": 1.6819661707020663,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 24,
+      "rounds": 24
+    },
+    {
+      "size": 4096,
+      "baseline": "01_original",
+      "candidate": "03_panel_pack_kernel",
+      "speed_ratios": {
+        "median": 1.8753214624245116,
+        "p10": 1.8518593725728347,
+        "p90": 1.8915718004214326,
+        "min": 1.815933607219233,
+        "max": 1.9069153857125138,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 24,
+      "rounds": 24
+    },
+    {
+      "size": 4096,
+      "baseline": "01_original",
+      "candidate": "04_full_pack_kernel",
+      "speed_ratios": {
+        "median": 0.9030244465559981,
+        "p10": 0.8916465903662666,
+        "p90": 0.912104106150046,
+        "min": 0.8797622972795073,
+        "max": 0.9132973056695849,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 0,
+      "rounds": 24
+    },
+    {
+      "size": 4096,
+      "baseline": "02_panel_pack",
+      "candidate": "03_panel_pack_kernel",
+      "speed_ratios": {
+        "median": 1.1282400876367122,
+        "p10": 1.1188418672500184,
+        "p90": 1.1342501308709616,
+        "min": 1.1128814130583906,
+        "max": 1.1354135121206725,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 24,
+      "rounds": 24
+    },
+    {
+      "size": 4096,
+      "baseline": "04_full_pack_kernel",
+      "candidate": "03_panel_pack_kernel",
+      "speed_ratios": {
+        "median": 2.078893981809451,
+        "p10": 2.0584132158105373,
+        "p90": 2.110581833845662,
+        "min": 2.0081570776301225,
+        "max": 2.122844291241217,
+        "samples": 24
+      },
+      "candidate_faster_rounds": 24,
+      "rounds": 24
+    }
+  ],
+  "execution_context": {
+    "scaling_governor": "powersave",
+    "frequency_locked": false,
+    "logical_cpu": 0,
+    "thread_siblings": [
+      0,
+      1
+    ],
+    "runs": 2,
+    "rounds_per_run": 12,
+    "timed_iterations_per_batch": 3,
+    "timed_invocations_per_variant_and_size": 72,
+    "native_batch_records": 192,
+    "module_hash_audit": "run-b reused exact run-a VMFB files; all SHA-256 digests checked",
+    "note": "fixed affinity, single-thread local-sync; empirical batch variation, no statistical confidence claim"
+  }
+}

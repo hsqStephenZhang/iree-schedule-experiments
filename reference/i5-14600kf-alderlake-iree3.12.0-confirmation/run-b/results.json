@@ -1,0 +1,217 @@
+{
+  "metadata": {
+    "target_cpu": "alderlake",
+    "logical_cpu": 0,
+    "platform": "Linux-6.12.85-1-MANJARO-x86_64-with-glibc2.43",
+    "cpu_description": "",
+    "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+    "clang": "clang version 22.1.3\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin\n",
+    "driver": "local-sync",
+    "dtype": "float32",
+    "sizes": [
+      2048,
+      4096
+    ],
+    "rounds": 12,
+    "minimum_time": "3x",
+    "scope": "native invocation including runtime packing, dispatch and output allocation; repeated runtime inputs, no cache flush",
+    "variants": {
+      "01_original": "unmodified IREE data-tiling, complete A/B packing, target-selected ukernel (8x8x1 for tested AVX2 targets)",
+      "02_panel_pack": "NC/KC/MC panel packing interleaved with compute, original 8x8x1 ukernel; MC=64 NC=128 KC=256",
+      "03_panel_pack_kernel": "same panel schedule with row-major 6x16 output kernel, K unrolled by 8; MC=60 NC=128 KC=256",
+      "04_full_pack_kernel": "complete A/B packing in separate encoding dispatches; 6x16 output kernel, full K reduction; original distribution granularity of one M tile and two N tiles per workgroup"
+    },
+    "validation": "float64 NumPy reference, rtol=1e-3 atol=1e-3",
+    "lscpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           39 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  20\nOn-line CPU(s) list:                     0-19\nVendor ID:                               GenuineIntel\nModel name:                              Intel(R) Core(TM) i5-14600KF\nCPU family:                              6\nModel:                                   183\nThread(s) per core:                      2\nCore(s) per socket:                      14\nSocket(s):                               1\nStepping:                                1\nMicrocode version:                       0x12b\nCPU(s) scaling MHz:                      82%\nCPU max MHz:                             5300.0000\nCPU min MHz:                             800.0000\nBogoMIPS:                                6991.00\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize arch_lbr ibt flush_l1d arch_capabilities\nVirtualization:                          VT-x\nL1d cache:                               544 KiB (14 instances)\nL1i cache:                               704 KiB (14 instances)\nL2 cache:                                20 MiB (8 instances)\nL3 cache:                                24 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-19\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Mitigation; Clear Register File\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace\n",
+    "order": "cyclic rotations; reverse base order every four rounds",
+    "compiled_modules": "reused without recompilation",
+    "module_sha256": {
+      "2048/01_original": "33d35bac4f2ca99d40723027e69b9745a37bab98b7e4e1a8cbf959eb1049da78",
+      "2048/02_panel_pack": "1f7d6d2b63800222139c1d5ec7802cdb244eb6b9a5ec9ffd6a8ab8ec6753c9a4",
+      "2048/03_panel_pack_kernel": "9ec7cc0be2e178c144f340187cbc2ca5b80eeba345bd9cfcd9080e1b1c1f790a",
+      "2048/04_full_pack_kernel": "61ad81a89c76f548185aa006624d680a8d4b79eca146ab3f208f95a1fdbf59fb",
+      "4096/01_original": "ce15a44fee54cf9d8b1b39a5cb7fe63dd61d1122c02820ac18075b199e2951dd",
+      "4096/02_panel_pack": "91ca0e213d6b7b675b6915bd3df81dae32307f917ee8343c224d40352dacec88",
+      "4096/03_panel_pack_kernel": "e06b5eeb72608758cddb4bafa760e5898c82fd43082a9514a6a8ffef11292f10",
+      "4096/04_full_pack_kernel": "a3942facfa51bc2d659bb7d1a24f77a94aed884bb8cb885cba10d887b241f39a"
+    }
+  },
+  "results": [
+    {
+      "size": 2048,
+      "variant": "01_original",
+      "max_abs_error": 0.0004937966733109533,
+      "times_ms": [
+        145.85607566793138,
+        146.67123300023377,
+        146.53256834329417,
+        146.10993900957206,
+        145.81848164865127,
+        155.66310168166333,
+        148.56692533552027,
+        145.91084333369508,
+        146.8369706805485,
+        146.01746667176485,
+        149.11001367727295,
+        147.02957798726857
+      ],
+      "median_ms": 146.60190067176399,
+      "speedup_vs_original": 1.0,
+      "gflops": 117.18721998335523
+    },
+    {
+      "size": 2048,
+      "variant": "02_panel_pack",
+      "max_abs_error": 0.0004937966733109533,
+      "times_ms": [
+        149.85029467303926,
+        145.5629259774772,
+        152.36434200778604,
+        146.37061732355505,
+        147.05822067723298,
+        145.85088734747842,
+        146.21096766010547,
+        146.1648016508358,
+        147.9458253403815,
+        147.48930634232238,
+        149.0277253324166,
+        145.24751434025043
+      ],
+      "median_ms": 146.714419000394,
+      "speedup_vs_original": 0.9992330792747118,
+      "gflops": 117.09734667561108
+    },
+    {
+      "size": 2048,
+      "variant": "03_panel_pack_kernel",
+      "max_abs_error": 0.0004937966733109533,
+      "times_ms": [
+        130.6902850046754,
+        129.43778365540007,
+        136.35229965439066,
+        129.1473693563603,
+        131.50767099189883,
+        129.3993096332997,
+        135.0323113341195,
+        128.30215632372224,
+        128.49694230438521,
+        129.09875998351103,
+        129.00900798073658,
+        128.5363209899515
+      ],
+      "median_ms": 129.27333949483,
+      "speedup_vs_original": 1.1340459002966115,
+      "gflops": 132.89568638928114
+    },
+    {
+      "size": 2048,
+      "variant": "04_full_pack_kernel",
+      "max_abs_error": 0.0004937966733109533,
+      "times_ms": [
+        125.11452700709924,
+        125.14828335649024,
+        126.75181000183026,
+        117.49422501695032,
+        117.08841798827052,
+        117.09733033785596,
+        117.72389234586929,
+        116.76710966276005,
+        117.2060573201937,
+        117.08030333587278,
+        118.5720733483322,
+        117.63305032703404
+      ],
+      "median_ms": 117.56363767199218,
+      "speedup_vs_original": 1.247000378474081,
+      "gflops": 146.13250767156939
+    },
+    {
+      "size": 4096,
+      "variant": "01_original",
+      "max_abs_error": 0.0009255498516154148,
+      "times_ms": [
+        2201.042649006316,
+        2189.870319018761,
+        2168.8884586910717,
+        2194.1273676929995,
+        2173.390633019153,
+        2164.8614016594365,
+        2195.701797977866,
+        2172.562478323622,
+        2159.4973850102783,
+        2138.6239219961376,
+        2096.676521022649,
+        2167.119817012766
+      ],
+      "median_ms": 2170.7254685073467,
+      "speedup_vs_original": 1.0,
+      "gflops": 63.31475604167808
+    },
+    {
+      "size": 4096,
+      "variant": "02_panel_pack",
+      "max_abs_error": 0.0009255498516154148,
+      "times_ms": [
+        1312.6276593344908,
+        1315.21582933298,
+        1314.665114681702,
+        1307.6119459971476,
+        1312.3196596861817,
+        1305.4722663170348,
+        1311.4146353133644,
+        1303.8990103523247,
+        1313.3272116732162,
+        1304.2971883357193,
+        1310.948177318399,
+        1315.1598440211576
+      ],
+      "median_ms": 1311.8671474997732,
+      "speedup_vs_original": 1.6546839157032263,
+      "gflops": 104.76590844883837
+    },
+    {
+      "size": 4096,
+      "variant": "03_panel_pack_kernel",
+      "max_abs_error": 0.0009255498516154148,
+      "times_ms": [
+        1168.4741166924748,
+        1160.4975290053214,
+        1161.3738453403737,
+        1159.7615179877419,
+        1159.8770650064882,
+        1167.4673399926785,
+        1164.5938166572403,
+        1161.3919983307521,
+        1161.0310886365671,
+        1155.5110123396541,
+        1154.5997676827635,
+        1161.528800012699
+      ],
+      "median_ms": 1161.2024669884704,
+      "speedup_vs_original": 1.8693772448977237,
+      "gflops": 118.35916421056368
+    },
+    {
+      "size": 4096,
+      "variant": "04_full_pack_kernel",
+      "max_abs_error": 0.0009255498516154148,
+      "times_ms": [
+        2434.9670103595904,
+        2402.7912006519423,
+        2426.2712723381505,
+        2461.993117661526,
+        2403.881565318443,
+        2406.0635606680685,
+        2404.147898332061,
+        2410.9928243560717,
+        2388.6315136527023,
+        2365.402845297164,
+        2318.617695302237,
+        2427.6300439766296
+      ],
+      "median_ms": 2405.1057295000646,
+      "speedup_vs_original": 0.9025488742062757,
+      "gflops": 57.14466178606153
+    }
+  ]
+}
