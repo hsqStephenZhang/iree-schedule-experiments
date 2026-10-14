@@ -1,3 +1,3 @@
-iree-base-compiler==3.12.0rc20260713
-iree-base-runtime==3.12.0rc20260713
+iree-base-compiler==3.12.0
+iree-base-runtime==3.12.0
 numpy>=1.26,<3

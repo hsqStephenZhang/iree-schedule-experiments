@@ -168,7 +168,7 @@ def generate(template, M, N, K):
             b.bind("AP", 0, ap_elements, 0, "ReadOnly|Indirect")
             b.bind("BP", 0, bp_elements, ap_bytes, "ReadOnly|Indirect")
             b.bind("C", 1, M * N, 0, "Indirect")
-            b.add("%CPbuf = memref.alloca() {alignment = 64 : i64} : memref<192xf32>")
+            b.add("%CPbuf = memref.alloca() alignment = 64 : memref<192xf32>")
             b.add(
                 "%CP = memref.reinterpret_cast %CPbuf to offset: [0], sizes: [], strides: [] : memref<192xf32> to memref<f32>"
             )

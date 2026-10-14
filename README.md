@@ -8,8 +8,8 @@ rebuild is required.
 ## Run
 
 Requirements: Linux x86-64 with AVX2/FMA, Python 3.11, and Clang on `PATH`.
-The pinned IREE packages and Clang 22.1.3 were tested. Clang emits LLVM bitcode,
-so its version must be compatible with the LLVM reader in IREE.
+The pinned IREE 3.12.0 packages and Clang 22.1.3 were tested. Clang emits
+LLVM bitcode, so its version must be compatible with the LLVM reader in IREE.
 
 ```bash
 python3.11 -m venv .venv
@@ -71,6 +71,12 @@ requires a corresponding packed layout, but packing stays before compute.
 
 ## Reference results
 
+These archived measurements and IR were produced with the earlier
+`3.12.0rc20260713` packages. The runnable scripts now target the pinned
+`3.12.0` packages and use the newer `memref.alloca() alignment = 64` syntax.
+Regenerate IR using the scripts when running with the current dependencies;
+the historical dumps are retained unchanged.
+
 Intel Core i5-14600KF, logical CPU 0, `alderlake` target, FP32, single-threaded
 `local-sync`, five interleaved batches. Time includes runtime packing,
 VM/dispatch, and output allocation. Inputs are runtime A/B tensors, not
@@ -119,7 +125,11 @@ arrays and build caches are generated locally and are not tracked here.
 The complete four-version experiment was run at 2048³ and 4096³. The
 reproducer was also copied outside the IREE checkout and successfully built,
 executed, and numerically validated all four variants at 256³ with the
-`haswell` target. Python files pass compilation checks.
+`haswell` target. The alignment syntax update and rebuilt `reproduce.pyz`
+were verified at 256³ and 2048³ with the pinned 3.12.0 packages using Python
+3.14.4. All four variants compiled, executed, and passed numerical checks.
+Python files pass compilation checks, and `reproduce.pyz` embeds the same
+Python sources as the repository.
 
 This is an experimental fixed-shape reproducer, not a general GEMM library
 or a patch to IREE's automatic scheduling passes. Generated IR comes from

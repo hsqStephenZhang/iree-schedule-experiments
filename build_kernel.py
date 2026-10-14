@@ -148,7 +148,7 @@ def build(M, N, K, MR=16, NR=8, KR=6, MC=64, NC=128, KC=256):
         ("CP", MT * MR * NC),
     ]:
         lines += [
-            f"%{var}buf = memref.alloca() {{alignment = 64 : i64}} : memref<{count}xf32>",
+            f"%{var}buf = memref.alloca() alignment = 64 : memref<{count}xf32>",
             f"%{var} = memref.reinterpret_cast %{var}buf to offset: [0], sizes: [], strides: [] : memref<{count}xf32> to memref<f32>",
         ]
     seq = 0

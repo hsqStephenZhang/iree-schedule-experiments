@@ -95,7 +95,7 @@ def build(M, N, K, MC=64, NC=64, KC=64):
         )
     for name, count in [("AP", MC * KC), ("BP", NC * KC), ("CP", M * NC)]:
         lines.append(
-            f"%{name}buf = memref.alloca() {{alignment = 64 : i64}} : memref<{count}xf32>"
+            f"%{name}buf = memref.alloca() alignment = 64 : memref<{count}xf32>"
         )
         lines.append(
             f"%{name} = memref.reinterpret_cast %{name}buf to offset: [0], sizes: [], strides: [] : memref<{count}xf32> to memref<f32>"
