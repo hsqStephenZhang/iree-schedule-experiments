@@ -1,0 +1,225 @@
+{
+  "metadata": {
+    "size": 4096,
+    "cpu": "host",
+    "driver": "local-sync",
+    "repetitions": 3,
+    "min_time": "0.1s",
+    "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+    "source": "/Users/zc/courses/compiler/iree-schedule-experiments/results/neon/4096x4096x4096",
+    "affinity_pinned": false,
+    "packing_only_scope": "packing, opaque sink calls, repeated C zeroing, final unpack; non-additive counterfactual",
+    "prepacked_scope": "packing performed before timing; packed full-input strides differ from compact panel strides",
+    "hardware_inventory": {
+      "model": "Apple M2 Pro",
+      "performance_physical_cores": 8,
+      "performance_l1d_bytes": 131072,
+      "performance_cluster_l2_bytes": 16777216,
+      "efficiency_physical_cores": 4,
+      "efficiency_l1d_bytes": 65536,
+      "efficiency_cluster_l2_bytes": 4194304,
+      "source": "sysctl machdep.cpu.brand_string and hw.perflevel{0,1} cache/core keys"
+    },
+    "resolved_target": {
+      "cpu": "apple-m2",
+      "cpu_features": "+v8.6a,+aes,+bf16,+complxnum,+crc,+dotprod,+fp-armv8,+fp16fml,+fpac,+fullfp16,+i8mm,+jsconv,+lse,+neon,+pauth,+perfmon,+ras,+rcpc,+rdm,+sha2,+sha3,+ssbs,+reserve-x18",
+      "target_triple": "arm64-unknown-unknown-eabi-elf"
+    }
+  },
+  "cases": [
+    {
+      "name": "01_original",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1437.2225410188548,
+        1422.3270420334302,
+        1420.1059580082074
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1422.3270420334302,
+      "speedup_vs_original": 1.0
+    },
+    {
+      "name": "02_panel_pack",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1574.1532070096582,
+        1571.4987909886986,
+        1631.3529170001857
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1574.1532070096582,
+      "speedup_vs_original": 0.9035505792573744
+    },
+    {
+      "name": "03_panel_pack_kernel",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        2452.5309589807875,
+        2448.420334025286,
+        2518.3313749730587
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 2452.5309589807875,
+      "speedup_vs_original": 0.5799425433652894
+    },
+    {
+      "name": "04_full_pack_kernel",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1455.852999992203,
+        1478.023873991333,
+        1459.455666015856
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1459.455666015856,
+      "speedup_vs_original": 0.9745599507768656
+    },
+    {
+      "name": "panel_prepacked_A",
+      "operands": "A",
+      "packing_only": false,
+      "times_ms": [
+        1478.299833019264,
+        1501.5421669813804,
+        1550.1880830270238
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1501.5421669813804,
+      "speedup_vs_original": 0.947244155582257
+    },
+    {
+      "name": "panel_prepacked_AB",
+      "operands": "AB",
+      "packing_only": false,
+      "times_ms": [
+        1471.1549170315266,
+        1466.8939580442384,
+        1478.1112089985982
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1471.1549170315266,
+      "speedup_vs_original": 0.9668098346184911
+    },
+    {
+      "name": "02_panel_pack_packing_only",
+      "operands": "",
+      "packing_only": true,
+      "times_ms": [
+        189.54645801568404,
+        206.2570819980465,
+        196.91200007218868
+      ],
+      "validation": "zero output from packing sink; not a GEMM",
+      "median_ms": 196.91200007218868,
+      "speedup_vs_original": null
+    },
+    {
+      "name": "03_panel_pack_kernel_packing_only",
+      "operands": "",
+      "packing_only": true,
+      "times_ms": [
+        1097.620416956488,
+        1103.4870410221629,
+        1202.3881660425104
+      ],
+      "validation": "zero output from packing sink; not a GEMM",
+      "median_ms": 1103.4870410221629,
+      "speedup_vs_original": null
+    },
+    {
+      "name": "panel-64-128-64",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1714.5327909966,
+        1823.9896249724552,
+        1726.6627089702524
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1726.6627089702524,
+      "speedup_vs_original": 0.823743418239268
+    },
+    {
+      "name": "panel-64-128-512",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1522.509541013278,
+        1509.3823330826126,
+        1538.6768340249546
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1522.509541013278,
+      "speedup_vs_original": 0.9341990993940351
+    },
+    {
+      "name": "panel-64-128-1024",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1473.556500975974,
+        1445.9693329990841,
+        1500.0619160127826
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1473.556500975974,
+      "speedup_vs_original": 0.965234140049185
+    },
+    {
+      "name": "panel-64-128-2048",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1458.8549160398543,
+        1441.3951259921305,
+        1489.210833038669
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1458.8549160398543,
+      "speedup_vs_original": 0.9749612702368093
+    },
+    {
+      "name": "panel-64-64-1024",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1563.6388339917175,
+        1546.1233740206808,
+        1554.6344579779543
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1554.6344579779543,
+      "speedup_vs_original": 0.9148948389342851
+    },
+    {
+      "name": "panel-128-128-256",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1560.3153340052813,
+        1588.2672920124605,
+        1567.4837499973364
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1567.4837499973364,
+      "speedup_vs_original": 0.9073950795571866
+    }
+  ]
+}

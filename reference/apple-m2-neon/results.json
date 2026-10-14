@@ -1,0 +1,217 @@
+{
+  "metadata": {
+    "target_cpu": "host",
+    "architecture": "aarch64",
+    "custom_kernel_isa": "NEON",
+    "affinity_pinned": false,
+    "logical_cpu": null,
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "cpu_description": "arm",
+    "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+    "clang": "Homebrew clang version 22.1.4\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /opt/homebrew/Cellar/llvm/22.1.4/bin\nConfiguration file: /opt/homebrew/Cellar/llvm/22.1.4/etc/clang/arm64-apple-darwin.cfg\n",
+    "driver": "local-sync",
+    "dtype": "float32",
+    "sizes": [
+      256,
+      2048,
+      4096
+    ],
+    "rounds": 5,
+    "minimum_time": "0.2s",
+    "scope": "native invocation including runtime packing, dispatch and output allocation; repeated runtime inputs, no cache flush",
+    "variants": {
+      "01_original": "unmodified IREE data-tiling, complete A/B packing, target-selected ukernel",
+      "02_panel_pack": "NC/KC/MC panel packing interleaved with compute, IREE 8x8x1 ukernel; MC=64 NC=128 KC=256",
+      "03_panel_pack_kernel": "same panel schedule with row-major 6x16 output kernel, K unrolled by 8; MC=60 NC=128 KC=256",
+      "04_full_pack_kernel": "complete A/B packing in separate encoding dispatches; 6x16 output kernel, full K reduction; one 6x32 output block per workgroup"
+    },
+    "validation": "float64 NumPy reference, rtol=1e-3 atol=1e-3",
+    "resolved_target": {
+      "cpu": "apple-m2",
+      "cpu_features": "+v8.6a,+aes,+bf16,+complxnum,+crc,+dotprod,+fp-armv8,+fp16fml,+fpac,+fullfp16,+i8mm,+jsconv,+lse,+neon,+pauth,+perfmon,+ras,+rcpc,+rdm,+sha2,+sha3,+ssbs,+reserve-x18",
+      "target_triple": "arm64-unknown-unknown-eabi-elf"
+    }
+  },
+  "results": [
+    {
+      "size": 256,
+      "variant": "01_original",
+      "max_abs_error": 4.684343133476432e-05,
+      "times_ms": [
+        0.35571347313256274,
+        0.35449943220062063,
+        0.35762369473714656,
+        0.3543920003068753,
+        0.35705023555178317
+      ],
+      "median_ms": 0.35571347313256274,
+      "speedup_vs_original": 1.0,
+      "gflops": 94.32994399820038
+    },
+    {
+      "size": 256,
+      "variant": "02_panel_pack",
+      "max_abs_error": 4.684343133476432e-05,
+      "times_ms": [
+        0.37208831868759806,
+        0.37821252720759196,
+        0.3646719908058213,
+        0.36294511351997416,
+        0.3651150304968035
+      ],
+      "median_ms": 0.3651150304968035,
+      "speedup_vs_original": 0.9742504236228011,
+      "gflops": 91.90098790056182
+    },
+    {
+      "size": 256,
+      "variant": "03_panel_pack_kernel",
+      "max_abs_error": 4.684343133476432e-05,
+      "times_ms": [
+        0.5950075073159704,
+        0.5976585479751783,
+        0.5925392626755018,
+        0.5945128562834648,
+        0.5997501018784175
+      ],
+      "median_ms": 0.5950075073159704,
+      "speedup_vs_original": 0.5978302269447939,
+      "gflops": 56.39329182813384
+    },
+    {
+      "size": 256,
+      "variant": "04_full_pack_kernel",
+      "max_abs_error": 4.684343133476432e-05,
+      "times_ms": [
+        0.47437687931690087,
+        0.46785873141637896,
+        0.47019164492728327,
+        0.4702683882170588,
+        0.4669944569195039
+      ],
+      "median_ms": 0.47019164492728327,
+      "speedup_vs_original": 0.7565286983939815,
+      "gflops": 71.3633097525357
+    },
+    {
+      "size": 2048,
+      "variant": "01_original",
+      "max_abs_error": 0.0004937966736235921,
+      "times_ms": [
+        177.10154197993688,
+        177.96137498226017,
+        179.231041460298,
+        178.46410450874828,
+        178.57318749884143
+      ],
+      "median_ms": 178.46410450874828,
+      "speedup_vs_original": 1.0,
+      "gflops": 96.26512419004598
+    },
+    {
+      "size": 2048,
+      "variant": "02_panel_pack",
+      "max_abs_error": 0.0004937966736235921,
+      "times_ms": [
+        188.78035398665816,
+        191.83097904897295,
+        190.61354151926935,
+        190.09179150452837,
+        191.53593701776117
+      ],
+      "median_ms": 190.61354151926935,
+      "speedup_vs_original": 0.936261417139176,
+      "gflops": 90.12932159525123
+    },
+    {
+      "size": 2048,
+      "variant": "03_panel_pack_kernel",
+      "max_abs_error": 0.0004937966736235921,
+      "times_ms": [
+        301.0819580522366,
+        307.99658299656585,
+        300.87533296318725,
+        301.0767909581773,
+        301.0486249695532
+      ],
+      "median_ms": 301.0767909581773,
+      "speedup_vs_original": 0.5927527789199095,
+      "gflops": 57.06141987671996
+    },
+    {
+      "size": 2048,
+      "variant": "04_full_pack_kernel",
+      "max_abs_error": 0.0004937966736235921,
+      "times_ms": [
+        180.28789552045055,
+        180.6339170143474,
+        179.2046040063724,
+        178.72102098772302,
+        180.66006249864586
+      ],
+      "median_ms": 180.28789552045055,
+      "speedup_vs_original": 0.9898840074291322,
+      "gflops": 95.29130690890582
+    },
+    {
+      "size": 4096,
+      "variant": "01_original",
+      "max_abs_error": 0.0009255498513880411,
+      "times_ms": [
+        1433.41691698879,
+        1413.0586250103079,
+        1421.733624942135,
+        1529.3286240193993,
+        1448.0207919841632
+      ],
+      "median_ms": 1433.41691698879,
+      "speedup_vs_original": 1.0,
+      "gflops": 95.88205067421765
+    },
+    {
+      "size": 4096,
+      "variant": "02_panel_pack",
+      "max_abs_error": 0.0009255498513880411,
+      "times_ms": [
+        1559.1231670114212,
+        1556.6030409536324,
+        1567.5078330095857,
+        1564.156082982663,
+        1556.1637909850106
+      ],
+      "median_ms": 1559.1231670114212,
+      "speedup_vs_original": 0.9193737527076908,
+      "gflops": 88.15144074566446
+    },
+    {
+      "size": 4096,
+      "variant": "03_panel_pack_kernel",
+      "max_abs_error": 0.0009255498513880411,
+      "times_ms": [
+        2416.404250951018,
+        2411.5073760040104,
+        2442.1419160207734,
+        2453.5748749622144,
+        2524.3674170342274
+      ],
+      "median_ms": 2442.1419160207734,
+      "speedup_vs_original": 0.5869507040460613,
+      "gflops": 56.27803714861218
+    },
+    {
+      "size": 4096,
+      "variant": "04_full_pack_kernel",
+      "max_abs_error": 0.0009255498513880411,
+      "times_ms": [
+        1442.6866249996237,
+        1435.5398750049062,
+        1435.4390000225976,
+        1447.3226250265725,
+        1433.4672089898959
+      ],
+      "median_ms": 1435.5398750049062,
+      "speedup_vs_original": 0.998521143123169,
+      "gflops": 95.74025484421342
+    }
+  ]
+}

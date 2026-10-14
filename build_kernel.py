@@ -2,36 +2,56 @@ from pathlib import Path
 import sys
 import re
 import subprocess
-from common import BUILD_ROOT as ROOT, COMPILE, COMMON, run, span
+import platform
+from common import BUILD_ROOT as ROOT, COMPILE, COMMON, TARGET_ARCH, TARGET_CPU, run, span
 
 
 def kernel(MR=16, NR=8, KR=6):
-    assert NR % 8 == 0
+    neon = TARGET_ARCH == "aarch64"
+    lanes = 4 if neon else 8
+    assert NR % lanes == 0
     name = f"custom_mmt4d_{MR}x{NR}x{KR}"
     c = [
-        "#include <immintrin.h>",
+        "#include <arm_neon.h>" if neon else "#include <immintrin.h>",
         "#include <stdint.h>",
         f"__attribute__((always_inline)) static inline void tile(float *restrict c, const float *restrict a, const float *restrict b, int64_t kt, int acc) {{",
     ]
     for i in range(MR):
-        for v in range(NR // 8):
+        for v in range(NR // lanes):
+            offset = i * NR + v * lanes
             c.append(
-                f"__m256 x{i}_{v} = acc ? _mm256_loadu_ps(c+{i * NR + v * 8}) : _mm256_setzero_ps();"
+                f"float32x4_t x{i}_{v} = acc ? vld1q_f32(c+{offset}) : vdupq_n_f32(0.0f);"
+                if neon else
+                f"__m256 x{i}_{v} = acc ? _mm256_loadu_ps(c+{offset}) : _mm256_setzero_ps();"
             )
     c.append("for(int64_t k=0;k<kt;++k) {")
     for sub in range(KR):
         c.append("{")
-        for v in range(NR // 8):
-            c.append(f"__m256 bv{v} = _mm256_loadu_ps(b+{sub * NR + v * 8});")
+        for v in range(NR // lanes):
+            offset = sub * NR + v * lanes
+            c.append(
+                f"float32x4_t bv{v} = vld1q_f32(b+{offset});" if neon else
+                f"__m256 bv{v} = _mm256_loadu_ps(b+{offset});"
+            )
         for i in range(MR):
-            c.append(f"__m256 av{i} = _mm256_broadcast_ss(a+{sub * MR + i});")
-            for v in range(NR // 8):
-                c.append(f"x{i}_{v} = _mm256_fmadd_ps(av{i},bv{v},x{i}_{v});")
+            c.append(
+                f"float av{i} = a[{sub * MR + i}];" if neon else
+                f"__m256 av{i} = _mm256_broadcast_ss(a+{sub * MR + i});"
+            )
+            for v in range(NR // lanes):
+                c.append(
+                    f"x{i}_{v} = vfmaq_n_f32(x{i}_{v}, bv{v}, av{i});" if neon else
+                    f"x{i}_{v} = _mm256_fmadd_ps(av{i},bv{v},x{i}_{v});"
+                )
         c.append("}")
     c.append(f"a+={MR * KR}; b+={NR * KR};\n}}")
     for i in range(MR):
-        for v in range(NR // 8):
-            c.append(f"_mm256_storeu_ps(c+{i * NR + v * 8},x{i}_{v});")
+        for v in range(NR // lanes):
+            offset = i * NR + v * lanes
+            c.append(
+                f"vst1q_f32(c+{offset},x{i}_{v});" if neon else
+                f"_mm256_storeu_ps(c+{offset},x{i}_{v});"
+            )
     c += [
         "}",
         f"""int32_t {name}(const float *a,int64_t ao,int64_t astride,const float *b,int64_t bo,int64_t bstride,float *c,int64_t co,int64_t cstride,int64_t mt,int64_t nt,int64_t kt,int32_t mr,int32_t nr,int32_t kr,int32_t flags,const void *cpu) {{
@@ -42,11 +62,17 @@ def kernel(MR=16, NR=8, KR=6):
 }}""",
     ]
     (ROOT / f"{name}.c").write_text("\n".join(c))
+    isa_flags = ["-mavx2", "-mfma"]
+    if neon:
+        cpu = "native" if TARGET_CPU == "host" else TARGET_CPU
+        isa_flags = ["--target=aarch64-none-elf", f"-mcpu={cpu}"]
+        # IREE executes embedded ELF on macOS too: reserve its platform register.
+        if platform.system() == "Darwin":
+            isa_flags.append("-ffixed-x18")
     args = [
         "clang",
         "-O3",
-        "-mavx2",
-        "-mfma",
+        *isa_flags,
         "-ffreestanding",
         "-fno-stack-protector",
         "-fno-unroll-loops",

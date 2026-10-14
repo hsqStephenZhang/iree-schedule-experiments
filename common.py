@@ -3,14 +3,27 @@
 from pathlib import Path
 import subprocess
 import shutil
+import platform
 
 BUILD_ROOT = None
 COMPILE = None
 COMMON = []
+TARGET_ARCH = None
+TARGET_CPU = None
 
 
 def configure(output, cpu):
-    global BUILD_ROOT, COMPILE, COMMON
+    global BUILD_ROOT, COMPILE, COMMON, TARGET_ARCH, TARGET_CPU
+    machine = platform.machine().lower()
+    TARGET_ARCH = {
+        "arm64": "aarch64",
+        "aarch64": "aarch64",
+        "amd64": "x86_64",
+        "x86_64": "x86_64",
+    }.get(machine)
+    if TARGET_ARCH is None:
+        raise ValueError(f"Unsupported native architecture: {machine}")
+    TARGET_CPU = cpu
     BUILD_ROOT = Path(output).resolve() / ".build"
     BUILD_ROOT.mkdir(parents=True, exist_ok=True)
     COMPILE = shutil.which("iree-compile")

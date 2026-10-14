@@ -1,0 +1,33 @@
+{
+  "target_cpu": "host",
+  "architecture": "aarch64",
+  "custom_kernel_isa": "NEON",
+  "affinity_pinned": false,
+  "logical_cpu": null,
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu_description": "arm",
+  "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+  "clang": "Homebrew clang version 22.1.4\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /opt/homebrew/Cellar/llvm/22.1.4/bin\nConfiguration file: /opt/homebrew/Cellar/llvm/22.1.4/etc/clang/arm64-apple-darwin.cfg\n",
+  "driver": "local-sync",
+  "dtype": "float32",
+  "sizes": [
+    256,
+    2048,
+    4096
+  ],
+  "rounds": 5,
+  "minimum_time": "0.2s",
+  "scope": "native invocation including runtime packing, dispatch and output allocation; repeated runtime inputs, no cache flush",
+  "variants": {
+    "01_original": "unmodified IREE data-tiling, complete A/B packing, target-selected ukernel",
+    "02_panel_pack": "NC/KC/MC panel packing interleaved with compute, IREE 8x8x1 ukernel; MC=64 NC=128 KC=256",
+    "03_panel_pack_kernel": "same panel schedule with row-major 6x16 output kernel, K unrolled by 8; MC=60 NC=128 KC=256",
+    "04_full_pack_kernel": "complete A/B packing in separate encoding dispatches; 6x16 output kernel, full K reduction; one 6x32 output block per workgroup"
+  },
+  "validation": "float64 NumPy reference, rtol=1e-3 atol=1e-3",
+  "resolved_target": {
+    "cpu": "apple-m2",
+    "cpu_features": "+v8.6a,+aes,+bf16,+complxnum,+crc,+dotprod,+fp-armv8,+fp16fml,+fpac,+fullfp16,+i8mm,+jsconv,+lse,+neon,+pauth,+perfmon,+ras,+rcpc,+rdm,+sha2,+sha3,+ssbs,+reserve-x18",
+    "target_triple": "arm64-unknown-unknown-eabi-elf"
+  }
+}

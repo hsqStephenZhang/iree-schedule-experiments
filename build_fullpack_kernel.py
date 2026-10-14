@@ -1,7 +1,7 @@
-"""Replace only pack geometry and the output microkernel in the default path.
+"""Replace pack geometry, compute workgroup geometry, and the output microkernel.
 
 The original two encoding dispatches remain before the compute dispatch.
-Compute keeps one M microtile and two N microtiles per workgroup and reduces
+Compute uses one M microtile and two N microtiles per workgroup and reduces
 all K in one call, without the NC/KC/MC cache-panel loops of variants 2/3.
 """
 
