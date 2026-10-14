@@ -3,14 +3,20 @@
 from pathlib import Path
 import subprocess
 import shutil
+from host_platform import architecture
 
 BUILD_ROOT = None
 COMPILE = None
 COMMON = []
+TARGET_ARCH = None
+TARGET_CPU = None
 
 
 def configure(output, cpu):
-    global BUILD_ROOT, COMPILE, COMMON
+    global BUILD_ROOT, COMPILE, COMMON, TARGET_ARCH, TARGET_CPU
+    TARGET_ARCH = architecture()
+    cpu = cpu or "host"
+    TARGET_CPU = cpu
     BUILD_ROOT = Path(output).resolve() / ".build"
     BUILD_ROOT.mkdir(parents=True, exist_ok=True)
     COMPILE = shutil.which("iree-compile")

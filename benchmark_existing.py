@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import statistics
 import subprocess
+from host_platform import pin_cpu
 from reproduce import VARIANTS
 from iree.runtime.benchmark import benchmark_exe
 
@@ -18,19 +19,23 @@ def main():
         "--input", type=Path, required=True, help="previous reproduce.py output"
     )
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--pin-cpu", type=int, default=0)
+    parser.add_argument("--pin-cpu", type=int)
     parser.add_argument("--repetitions", type=int, default=12)
     parser.add_argument("--min-time", default="3x")
     args = parser.parse_args()
     if args.repetitions < 1:
         parser.error("--repetitions must be positive")
-    os.sched_setaffinity(0, {args.pin_cpu})
+    try:
+        args.pin_cpu = pin_cpu(args.pin_cpu)
+    except ValueError as exc:
+        parser.error(str(exc))
     source = args.input.resolve()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     metadata = json.loads((source / "metadata.json").read_text())
-    if metadata["logical_cpu"] != args.pin_cpu:
-        parser.error("use the same logical CPU as the original run")
+    metadata["source_logical_cpu"] = metadata.get("logical_cpu")
+    metadata["logical_cpu"] = args.pin_cpu
+    metadata["affinity_pinned"] = args.pin_cpu is not None
     metadata = dict(
         metadata,
         rounds=args.repetitions,

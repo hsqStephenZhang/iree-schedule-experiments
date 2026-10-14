@@ -11,6 +11,7 @@ from pathlib import Path
 import statistics
 import subprocess
 import sys
+from host_platform import pin_cpu
 
 GROUPS = {
     "retired_loads": [
@@ -53,7 +54,9 @@ def parse_counts(path):
             continue
         if "<" in row[0]:
             raise RuntimeError(f"counter not measured: {row}")
-        name = row[2].removeprefix("cpu_core/").removeprefix("cpu/").removesuffix("/u")
+        name = re.sub(
+            r"^[^/]+/(.+)/u$", lambda match: match.group(1), row[2]
+        ).removesuffix(":u")
         running = float(row[4])
         if running < 99.0:
             raise RuntimeError(f"counter multiplexed ({running}%): {row}")
@@ -79,7 +82,8 @@ def main():
     )
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--sizes", type=int, nargs="+", default=[2048, 4096])
-    p.add_argument("--cpu", type=int, default=0)
+    p.add_argument("--pin-cpu", "--cpu", dest="cpu", type=int)
+    p.add_argument("--variants", nargs="+", default=["01_original", "02_panel_pack"])
     p.add_argument("--rounds", type=int, default=3)
     p.add_argument("--iterations", type=int, default=3)
     p.add_argument("--pmu", default="cpu_core")
@@ -90,13 +94,14 @@ def main():
     args = p.parse_args()
     if args.rounds < 1 or args.iterations < 1:
         p.error("rounds and iterations must be positive")
+    args.cpu = pin_cpu(args.cpu)
     config = json.loads(args.event_config.read_text()) if args.event_config else None
     groups = config["groups"] if config else GROUPS
     root = args.input.resolve()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     worker = Path(__file__).resolve().with_name("perf_worker.py")
-    cases = [(size, v) for size in args.sizes for v in ["01_original", "02_panel_pack"]]
+    cases = [(size, v) for size in args.sizes for v in args.variants]
     metadata = {
         "perf": subprocess.check_output(["perf", "--version"], text=True).strip(),
         "pmu": args.pmu,
@@ -154,7 +159,11 @@ def main():
                 ack_r, ack_w = os.pipe()
                 selected = ["cycles", "instructions", *events]
                 event_group = (
-                    "{" + ",".join(f"{args.pmu}/{e}/u" for e in selected) + "}"
+                    "{"
+                    + ",".join(
+                        f"{args.pmu}/{e}/u" if args.pmu else f"{e}:u" for e in selected
+                    )
+                    + "}"
                 )
                 command = [
                     "perf",

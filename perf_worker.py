@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import time
+from host_platform import pin_cpu
 
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
 os.environ["OMP_NUM_THREADS"] = "1"
@@ -18,13 +19,16 @@ def main():
     p.add_argument("--a", type=Path, required=True)
     p.add_argument("--b", type=Path, required=True)
     p.add_argument("--iterations", type=int, default=3)
-    p.add_argument("--cpu", type=int, default=0)
+    p.add_argument("--pin-cpu", "--cpu", dest="cpu", type=int)
     p.add_argument("--control-fd", type=int)
     p.add_argument("--ack-fd", type=int)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--idle-seconds", type=float, default=0)
     args = p.parse_args()
-    os.sched_setaffinity(0, {args.cpu})
+    try:
+        args.cpu = pin_cpu(args.cpu)
+    except ValueError as exc:
+        p.error(str(exc))
     import numpy as np
     import iree.runtime as rt
 
@@ -49,11 +53,13 @@ def main():
         if response.lstrip(b"\x00") != b"ack\n":
             raise RuntimeError(f"perf control failed: {response!r}")
 
-    huge_before = sum(
-        int(line.split()[1])
-        for line in Path("/proc/self/smaps").read_text().splitlines()
-        if line.startswith("AnonHugePages:")
-    )
+    huge_before = None
+    if Path("/proc/self/smaps").exists():
+        huge_before = sum(
+            int(line.split()[1])
+            for line in Path("/proc/self/smaps").read_text().splitlines()
+            if line.startswith("AnonHugePages:")
+        )
     control("enable")
     start = time.perf_counter_ns()
     if args.idle_seconds:

@@ -9,16 +9,21 @@ from pathlib import Path
 import statistics
 import subprocess
 import sys
+from host_platform import pin_cpu
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--input", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
-    p.add_argument("--cpu", type=int, default=0)
+    p.add_argument("--pin-cpu", "--cpu", dest="cpu", type=int)
     p.add_argument("--rounds", type=int, default=3)
     p.add_argument("--iterations", type=int, default=3)
+    p.add_argument("--sizes", type=int, nargs="+", default=[2048, 4096])
+    p.add_argument("--variants", nargs="+", default=["01_original", "02_panel_pack"])
+    p.add_argument("--timeout", type=int, default=300)
     args = p.parse_args()
+    args.cpu = pin_cpu(args.cpu)
     source = args.input.resolve()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -33,15 +38,15 @@ def main():
     if not events:
         raise RuntimeError("Intel IMC free-running counters unavailable")
     worker = Path(__file__).resolve().with_name("perf_worker.py")
-    cases = [(s, v) for s in [2048, 4096] for v in ["01_original", "02_panel_pack"]]
+    cases = [(s, v) for s in args.sizes for v in args.variants]
     sequence = (
-        [(4096, "01_original", 2.0)]
+        [(max(args.sizes), args.variants[0], 2.0)]
         + [
             (s, v, 0.0)
             for rnd in range(args.rounds)
             for s, v in (cases if rnd % 2 == 0 else cases[::-1])
         ]
-        + [(4096, "01_original", 2.0)]
+        + [(max(args.sizes), args.variants[0], 2.0)]
     )
     records = []
     for index, (size, variant, idle) in enumerate(sequence):
@@ -94,7 +99,7 @@ def main():
                 pass_fds=(ctl_r, ctl_w, ack_r, ack_w),
                 capture_output=True,
                 text=True,
-                timeout=120,
+                timeout=args.timeout,
             )
         finally:
             for fd in [ctl_r, ctl_w, ack_r, ack_w]:

@@ -11,6 +11,7 @@ import shutil
 import statistics
 import subprocess
 import sys
+from host_platform import pin_cpu, hardware_info
 
 # Set these before importing NumPy, so reference computation is single-threaded.
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
@@ -34,7 +35,11 @@ def main():
         help="square GEMM dimensions, multiples of 256",
     )
     parser.add_argument(
-        "--cpu", default="haswell", help="LLVM target CPU, e.g. host, alderlake, znver4"
+        "--target-cpu",
+        "--cpu",
+        dest="cpu",
+        default="host",
+        help="LLVM target CPU (default: host; e.g. haswell, znver3, apple-m2)",
     )
     parser.add_argument(
         "--pin-cpu",
@@ -53,21 +58,16 @@ def main():
         parser.error("--sizes must be positive multiples of 256")
     if args.repetitions < 1:
         parser.error("--repetitions must be positive")
-    affinity = None
-    if hasattr(os, "sched_getaffinity"):
-        available = os.sched_getaffinity(0)
-        affinity = args.pin_cpu if args.pin_cpu is not None else min(available)
-        if affinity not in available:
-            parser.error(f"CPU {affinity} is not permitted: {sorted(available)}")
-        os.sched_setaffinity(0, {affinity})
-    elif args.pin_cpu is not None:
-        parser.error("--pin-cpu needs Linux sched_setaffinity")
+    try:
+        affinity = pin_cpu(args.pin_cpu)
+    except ValueError as exc:
+        parser.error(str(exc))
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     import common
 
     common.configure(output, args.cpu)
-    from common import COMPILE, COMMON, BUILD_ROOT, run
+    from common import COMPILE, COMMON, BUILD_ROOT, TARGET_ARCH, run
     from build_panel import build as build_panel
     from build_fastpack import build_fastpack
     from build_fullpack_kernel import generate
@@ -78,6 +78,10 @@ def main():
     config = rt.Config("local-sync")
     metadata = {
         "target_cpu": args.cpu,
+        "hardware": hardware_info(affinity),
+        "architecture": TARGET_ARCH,
+        "custom_kernel_isa": "NEON" if TARGET_ARCH == "aarch64" else "AVX2/FMA",
+        "affinity_pinned": affinity is not None,
         "logical_cpu": affinity,
         "platform": platform.platform(),
         "cpu_description": platform.processor(),
@@ -90,10 +94,10 @@ def main():
         "minimum_time": args.min_time,
         "scope": "native invocation including runtime packing, dispatch and output allocation; repeated runtime inputs, no cache flush",
         "variants": {
-            "01_original": "unmodified IREE data-tiling, complete A/B packing, target-selected ukernel (8x8x1 for tested AVX2 targets)",
-            "02_panel_pack": "NC/KC/MC panel packing interleaved with compute, original 8x8x1 ukernel; MC=64 NC=128 KC=256",
+            "01_original": "unmodified IREE data-tiling, complete A/B packing, target-selected ukernel",
+            "02_panel_pack": "NC/KC/MC panel packing interleaved with compute, IREE 8x8x1 ukernel; MC=64 NC=128 KC=256",
             "03_panel_pack_kernel": "same panel schedule with row-major 6x16 output kernel, K unrolled by 8; MC=60 NC=128 KC=256",
-            "04_full_pack_kernel": "complete A/B packing in separate encoding dispatches; 6x16 output kernel, full K reduction; original distribution granularity of one M tile and two N tiles per workgroup",
+            "04_full_pack_kernel": "complete A/B packing in separate encoding dispatches; 6x16 output kernel, full K reduction; one 6x32 output block per workgroup",
         },
         "validation": "float64 NumPy reference, rtol=1e-3 atol=1e-3",
     }
@@ -120,6 +124,11 @@ def main():
             scratch / "original.log",
         )
         original = (scratch / "original.mlir").read_text()
+        metadata["resolved_target"] = {
+            key: re.search(rf'\b{key} = "([^"]+)"', original).group(1)
+            for key in ("cpu", "cpu_features", "target_triple")
+        }
+        (output / "metadata.json").write_text(json.dumps(metadata, indent=2))
         sources = {
             VARIANTS[0]: original,
             VARIANTS[1]: (scratch / "panel-64-128-256.mlir").read_text(),

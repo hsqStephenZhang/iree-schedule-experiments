@@ -1,0 +1,128 @@
+{
+  "metadata": {
+    "size": 4096,
+    "cpu": "host",
+    "driver": "local-sync",
+    "repetitions": 3,
+    "min_time": "0.1s",
+    "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+    "source": "/Users/zc/courses/compiler/iree-schedule-experiments/results/neon/4096x4096x4096",
+    "affinity_pinned": false,
+    "packing_only_scope": "packing, opaque sink calls, repeated C zeroing, final unpack; non-additive counterfactual",
+    "prepacked_scope": "packing performed before timing; packed full-input strides differ from compact panel strides",
+    "hardware_inventory": {
+      "model": "Apple M2 Pro",
+      "performance_physical_cores": 8,
+      "performance_l1d_bytes": 131072,
+      "performance_cluster_l2_bytes": 16777216,
+      "efficiency_physical_cores": 4,
+      "efficiency_l1d_bytes": 65536,
+      "efficiency_cluster_l2_bytes": 4194304,
+      "source": "sysctl machdep.cpu.brand_string and hw.perflevel{0,1} cache/core keys"
+    },
+    "resolved_target": {
+      "cpu": "apple-m2",
+      "cpu_features": "+v8.6a,+aes,+bf16,+complxnum,+crc,+dotprod,+fp-armv8,+fp16fml,+fpac,+fullfp16,+i8mm,+jsconv,+lse,+neon,+pauth,+perfmon,+ras,+rcpc,+rdm,+sha2,+sha3,+ssbs,+reserve-x18",
+      "target_triple": "arm64-unknown-unknown-eabi-elf"
+    }
+  },
+  "cases": [
+    {
+      "name": "01_original",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1426.3119170209393,
+        1428.3612489816733,
+        1426.7004169523716
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1426.7004169523716,
+      "speedup_vs_original": 1.0
+    },
+    {
+      "name": "02_panel_pack",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1560.4689169558696,
+        1555.8556250180118,
+        1549.9634589650668
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1555.8556250180118,
+      "speedup_vs_original": 0.9169876651863857
+    },
+    {
+      "name": "03_panel_pack_kernel",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        2446.0142090101726,
+        2425.7022079546005,
+        2424.0925420308486
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 2425.7022079546005,
+      "speedup_vs_original": 0.5881597552551157
+    },
+    {
+      "name": "04_full_pack_kernel",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1444.532833993435,
+        1438.489916967228,
+        1452.0147489965893
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1444.532833993435,
+      "speedup_vs_original": 0.9876552359202765
+    },
+    {
+      "name": "03_panel_pack_kernel_neon_A_pack",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1545.0531659880653,
+        1550.5403339629993,
+        1547.1429590252228
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1547.1429590252228,
+      "speedup_vs_original": 0.9221516399824254
+    },
+    {
+      "name": "03_panel_pack_kernel_neon_A_pack_packing_only",
+      "operands": "",
+      "packing_only": true,
+      "times_ms": [
+        212.48620800906792,
+        204.54954099841416,
+        208.23470799950883
+      ],
+      "validation": "zero output from packing sink; not a GEMM",
+      "median_ms": 208.23470799950883,
+      "speedup_vs_original": null
+    },
+    {
+      "name": "04_full_pack_kernel_neon_A_pack",
+      "operands": "",
+      "packing_only": false,
+      "times_ms": [
+        1434.131207934115,
+        1407.931208028458,
+        1411.8347080075182
+      ],
+      "max_abs_error": 0.0009255498513880411,
+      "validation": "float64 reference, rtol=1e-3 atol=1e-3",
+      "median_ms": 1411.8347080075182,
+      "speedup_vs_original": 1.0105293550728986
+    }
+  ]
+}
