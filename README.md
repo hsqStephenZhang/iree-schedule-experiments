@@ -211,3 +211,47 @@ This is an experimental fixed-shape reproducer, not a general GEMM library
 or a patch to IREE's automatic scheduling passes. Generated IR comes from
 [IREE](https://github.com/iree-org/iree); its runtime and compiler retain their
 upstream licenses.
+
+## One-shot hardware counter collection
+
+Use existing validated VMFBs and input arrays (the same artifacts on every run):
+
+```sh
+.venv/bin/python -u collect_metrics.py \
+  --input gemm-2048-4096-results --output metrics-results \
+  --cpu 5 --sizes 2048 4096 --rounds 3 --iterations 3
+```
+
+Select an online CPU allowed by your process; the default is the first CPU in
+its affinity mask. Install your distribution's Linux `perf` package first.
+The script does not change system permissions, THP, CPU governor, or container
+security settings. It checks perf access and records diagnostics before running
+any large GEMM. All subprocess commands are saved in `commands.json` and the
+individual PMU windows also save their actual `perf stat` command.
+
+The entry point profiles **only original and panel packing**, preserves hardware,
+compiler metadata and VMFB hashes, and alternates forward/reverse case order.
+Counters cover warmed, preloaded `local-sync` GEMM calls, including runtime
+packing and output allocation, without input transfer or output readback.
+Independent timing windows are always collected. Each window contains the
+requested number of GEMMs; summaries contain median/min/max across rounds.
+Each named hardware event group has cycles and instructions and at most four
+additional events. Unsupported counters or multiplexing below 99% abort the
+PMU run rather than silently producing misleading rates.
+
+Intel uses the existing cache/TLB/stall events on `cpu_core` or `cpu`.
+AMD uses named Zen 3 core events for DC accesses, L2 requests, demand/all cache
+fills by source, DTLB reloads by page size and D-side pagewalks. Other AMD
+models must expose the selected named events; no raw encoding is guessed.
+AMD event meanings differ from Intel retired-load miss rates: definitions and
+explicit numerators/denominators are saved in `event-config.json` and PMU
+metadata. Core `mem_io_local` fills include DRAM/IO and do not measure total
+system DRAM bandwidth or a direct LLC miss probability.
+
+Intel IMC traffic is also collected when the supported free-running IMC PMUs
+are exposed; `--memory skip` disables that step. AMD shared L3/IMC counters are
+not assumed available. `status.json` explicitly reports missing metrics.
+When perf permissions are blocked, the script completes independent timings
+and saves the failure in `perf-preflight.txt`; it does **not** report cache/TLB
+rates. Containers may block `perf_event_open` through seccomp even with root
+and `CAP_PERFMON`; that requires a host/container policy change.

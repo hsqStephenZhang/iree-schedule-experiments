@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Profile original/panel GEMM on an Intel cpu_core PMU without multiplexing."""
+"""Profile original/panel GEMM with grouped user-space PMU counters without multiplexing."""
 
 import argparse
 import csv
@@ -53,7 +53,7 @@ def parse_counts(path):
             continue
         if "<" in row[0]:
             raise RuntimeError(f"counter not measured: {row}")
-        name = row[2].removeprefix("cpu_core/").removesuffix("/u")
+        name = row[2].removeprefix("cpu_core/").removeprefix("cpu/").removesuffix("/u")
         running = float(row[4])
         if running < 99.0:
             raise RuntimeError(f"counter multiplexed ({running}%): {row}")
@@ -82,7 +82,16 @@ def main():
     p.add_argument("--cpu", type=int, default=0)
     p.add_argument("--rounds", type=int, default=3)
     p.add_argument("--iterations", type=int, default=3)
+    p.add_argument("--pmu", default="cpu_core")
+    p.add_argument(
+        "--event-config", type=Path, help="JSON groups and ratio definitions"
+    )
+    p.add_argument("--timeout", type=int, default=300)
     args = p.parse_args()
+    if args.rounds < 1 or args.iterations < 1:
+        p.error("rounds and iterations must be positive")
+    config = json.loads(args.event_config.read_text()) if args.event_config else None
+    groups = config["groups"] if config else GROUPS
     root = args.input.resolve()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -90,12 +99,12 @@ def main():
     cases = [(size, v) for size in args.sizes for v in ["01_original", "02_panel_pack"]]
     metadata = {
         "perf": subprocess.check_output(["perf", "--version"], text=True).strip(),
-        "pmu": "cpu_core",
+        "pmu": args.pmu,
         "logical_cpu": args.cpu,
         "rounds": args.rounds,
         "iterations": args.iterations,
         "source_metadata": json.loads((root / "metadata.json").read_text()),
-        "event_groups": GROUPS,
+        "event_groups": groups,
         "scope": "user-space counters enabled after inputs uploaded and one warmup, disabled after GEMM calls; local-sync; no input transfer or output readback",
         "note": "DTLB events count speculative demand activity; division by retired loads/stores is a normalized event rate, not an exact probability. Stall cycle events overlap and must not be summed.",
         "module_sha256": {
@@ -106,7 +115,7 @@ def main():
         },
     }
     descriptions = subprocess.check_output(["perf", "list", "--details"], text=True)
-    selected = {event for events in GROUPS.values() for event in events}
+    selected = {event for events in groups.values() for event in events}
     definitions = {}
     for event in selected:
         for match in re.finditer(
@@ -116,9 +125,14 @@ def main():
             end = re.search(r"^  \S", block[3:], flags=re.M)
             if end:
                 block = block[: end.start() + 3]
-            if "cpu_core" in block:
+            if args.pmu in block:
                 definitions[event] = block.strip()
                 break
+    if config:
+        metadata["note"] = config.get(
+            "note", "See event definitions for counter semantics."
+        )
+        metadata["metric_definitions"] = config["metrics"]
     metadata["event_definitions_from_perf_list"] = definitions
     for name, path in [
         ("governor", f"/sys/devices/system/cpu/cpu{args.cpu}/cpufreq/scaling_governor"),
@@ -129,7 +143,7 @@ def main():
     (output / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
     records = []
     for rnd in range(args.rounds):
-        for group, events in GROUPS.items():
+        for group, events in groups.items():
             for size, variant in cases if rnd % 2 == 0 else cases[::-1]:
                 d = root / f"{size}x{size}x{size}"
                 dest = output / f"{size}x{size}x{size}" / variant / group
@@ -139,7 +153,9 @@ def main():
                 ctl_r, ctl_w = os.pipe()
                 ack_r, ack_w = os.pipe()
                 selected = ["cycles", "instructions", *events]
-                event_group = "{" + ",".join(f"cpu_core/{e}/u" for e in selected) + "}"
+                event_group = (
+                    "{" + ",".join(f"{args.pmu}/{e}/u" for e in selected) + "}"
+                )
                 command = [
                     "perf",
                     "stat",
@@ -179,7 +195,7 @@ def main():
                         pass_fds=(ctl_r, ctl_w, ack_r, ack_w),
                         capture_output=True,
                         text=True,
-                        timeout=120,
+                        timeout=args.timeout,
                     )
                 finally:
                     for fd in [ctl_r, ctl_w, ack_r, ack_w]:
@@ -211,7 +227,7 @@ def main():
     summary = []
     for size, variant in cases:
         rows = [r for r in records if r["size"] == size and r["variant"] == variant]
-        by_group = {g: [r for r in rows if r["group"] == g] for g in GROUPS}
+        by_group = {g: [r for r in rows if r["group"] == g] for g in groups}
         result = {
             "size": size,
             "variant": variant,
@@ -221,7 +237,7 @@ def main():
         for event in {
             "cycles",
             "instructions",
-            *(e for es in GROUPS.values() for e in es),
+            *(e for es in groups.values() for e in es),
         }:
             values = [
                 r["counts"][event]["count"] / args.iterations
@@ -341,6 +357,20 @@ def main():
                 lambda c: 100 * ratio(c, "cycle_activity.stalls_total", "cycles"),
             ),
         }
+        if config:
+            metrics = {}
+            for name, spec in config["metrics"].items():
+
+                def compute(c, spec=spec):
+                    numerator = sum(c[e]["count"] for e in spec["numerator"])
+                    denominator = sum(c[e]["count"] for e in spec["denominator"])
+                    return (
+                        spec.get("factor", 1) * numerator / denominator
+                        if denominator
+                        else 0.0
+                    )
+
+                metrics[name] = (spec["group"], compute)
         for name, (group, fn) in metrics.items():
             values = [fn(r["counts"]) for r in by_group[group]]
             result["metrics"][name] = {

@@ -19,8 +19,8 @@ def main():
     p.add_argument("--b", type=Path, required=True)
     p.add_argument("--iterations", type=int, default=3)
     p.add_argument("--cpu", type=int, default=0)
-    p.add_argument("--control-fd", type=int, required=True)
-    p.add_argument("--ack-fd", type=int, required=True)
+    p.add_argument("--control-fd", type=int)
+    p.add_argument("--ack-fd", type=int)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--idle-seconds", type=float, default=0)
     args = p.parse_args()
@@ -39,9 +39,11 @@ def main():
     result = fn(a, b)
     result = None
     gc.collect()
-    ack = os.fdopen(args.ack_fd, "rb", buffering=0)
+    ack = os.fdopen(args.ack_fd, "rb", buffering=0) if args.ack_fd is not None else None
 
     def control(command):
+        if ack is None:
+            return
         os.write(args.control_fd, (command + "\n").encode())
         response = ack.readline()
         if response.lstrip(b"\x00") != b"ack\n":
