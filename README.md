@@ -80,8 +80,9 @@ hold C; B uses two vectors and A is broadcast. Pack calls use a K inner tile
 of one while compute groups K by eight. Their linear packed layouts are
 identical; this retains the faster pack implementation observed in testing.
 
-Version 04 preserves the original distribution granularity in microtile
-units: one M tile and two N tiles per workgroup. The new geometry produces a
+Version 04 manually uses one M tile and two N tiles per workgroup, matching
+the earlier July RC configuration; newer compiler defaults can differ. The
+new geometry produces a
 `6×32` output block, with one full-K kernel call and unpack. Its A pack tasks
 cover `60×64` input chunks; B pack tasks cover `64×64`. The final M microtile
 is zero-padded and output unpack clips to the real rows. New kernel geometry
@@ -125,6 +126,24 @@ batch ranges, separate-run medians, and same-round ratios are recorded in
 [combined.json](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/combined.json) and [summary.csv](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/summary.csv).
 All new MLIR/LLVM IR and raw timings are in [run-a](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/run-a);
 the balanced-order repeat is in [run-b](reference/i5-14600kf-alderlake-iree3.12.0-confirmation/run-b).
+
+## Cache/TLB diagnosis: original versus panel packing
+
+Hardware-counter windows excluded input loading, startup and output readback.
+Three rounds per event group ran without multiplexing. The original's 4096³
+LLC request miss rate is 83.0%, versus 2.15% at 2048³; its LLC misses grow
+about 303x although instructions grow only about 8x. IPC falls from 3.63 to
+1.90, and total execution stalls rise from 7.26% to 45.66% of cycles.
+
+At 4096³, panel scheduling cuts LLC misses about 9.75x and approximate DRAM
+reads from 28 to 4.1 GiB/GEMM. Load/store page-walk-active cycles each remain
+below 0.01% for the original 4096 case, so TLB walks are not its primary
+bottleneck in this THP-enabled setup. The evidence identifies lost LLC reuse
+and increased DRAM traffic/memory stalls as the main additional cost.
+
+[Full cache/TLB/IMC results and methods](reference/i5-14600kf-alderlake-iree3.12.0-perf/README.md)
+include counter definitions, raw counts, background estimates and profiling
+commands. The IMC traffic measurements are system-wide and approximate.
 
 ## Earlier July RC reference
 

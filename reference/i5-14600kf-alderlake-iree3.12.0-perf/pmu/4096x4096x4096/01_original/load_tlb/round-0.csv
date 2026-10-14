@@ -1,0 +1,8 @@
+# started on Wed Oct 14 15:59:46 2026
+
+34112518978;;cpu_core/cycles/u;6531333447;100.00;;
+64540579663;;cpu_core/instructions/u;6531333447;100.00;;
+29025745423;;cpu_core/mem_inst_retired.all_loads/u;6531333447;100.00;;
+132144;;cpu_core/dtlb_load_misses.stlb_hit/u;6531333447;100.00;;
+2801;;cpu_core/dtlb_load_misses.walk_completed/u;6531333447;100.00;;
+498602;;cpu_core/dtlb_load_misses.walk_active/u;6531333447;100.00;;

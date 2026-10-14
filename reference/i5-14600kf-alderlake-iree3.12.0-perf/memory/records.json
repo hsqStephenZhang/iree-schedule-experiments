@@ -1,0 +1,254 @@
+[
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "idle": true,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 2.0,
+      "elapsed_ns": 2000155174,
+      "ms_per_gemm": 666.7183913333333,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 118784,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 1009.82,
+    "write_mib": 114.26,
+    "read_mib_per_second": 504.8708285870224,
+    "write_mib_per_second": 57.12556779857121
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 434346790,
+      "ms_per_gemm": 144.78226333333333,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 530.36,
+    "write_mib": 221.86,
+    "read_mib_per_second": 1221.0519617285534,
+    "write_mib_per_second": 510.7900072198071
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 432028145,
+      "ms_per_gemm": 144.00938166666666,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 536.4,
+    "write_mib": 117.84,
+    "read_mib_per_second": 1241.5857767785014,
+    "write_mib_per_second": 272.760007337022
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 6888304415,
+      "ms_per_gemm": 2296.1014716666664,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 88724.49,
+    "write_mib": 1299.09,
+    "read_mib_per_second": 12880.454267786596,
+    "write_mib_per_second": 188.59358148735356
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 3921408421,
+      "ms_per_gemm": 1307.1361403333333,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 114688,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 13794.57,
+    "write_mib": 757.36,
+    "read_mib_per_second": 3517.7590597620638,
+    "write_mib_per_second": 193.13469006293033
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 4029542895,
+      "ms_per_gemm": 1343.180965,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 124928,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 17095.44,
+    "write_mib": 2894.18,
+    "read_mib_per_second": 4242.525875878535,
+    "write_mib_per_second": 718.2402757372806
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 6791109315,
+      "ms_per_gemm": 2263.703105,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 87016.41,
+    "write_mib": 1264.97,
+    "read_mib_per_second": 12813.283657178179,
+    "write_mib_per_second": 186.26853748414445
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 432784889,
+      "ms_per_gemm": 144.26162966666666,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 520.12,
+    "write_mib": 117.17,
+    "read_mib_per_second": 1201.7979675810723,
+    "write_mib_per_second": 270.7349608964744
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 432930536,
+      "ms_per_gemm": 144.31017866666664,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 486.95,
+    "write_mib": 218.47,
+    "read_mib_per_second": 1124.7762851267207,
+    "write_mib_per_second": 504.6306089159763
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 434158815,
+      "ms_per_gemm": 144.719605,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 617.49,
+    "write_mib": 253.67,
+    "read_mib_per_second": 1422.2675635412356,
+    "write_mib_per_second": 584.2792803826867
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 432525821,
+      "ms_per_gemm": 144.17527366666667,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 509.6,
+    "write_mib": 113.28,
+    "read_mib_per_second": 1178.1955556359721,
+    "write_mib_per_second": 261.9034390550293
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 6901713714,
+      "ms_per_gemm": 2300.571238,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 90812.83,
+    "write_mib": 1691.92,
+    "read_mib_per_second": 13158.01172914313,
+    "write_mib_per_second": 245.14491184529592
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "idle": false,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 0.0,
+      "elapsed_ns": 3905385927,
+      "ms_per_gemm": 1301.795309,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 14204.71,
+    "write_mib": 834.92,
+    "read_mib_per_second": 3637.21032069976,
+    "write_mib_per_second": 213.78681021707894
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "idle": true,
+    "timing": {
+      "iterations": 3,
+      "idle_seconds": 2.0,
+      "elapsed_ns": 2000157667,
+      "ms_per_gemm": 666.7192223333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    },
+    "read_mib": 654.2,
+    "write_mib": 95.95,
+    "read_mib_per_second": 327.074215594825,
+    "write_mib_per_second": 47.97121826096523
+  }
+]

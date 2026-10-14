@@ -5,3 +5,5 @@ gemm-four-results/
 results/
 .build/
 results-recheck/
+perf-results/
+memory-results/

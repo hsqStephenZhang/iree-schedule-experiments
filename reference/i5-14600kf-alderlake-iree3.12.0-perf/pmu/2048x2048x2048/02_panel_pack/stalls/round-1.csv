@@ -1,0 +1,8 @@
+# started on Wed Oct 14 16:01:47 2026
+
+2343601082;;cpu_core/cycles/u;443727880;100.00;;
+8258888527;;cpu_core/instructions/u;443727880;100.00;;
+197969877;;cpu_core/cycle_activity.stalls_l1d_miss/u;443727880;100.00;;
+168631942;;cpu_core/cycle_activity.stalls_l2_miss/u;443727880;100.00;;
+154954284;;cpu_core/cycle_activity.stalls_l3_miss/u;443727880;100.00;;
+254114280;;cpu_core/cycle_activity.stalls_total/u;443727880;100.00;;

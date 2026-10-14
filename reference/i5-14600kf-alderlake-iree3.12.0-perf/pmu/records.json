@@ -1,0 +1,2762 @@
+[
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "retired_loads",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2352477867.0,
+        "runtime_ns": 456128562.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112672.0,
+        "runtime_ns": 456128562.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3630929104.0,
+        "runtime_ns": 456128562.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 136831084.0,
+        "runtime_ns": 456128562.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 1918385.0,
+        "runtime_ns": 456128562.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 983024.0,
+        "runtime_ns": 456128562.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 456318771,
+      "ms_per_gemm": 152.106257,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "retired_loads",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2335402108.0,
+        "runtime_ns": 442079799.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888639.0,
+        "runtime_ns": 442079799.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3688710532.0,
+        "runtime_ns": 442079799.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 31501335.0,
+        "runtime_ns": 442079799.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 3635661.0,
+        "runtime_ns": 442079799.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 1806626.0,
+        "runtime_ns": 442079799.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 442082804,
+      "ms_per_gemm": 147.36093466666665,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "retired_loads",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 34004509711.0,
+        "runtime_ns": 6510696215.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579655.0,
+        "runtime_ns": 6510696215.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29025745503.0,
+        "runtime_ns": 6510696215.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 1033872088.0,
+        "runtime_ns": 6510696215.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 348280461.0,
+        "runtime_ns": 6510696215.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 346718124.0,
+        "runtime_ns": 6510696215.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6511654423,
+      "ms_per_gemm": 2170.5514743333333,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "retired_loads",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 20438325474.0,
+        "runtime_ns": 3895072466.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504321.0,
+        "runtime_ns": 3895072466.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29503049547.0,
+        "runtime_ns": 3895072466.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 267128246.0,
+        "runtime_ns": 3895072466.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 36364825.0,
+        "runtime_ns": 3895072466.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 34317697.0,
+        "runtime_ns": 3895072466.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3895582530,
+      "ms_per_gemm": 1298.52751,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "cache_requests",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2230095969.0,
+        "runtime_ns": 431951668.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083111523.0,
+        "runtime_ns": 431951668.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 133342232.0,
+        "runtime_ns": 431951668.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 565571.0,
+        "runtime_ns": 431951668.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 210881806.0,
+        "runtime_ns": 431951668.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 4357313.0,
+        "runtime_ns": 431951668.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 431969903,
+      "ms_per_gemm": 143.98996766666664,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "cache_requests",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2324594121.0,
+        "runtime_ns": 439997704.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258887528.0,
+        "runtime_ns": 439997704.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 30882536.0,
+        "runtime_ns": 439997704.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 1292428.0,
+        "runtime_ns": 439997704.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 29411594.0,
+        "runtime_ns": 439997704.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 6753082.0,
+        "runtime_ns": 439997704.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 440032607,
+      "ms_per_gemm": 146.67753566666664,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "cache_requests",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 34185496600.0,
+        "runtime_ns": 6546524052.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579220.0,
+        "runtime_ns": 6546524052.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 692547183.0,
+        "runtime_ns": 6546524052.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 3281178.0,
+        "runtime_ns": 6546524052.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 1649309501.0,
+        "runtime_ns": 6546524052.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 1369553755.0,
+        "runtime_ns": 6546524052.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6547466448,
+      "ms_per_gemm": 2182.488816,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "cache_requests",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 20586920054.0,
+        "runtime_ns": 3923027522.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504893.0,
+        "runtime_ns": 3923027522.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 237933038.0,
+        "runtime_ns": 3923027522.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 10045950.0,
+        "runtime_ns": 3923027522.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 226050358.0,
+        "runtime_ns": 3923027522.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 142048935.0,
+        "runtime_ns": 3923027522.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3923542585,
+      "ms_per_gemm": 1307.8475283333332,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "load_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2263799366.0,
+        "runtime_ns": 439177753.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112624.0,
+        "runtime_ns": 439177753.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3630929004.0,
+        "runtime_ns": 439177753.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 60815.0,
+        "runtime_ns": 439177753.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 2776.0,
+        "runtime_ns": 439177753.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 365159.0,
+        "runtime_ns": 439177753.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 439228723,
+      "ms_per_gemm": 146.40957433333335,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "load_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2306104540.0,
+        "runtime_ns": 436439923.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258889811.0,
+        "runtime_ns": 436439923.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3688710787.0,
+        "runtime_ns": 436439923.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 226573.0,
+        "runtime_ns": 436439923.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 7036.0,
+        "runtime_ns": 436439923.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 734904.0,
+        "runtime_ns": 436439923.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 436465378,
+      "ms_per_gemm": 145.48845933333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "load_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 34112518978.0,
+        "runtime_ns": 6531333447.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579663.0,
+        "runtime_ns": 6531333447.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29025745423.0,
+        "runtime_ns": 6531333447.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 132144.0,
+        "runtime_ns": 6531333447.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 2801.0,
+        "runtime_ns": 6531333447.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 498602.0,
+        "runtime_ns": 6531333447.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6532241122,
+      "ms_per_gemm": 2177.4137073333336,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "load_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 20435157527.0,
+        "runtime_ns": 3894338495.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504521.0,
+        "runtime_ns": 3894338495.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29503049650.0,
+        "runtime_ns": 3894338495.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 801797.0,
+        "runtime_ns": 3894338495.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 18367.0,
+        "runtime_ns": 3894338495.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 2904416.0,
+        "runtime_ns": 3894338495.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3895980149,
+      "ms_per_gemm": 1298.6600496666667,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "store_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2239718485.0,
+        "runtime_ns": 434403688.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112102.0,
+        "runtime_ns": 434403688.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 8393061.0,
+        "runtime_ns": 434403688.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 143119.0,
+        "runtime_ns": 434403688.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 20758.0,
+        "runtime_ns": 434403688.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 607846.0,
+        "runtime_ns": 434403688.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 434459584,
+      "ms_per_gemm": 144.81986133333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "store_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2287136222.0,
+        "runtime_ns": 432807335.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888849.0,
+        "runtime_ns": 432807335.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 42495818.0,
+        "runtime_ns": 432807335.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 1785008.0,
+        "runtime_ns": 432807335.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 4445.0,
+        "runtime_ns": 432807335.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 394804.0,
+        "runtime_ns": 432807335.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 432823028,
+      "ms_per_gemm": 144.27434266666666,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "store_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 33787929697.0,
+        "runtime_ns": 6470933483.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579995.0,
+        "runtime_ns": 6470933483.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 22855172.0,
+        "runtime_ns": 6470933483.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 481949.0,
+        "runtime_ns": 6470933483.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 36972.0,
+        "runtime_ns": 6470933483.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 956549.0,
+        "runtime_ns": 6470933483.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6471712076,
+      "ms_per_gemm": 2157.2373586666663,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "store_tlb",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 20419017969.0,
+        "runtime_ns": 3891117304.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504974.0,
+        "runtime_ns": 3891117304.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 314601127.0,
+        "runtime_ns": 3891117304.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 10462379.0,
+        "runtime_ns": 3891117304.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 43671.0,
+        "runtime_ns": 3891117304.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 2700043.0,
+        "runtime_ns": 3891117304.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3891725495,
+      "ms_per_gemm": 1297.2418316666667,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "stalls",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2228880586.0,
+        "runtime_ns": 432048197.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083113579.0,
+        "runtime_ns": 432048197.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 118356332.0,
+        "runtime_ns": 432048197.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 85646586.0,
+        "runtime_ns": 432048197.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 74564831.0,
+        "runtime_ns": 432048197.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 142768287.0,
+        "runtime_ns": 432048197.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 432103804,
+      "ms_per_gemm": 144.03460133333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "stalls",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 2278793344.0,
+        "runtime_ns": 431265449.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258889024.0,
+        "runtime_ns": 431265449.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 131851002.0,
+        "runtime_ns": 431265449.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 103099279.0,
+        "runtime_ns": 431265449.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 86567840.0,
+        "runtime_ns": 431265449.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 187889326.0,
+        "runtime_ns": 431265449.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 431294590,
+      "ms_per_gemm": 143.76486333333335,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "stalls",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 33828798083.0,
+        "runtime_ns": 6476358489.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540580441.0,
+        "runtime_ns": 6476358489.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 15184138885.0,
+        "runtime_ns": 6476358489.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 11458685579.0,
+        "runtime_ns": 6476358489.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 8312014127.0,
+        "runtime_ns": 6476358489.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 15394486266.0,
+        "runtime_ns": 6476358489.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6477389961,
+      "ms_per_gemm": 2159.129987,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "stalls",
+    "round": 0,
+    "counts": {
+      "cycles": {
+        "count": 20380047272.0,
+        "runtime_ns": 3883336611.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012503859.0,
+        "runtime_ns": 3883336611.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 3422673202.0,
+        "runtime_ns": 3883336611.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 3220463111.0,
+        "runtime_ns": 3883336611.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 3184242540.0,
+        "runtime_ns": 3883336611.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 3623125802.0,
+        "runtime_ns": 3883336611.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3883858806,
+      "ms_per_gemm": 1294.619602,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "retired_loads",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 20398217291.0,
+        "runtime_ns": 3887069272.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504893.0,
+        "runtime_ns": 3887069272.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29503049691.0,
+        "runtime_ns": 3887069272.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 248010367.0,
+        "runtime_ns": 3887069272.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 35970103.0,
+        "runtime_ns": 3887069272.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 33606372.0,
+        "runtime_ns": 3887069272.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3887645402,
+      "ms_per_gemm": 1295.8818006666668,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "retired_loads",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 32549111354.0,
+        "runtime_ns": 6232534310.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579310.0,
+        "runtime_ns": 6232534310.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29025745310.0,
+        "runtime_ns": 6232534310.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 1030896693.0,
+        "runtime_ns": 6232534310.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 328021196.0,
+        "runtime_ns": 6232534310.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 326416793.0,
+        "runtime_ns": 6232534310.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6233419447,
+      "ms_per_gemm": 2077.8064823333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "retired_loads",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2305817195.0,
+        "runtime_ns": 436402561.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888313.0,
+        "runtime_ns": 436402561.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3688710338.0,
+        "runtime_ns": 436402561.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 30751226.0,
+        "runtime_ns": 436402561.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 3422335.0,
+        "runtime_ns": 436402561.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 1420538.0,
+        "runtime_ns": 436402561.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 436416066,
+      "ms_per_gemm": 145.472022,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "retired_loads",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2229543526.0,
+        "runtime_ns": 432398277.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083111781.0,
+        "runtime_ns": 432398277.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3630928778.0,
+        "runtime_ns": 432398277.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 134070526.0,
+        "runtime_ns": 432398277.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 1551371.0,
+        "runtime_ns": 432398277.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 665126.0,
+        "runtime_ns": 432398277.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 432432687,
+      "ms_per_gemm": 144.144229,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "cache_requests",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 20436992129.0,
+        "runtime_ns": 3894418585.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504564.0,
+        "runtime_ns": 3894418585.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 228594767.0,
+        "runtime_ns": 3894418585.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 9972859.0,
+        "runtime_ns": 3894418585.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 224059317.0,
+        "runtime_ns": 3894418585.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 140095501.0,
+        "runtime_ns": 3894418585.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3894872449,
+      "ms_per_gemm": 1298.2908163333332,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "cache_requests",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 34636656970.0,
+        "runtime_ns": 6631888004.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579025.0,
+        "runtime_ns": 6631888004.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 688044342.0,
+        "runtime_ns": 6631888004.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 3295614.0,
+        "runtime_ns": 6631888004.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 1649400657.0,
+        "runtime_ns": 6631888004.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 1382071434.0,
+        "runtime_ns": 6631888004.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6632946401,
+      "ms_per_gemm": 2210.9821336666664,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "cache_requests",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2301312294.0,
+        "runtime_ns": 435554210.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888411.0,
+        "runtime_ns": 435554210.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 29572419.0,
+        "runtime_ns": 435554210.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 1283035.0,
+        "runtime_ns": 435554210.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 28973040.0,
+        "runtime_ns": 435554210.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 5634074.0,
+        "runtime_ns": 435554210.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 435565268,
+      "ms_per_gemm": 145.18842266666667,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "cache_requests",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2262379707.0,
+        "runtime_ns": 439400213.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083111545.0,
+        "runtime_ns": 439400213.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 131478683.0,
+        "runtime_ns": 439400213.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 578067.0,
+        "runtime_ns": 439400213.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 210690318.0,
+        "runtime_ns": 439400213.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 4704852.0,
+        "runtime_ns": 439400213.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 439688259,
+      "ms_per_gemm": 146.562753,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "load_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 20527035812.0,
+        "runtime_ns": 3911729200.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504503.0,
+        "runtime_ns": 3911729200.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29503049598.0,
+        "runtime_ns": 3911729200.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 893950.0,
+        "runtime_ns": 3911729200.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 33496.0,
+        "runtime_ns": 3911729200.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 4227052.0,
+        "runtime_ns": 3911729200.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3912424004,
+      "ms_per_gemm": 1304.1413346666668,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "load_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 34231253093.0,
+        "runtime_ns": 6553274588.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540580296.0,
+        "runtime_ns": 6553274588.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29025745590.0,
+        "runtime_ns": 6553274588.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 134041.0,
+        "runtime_ns": 6553274588.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 2889.0,
+        "runtime_ns": 6553274588.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 492265.0,
+        "runtime_ns": 6553274588.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6554183204,
+      "ms_per_gemm": 2184.7277346666665,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "load_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2275301711.0,
+        "runtime_ns": 430582777.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258889057.0,
+        "runtime_ns": 430582777.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3688710515.0,
+        "runtime_ns": 430582777.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 226446.0,
+        "runtime_ns": 430582777.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 7103.0,
+        "runtime_ns": 430582777.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 627324.0,
+        "runtime_ns": 430582777.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 430614796,
+      "ms_per_gemm": 143.53826533333336,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "load_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2237259913.0,
+        "runtime_ns": 433568825.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083111814.0,
+        "runtime_ns": 433568825.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3630928769.0,
+        "runtime_ns": 433568825.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 57643.0,
+        "runtime_ns": 433568825.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 3429.0,
+        "runtime_ns": 433568825.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 274055.0,
+        "runtime_ns": 433568825.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 433621710,
+      "ms_per_gemm": 144.54057,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "store_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 20589025490.0,
+        "runtime_ns": 3923400121.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504172.0,
+        "runtime_ns": 3923400121.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 314601068.0,
+        "runtime_ns": 3923400121.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 10849637.0,
+        "runtime_ns": 3923400121.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 45211.0,
+        "runtime_ns": 3923400121.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 2247211.0,
+        "runtime_ns": 3923400121.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3923996224,
+      "ms_per_gemm": 1307.9987413333333,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "store_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 34173573584.0,
+        "runtime_ns": 6541994715.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540580274.0,
+        "runtime_ns": 6541994715.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 22855155.0,
+        "runtime_ns": 6541994715.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 564324.0,
+        "runtime_ns": 6541994715.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 37179.0,
+        "runtime_ns": 6541994715.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 916043.0,
+        "runtime_ns": 6541994715.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6542921122,
+      "ms_per_gemm": 2180.9737073333336,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "store_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2294814054.0,
+        "runtime_ns": 434300121.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888504.0,
+        "runtime_ns": 434300121.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 42495724.0,
+        "runtime_ns": 434300121.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 1716066.0,
+        "runtime_ns": 434300121.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 4341.0,
+        "runtime_ns": 434300121.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 571435.0,
+        "runtime_ns": 434300121.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 434311755,
+      "ms_per_gemm": 144.770585,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "store_tlb",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2231797488.0,
+        "runtime_ns": 432997022.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112659.0,
+        "runtime_ns": 432997022.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 8393097.0,
+        "runtime_ns": 432997022.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 147076.0,
+        "runtime_ns": 432997022.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 20891.0,
+        "runtime_ns": 432997022.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 579736.0,
+        "runtime_ns": 432997022.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 433016259,
+      "ms_per_gemm": 144.338753,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "stalls",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 20448849656.0,
+        "runtime_ns": 3897890067.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504234.0,
+        "runtime_ns": 3897890067.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 3485193151.0,
+        "runtime_ns": 3897890067.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 3281102401.0,
+        "runtime_ns": 3897890067.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 3244392639.0,
+        "runtime_ns": 3897890067.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 3685345463.0,
+        "runtime_ns": 3897890067.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3898555478,
+      "ms_per_gemm": 1299.5184926666668,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "stalls",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 34196245908.0,
+        "runtime_ns": 6547391490.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540580691.0,
+        "runtime_ns": 6547391490.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 15508223559.0,
+        "runtime_ns": 6547391490.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 11675978268.0,
+        "runtime_ns": 6547391490.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 8411659997.0,
+        "runtime_ns": 6547391490.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 15725012947.0,
+        "runtime_ns": 6547391490.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6548424048,
+      "ms_per_gemm": 2182.808016,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "stalls",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2343601082.0,
+        "runtime_ns": 443727880.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888527.0,
+        "runtime_ns": 443727880.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 197969877.0,
+        "runtime_ns": 443727880.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 168631942.0,
+        "runtime_ns": 443727880.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 154954284.0,
+        "runtime_ns": 443727880.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 254114280.0,
+        "runtime_ns": 443727880.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 443995195,
+      "ms_per_gemm": 147.99839833333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "stalls",
+    "round": 1,
+    "counts": {
+      "cycles": {
+        "count": 2224139307.0,
+        "runtime_ns": 431797435.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112654.0,
+        "runtime_ns": 431797435.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 132390651.0,
+        "runtime_ns": 431797435.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 95916865.0,
+        "runtime_ns": 431797435.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 81345378.0,
+        "runtime_ns": 431797435.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 161474521.0,
+        "runtime_ns": 431797435.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 431816682,
+      "ms_per_gemm": 143.938894,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "retired_loads",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2216506232.0,
+        "runtime_ns": 429862680.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112527.0,
+        "runtime_ns": 429862680.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3630928951.0,
+        "runtime_ns": 429862680.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 129140428.0,
+        "runtime_ns": 429862680.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 1441900.0,
+        "runtime_ns": 429862680.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 537209.0,
+        "runtime_ns": 429862680.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 429898997,
+      "ms_per_gemm": 143.29966566666667,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "retired_loads",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2337667579.0,
+        "runtime_ns": 442473566.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888256.0,
+        "runtime_ns": 442473566.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3688710329.0,
+        "runtime_ns": 442473566.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 31332393.0,
+        "runtime_ns": 442473566.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 3521880.0,
+        "runtime_ns": 442473566.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 1678527.0,
+        "runtime_ns": 442473566.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 442508723,
+      "ms_per_gemm": 147.50290766666666,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "retired_loads",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 34516626572.0,
+        "runtime_ns": 6613800561.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579766.0,
+        "runtime_ns": 6613800561.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29025745916.0,
+        "runtime_ns": 6613800561.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 1033116823.0,
+        "runtime_ns": 6613800561.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 349765310.0,
+        "runtime_ns": 6613800561.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 348368865.0,
+        "runtime_ns": 6613800561.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6614827897,
+      "ms_per_gemm": 2204.9426323333337,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "retired_loads",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 20498077823.0,
+        "runtime_ns": 3906530590.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504387.0,
+        "runtime_ns": 3906530590.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29503049577.0,
+        "runtime_ns": 3906530590.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l1_miss": {
+        "count": 249550751.0,
+        "runtime_ns": 3906530590.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l2_miss": {
+        "count": 36412563.0,
+        "runtime_ns": 3906530590.0,
+        "running_percent": 100.0
+      },
+      "mem_load_retired.l3_miss": {
+        "count": 34320693.0,
+        "runtime_ns": 3906530590.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3907012746,
+      "ms_per_gemm": 1302.337582,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "cache_requests",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2253044979.0,
+        "runtime_ns": 436951553.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083111854.0,
+        "runtime_ns": 436951553.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 134489744.0,
+        "runtime_ns": 436951553.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 565054.0,
+        "runtime_ns": 436951553.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 210276391.0,
+        "runtime_ns": 436951553.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 4519631.0,
+        "runtime_ns": 436951553.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 436941043,
+      "ms_per_gemm": 145.64701433333335,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 45056,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "cache_requests",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2302320038.0,
+        "runtime_ns": 435716619.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888683.0,
+        "runtime_ns": 435716619.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 30743075.0,
+        "runtime_ns": 435716619.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 1268210.0,
+        "runtime_ns": 435716619.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 29384510.0,
+        "runtime_ns": 435716619.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 6101804.0,
+        "runtime_ns": 435716619.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 435758341,
+      "ms_per_gemm": 145.25278033333333,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "cache_requests",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 34059746081.0,
+        "runtime_ns": 6521068575.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579532.0,
+        "runtime_ns": 6521068575.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 694654946.0,
+        "runtime_ns": 6521068575.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 3283079.0,
+        "runtime_ns": 6521068575.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 1649486455.0,
+        "runtime_ns": 6521068575.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 1364980143.0,
+        "runtime_ns": 6521068575.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6521960591,
+      "ms_per_gemm": 2173.9868636666665,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "cache_requests",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 20490655128.0,
+        "runtime_ns": 3905409792.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504443.0,
+        "runtime_ns": 3905409792.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "count": 216425848.0,
+        "runtime_ns": 3905409792.0,
+        "running_percent": 100.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "count": 9958423.0,
+        "runtime_ns": 3905409792.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.reference": {
+        "count": 223530258.0,
+        "runtime_ns": 3905409792.0,
+        "running_percent": 100.0
+      },
+      "longest_lat_cache.miss": {
+        "count": 140461677.0,
+        "runtime_ns": 3905409792.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3905963190,
+      "ms_per_gemm": 1301.98773,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "load_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2227208811.0,
+        "runtime_ns": 431940712.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112617.0,
+        "runtime_ns": 431940712.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3630928977.0,
+        "runtime_ns": 431940712.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 58691.0,
+        "runtime_ns": 431940712.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 2950.0,
+        "runtime_ns": 431940712.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 430784.0,
+        "runtime_ns": 431940712.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 431962451,
+      "ms_per_gemm": 143.98748366666666,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "load_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2299990588.0,
+        "runtime_ns": 435228436.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888628.0,
+        "runtime_ns": 435228436.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 3688710405.0,
+        "runtime_ns": 435228436.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 223765.0,
+        "runtime_ns": 435228436.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 6677.0,
+        "runtime_ns": 435228436.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 654655.0,
+        "runtime_ns": 435228436.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 435240404,
+      "ms_per_gemm": 145.08013466666665,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "load_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 34151431656.0,
+        "runtime_ns": 6538971474.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540580222.0,
+        "runtime_ns": 6538971474.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29025745949.0,
+        "runtime_ns": 6538971474.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 152480.0,
+        "runtime_ns": 6538971474.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 6157.0,
+        "runtime_ns": 6538971474.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 735602.0,
+        "runtime_ns": 6538971474.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6539963829,
+      "ms_per_gemm": 2179.987943,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "load_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 20428796178.0,
+        "runtime_ns": 3898430825.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504634.0,
+        "runtime_ns": 3898430825.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_loads": {
+        "count": 29503049621.0,
+        "runtime_ns": 3898430825.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "count": 804445.0,
+        "runtime_ns": 3898430825.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_completed": {
+        "count": 24522.0,
+        "runtime_ns": 3898430825.0,
+        "running_percent": 100.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "count": 3390071.0,
+        "runtime_ns": 3898430825.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3899040110,
+      "ms_per_gemm": 1299.6800366666666,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "store_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2243836614.0,
+        "runtime_ns": 435375764.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112600.0,
+        "runtime_ns": 435375764.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 8393091.0,
+        "runtime_ns": 435375764.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 143101.0,
+        "runtime_ns": 435375764.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 20757.0,
+        "runtime_ns": 435375764.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 570191.0,
+        "runtime_ns": 435375764.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 435416162,
+      "ms_per_gemm": 145.13872066666664,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "store_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2313306040.0,
+        "runtime_ns": 437851609.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888676.0,
+        "runtime_ns": 437851609.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 42495758.0,
+        "runtime_ns": 437851609.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 1644543.0,
+        "runtime_ns": 437851609.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 5453.0,
+        "runtime_ns": 437851609.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 644000.0,
+        "runtime_ns": 437851609.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 437868721,
+      "ms_per_gemm": 145.95624033333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "store_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 34204679454.0,
+        "runtime_ns": 6548943611.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540579926.0,
+        "runtime_ns": 6548943611.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 22855135.0,
+        "runtime_ns": 6548943611.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 209364.0,
+        "runtime_ns": 6548943611.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 32223.0,
+        "runtime_ns": 6548943611.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 1027721.0,
+        "runtime_ns": 6548943611.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6549840074,
+      "ms_per_gemm": 2183.2800246666666,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "store_tlb",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 20600721187.0,
+        "runtime_ns": 3927258161.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504475.0,
+        "runtime_ns": 3927258161.0,
+        "running_percent": 100.0
+      },
+      "mem_inst_retired.all_stores": {
+        "count": 314601072.0,
+        "runtime_ns": 3927258161.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "count": 7928263.0,
+        "runtime_ns": 3927258161.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_completed": {
+        "count": 44953.0,
+        "runtime_ns": 3927258161.0,
+        "running_percent": 100.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "count": 2662636.0,
+        "runtime_ns": 3927258161.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3927789265,
+      "ms_per_gemm": 1309.2630883333331,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "group": "stalls",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2255416974.0,
+        "runtime_ns": 438178431.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8083112676.0,
+        "runtime_ns": 438178431.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 141425948.0,
+        "runtime_ns": 438178431.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 106717105.0,
+        "runtime_ns": 438178431.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 95180659.0,
+        "runtime_ns": 438178431.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 170047520.0,
+        "runtime_ns": 438178431.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 438202729,
+      "ms_per_gemm": 146.06757633333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "group": "stalls",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 2287258350.0,
+        "runtime_ns": 432856670.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 8258888228.0,
+        "runtime_ns": 432856670.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 142202974.0,
+        "runtime_ns": 432856670.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 112824083.0,
+        "runtime_ns": 432856670.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 98106627.0,
+        "runtime_ns": 432856670.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 194697897.0,
+        "runtime_ns": 432856670.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 432915304,
+      "ms_per_gemm": 144.30510133333334,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 43008,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "group": "stalls",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 33948419839.0,
+        "runtime_ns": 6499375845.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 64540580909.0,
+        "runtime_ns": 6499375845.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 15293148692.0,
+        "runtime_ns": 6499375845.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 11543230028.0,
+        "runtime_ns": 6499375845.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 8332747455.0,
+        "runtime_ns": 6499375845.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 15500355440.0,
+        "runtime_ns": 6499375845.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 6500206290,
+      "ms_per_gemm": 2166.73543,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "group": "stalls",
+    "round": 2,
+    "counts": {
+      "cycles": {
+        "count": 20432338928.0,
+        "runtime_ns": 3894003631.0,
+        "running_percent": 100.0
+      },
+      "instructions": {
+        "count": 66012504346.0,
+        "runtime_ns": 3894003631.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "count": 3486830705.0,
+        "runtime_ns": 3894003631.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "count": 3288889130.0,
+        "runtime_ns": 3894003631.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "count": 3250958776.0,
+        "runtime_ns": 3894003631.0,
+        "running_percent": 100.0
+      },
+      "cycle_activity.stalls_total": {
+        "count": 3675796666.0,
+        "runtime_ns": 3894003631.0,
+        "running_percent": 100.0
+      }
+    },
+    "timing": {
+      "iterations": 3,
+      "elapsed_ns": 3894507963,
+      "ms_per_gemm": 1298.169321,
+      "logical_cpu": 0,
+      "anon_huge_pages_kb_before": 126976,
+      "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+    }
+  }
+]

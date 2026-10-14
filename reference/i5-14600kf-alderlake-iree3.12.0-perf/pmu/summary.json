@@ -1,0 +1,794 @@
+[
+  {
+    "size": 2048,
+    "variant": "01_original",
+    "metrics": {
+      "ipc": {
+        "median": 3.6254559225860117,
+        "min": 3.4359994563128446,
+        "max": 3.6467808708601908
+      },
+      "l1_load_miss_percent": {
+        "median": 3.6924581614583243,
+        "min": 3.556677361159414,
+        "max": 3.768486799955982
+      },
+      "l2_load_miss_percent": {
+        "median": 0.04272656102206805,
+        "min": 0.03971160051487331,
+        "max": 0.05283454854259253
+      },
+      "l3_load_miss_percent": {
+        "median": 0.018318343340415696,
+        "min": 0.014795359734374488,
+        "max": 0.02707362142976174
+      },
+      "l2_demand_request_miss_percent": {
+        "median": 0.4241499422328554,
+        "min": 0.420146535486007,
+        "max": 0.43966594949844456
+      },
+      "llc_request_miss_percent": {
+        "median": 2.149376341540882,
+        "min": 2.06623467555091,
+        "max": 2.2330651188252513
+      },
+      "load_dtlb_events_per_1000_loads": {
+        "median": 0.016976647130930646,
+        "min": 0.016819938887652687,
+        "max": 0.017513699642693427
+      },
+      "load_pagewalks_per_1000_loads": {
+        "median": 0.0008124642532769651,
+        "min": 0.0007645426272289626,
+        "max": 0.0009443864691800017
+      },
+      "load_pagewalk_active_cycle_percent": {
+        "median": 0.016130360555989307,
+        "min": 0.012249582554425362,
+        "max": 0.01934187750481201
+      },
+      "store_dtlb_events_per_1000_stores": {
+        "median": 19.525295955790146,
+        "min": 19.52296239847751,
+        "max": 20.012517429501887
+      },
+      "store_pagewalks_per_1000_stores": {
+        "median": 2.4732335437571584,
+        "min": 2.4731055578927954,
+        "max": 2.4890692911091103
+      },
+      "store_pagewalk_active_cycle_percent": {
+        "median": 0.025976191976070543,
+        "min": 0.02541143131556013,
+        "max": 0.02713939292241007
+      },
+      "l1_miss_stall_cycle_percent": {
+        "median": 5.952444191932084,
+        "min": 5.310124406996832,
+        "max": 6.270501181392635
+      },
+      "l2_miss_stall_cycle_percent": {
+        "median": 4.312538549097276,
+        "min": 3.842582978108456,
+        "max": 4.731590931087849
+      },
+      "l3_miss_stall_cycle_percent": {
+        "median": 3.6573868257254802,
+        "min": 3.3453937132547664,
+        "max": 4.220091455248577
+      },
+      "total_stall_cycle_percent": {
+        "median": 7.260090251172382,
+        "min": 6.405380705308006,
+        "max": 7.539515839433422
+      }
+    },
+    "event_counts_per_gemm": {
+      "dtlb_load_misses.walk_completed": {
+        "median": 983.3333333333334,
+        "min": 925.3333333333334,
+        "max": 1143.0
+      },
+      "longest_lat_cache.reference": {
+        "median": 70230106.0,
+        "min": 70092130.33333333,
+        "max": 70293935.33333333
+      },
+      "cycles": {
+        "median": 745753304.3333334,
+        "min": 738835410.6666666,
+        "max": 784159289.0
+      },
+      "dtlb_store_misses.walk_active": {
+        "median": 193245.33333333334,
+        "min": 190063.66666666666,
+        "max": 202615.33333333334
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "median": 44130217.0,
+        "min": 39452110.666666664,
+        "max": 47141982.666666664
+      },
+      "mem_load_retired.l3_miss": {
+        "median": 221708.66666666666,
+        "min": 179069.66666666666,
+        "max": 327674.6666666667
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "median": 47706.333333333336,
+        "min": 47700.333333333336,
+        "max": 49025.333333333336
+      },
+      "mem_load_retired.l1_miss": {
+        "median": 44690175.333333336,
+        "min": 43046809.333333336,
+        "max": 45610361.333333336
+      },
+      "longest_lat_cache.miss": {
+        "median": 1506543.6666666667,
+        "min": 1452437.6666666667,
+        "max": 1568284.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "median": 121719.66666666667,
+        "min": 91351.66666666667,
+        "max": 143594.66666666666
+      },
+      "mem_inst_retired.all_loads": {
+        "median": 1210309654.6666665,
+        "min": 1210309589.6666667,
+        "max": 1210309701.3333333
+      },
+      "instructions": {
+        "median": 2694370866.6666665,
+        "min": 2694370507.6666665,
+        "max": 2694371193.0
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "median": 44447410.666666664,
+        "min": 43826227.666666664,
+        "max": 44829914.666666664
+      },
+      "dtlb_store_misses.walk_completed": {
+        "median": 6919.333333333333,
+        "min": 6919.0,
+        "max": 6963.666666666667
+      },
+      "mem_inst_retired.all_stores": {
+        "median": 2797697.0,
+        "min": 2797687.0,
+        "max": 2797699.0
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "median": 188523.66666666666,
+        "min": 188351.33333333334,
+        "max": 192689.0
+      },
+      "cycle_activity.stalls_total": {
+        "median": 53824840.333333336,
+        "min": 47589429.0,
+        "max": 56682506.666666664
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "median": 19563.666666666668,
+        "min": 19214.333333333332,
+        "max": 20271.666666666668
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "median": 31972288.333333332,
+        "min": 28548862.0,
+        "max": 35572368.333333336
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "median": 27115126.0,
+        "min": 24854943.666666668,
+        "max": 31726886.333333332
+      },
+      "mem_load_retired.l2_miss": {
+        "median": 517123.6666666667,
+        "min": 480633.3333333333,
+        "max": 639461.6666666666
+      }
+    },
+    "ms_per_gemm": {
+      "median": 144.54057,
+      "min": 143.29966566666667,
+      "max": 152.106257
+    }
+  },
+  {
+    "size": 2048,
+    "variant": "02_panel_pack",
+    "metrics": {
+      "ipc": {
+        "median": 3.5363882779367604,
+        "min": 3.532960943716797,
+        "max": 3.5817619588009015
+      },
+      "l1_load_miss_percent": {
+        "median": 0.8494132150651725,
+        "min": 0.8336579232912379,
+        "max": 0.8539931427723101
+      },
+      "l2_load_miss_percent": {
+        "median": 0.09547727215963778,
+        "min": 0.09277863227004082,
+        "max": 0.09856184074245487
+      },
+      "l3_load_miss_percent": {
+        "median": 0.045504440584659425,
+        "min": 0.03851042423597317,
+        "max": 0.048977169239150256
+      },
+      "l2_demand_request_miss_percent": {
+        "median": 4.184980145412929,
+        "min": 4.1251891686176485,
+        "max": 4.3386203881393675
+      },
+      "llc_request_miss_percent": {
+        "median": 20.765376043364345,
+        "min": 19.44591937884323,
+        "max": 22.960612063392418
+      },
+      "load_dtlb_events_per_1000_loads": {
+        "median": 0.06331453743802393,
+        "min": 0.06247223953597409,
+        "max": 0.06333079861487119
+      },
+      "load_pagewalks_per_1000_loads": {
+        "median": 0.0019074414900720161,
+        "min": 0.0018101177015548337,
+        "max": 0.0019256051596122608
+      },
+      "load_pagewalk_active_cycle_percent": {
+        "median": 0.02846337734665547,
+        "min": 0.02757102484330703,
+        "max": 0.03186776606406577
+      },
+      "store_dtlb_events_per_1000_stores": {
+        "median": 40.48423789649989,
+        "min": 38.827310716519044,
+        "max": 42.10891998831509
+      },
+      "store_pagewalks_per_1000_stores": {
+        "median": 0.10459852778925212,
+        "min": 0.10215145410865338,
+        "max": 0.12831869006784158
+      },
+      "store_pagewalk_active_cycle_percent": {
+        "median": 0.02490114608649682,
+        "min": 0.017261936398994253,
+        "max": 0.027838945166113866
+      },
+      "l1_miss_stall_cycle_percent": {
+        "median": 6.217180232394823,
+        "min": 5.78600083887203,
+        "max": 8.447251476392688
+      },
+      "l2_miss_stall_cycle_percent": {
+        "median": 4.93272143918504,
+        "min": 4.524292616153964,
+        "max": 7.195420043759819
+      },
+      "l3_miss_stall_cycle_percent": {
+        "median": 4.289267410478575,
+        "min": 3.7988455700878156,
+        "max": 6.611802887023928
+      },
+      "total_stall_cycle_percent": {
+        "median": 8.512282707373219,
+        "min": 8.24512352095057,
+        "max": 10.842898219825962
+      }
+    },
+    "event_counts_per_gemm": {
+      "dtlb_load_misses.walk_completed": {
+        "median": 2345.3333333333335,
+        "min": 2225.6666666666665,
+        "max": 2367.6666666666665
+      },
+      "longest_lat_cache.reference": {
+        "median": 9794836.666666666,
+        "min": 9657680.0,
+        "max": 9803864.666666666
+      },
+      "cycles": {
+        "median": 767440012.6666666,
+        "min": 758433903.6666666,
+        "max": 781200360.6666666
+      },
+      "dtlb_store_misses.walk_active": {
+        "median": 190478.33333333334,
+        "min": 131601.33333333334,
+        "max": 214666.66666666666
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "median": 47400991.333333336,
+        "min": 43950334.0,
+        "max": 65989959.0
+      },
+      "mem_load_retired.l3_miss": {
+        "median": 559509.0,
+        "min": 473512.6666666667,
+        "max": 602208.6666666666
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "median": 572022.0,
+        "min": 548181.0,
+        "max": 595002.6666666666
+      },
+      "mem_load_retired.l1_miss": {
+        "median": 10444131.0,
+        "min": 10250408.666666666,
+        "max": 10500445.0
+      },
+      "longest_lat_cache.miss": {
+        "median": 2033934.6666666667,
+        "min": 1878024.6666666667,
+        "max": 2251027.3333333335
+      },
+      "dtlb_load_misses.walk_active": {
+        "median": 218218.33333333334,
+        "min": 209108.0,
+        "max": 244968.0
+      },
+      "mem_inst_retired.all_loads": {
+        "median": 1229570153.3333335,
+        "min": 1229570109.6666667,
+        "max": 1229570262.3333333
+      },
+      "instructions": {
+        "median": 2752962876.0,
+        "min": 2752962509.3333335,
+        "max": 2752963270.3333335
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "median": 10247691.666666666,
+        "min": 9857473.0,
+        "max": 10294178.666666666
+      },
+      "dtlb_store_misses.walk_completed": {
+        "median": 1481.6666666666667,
+        "min": 1447.0,
+        "max": 1817.6666666666667
+      },
+      "mem_inst_retired.all_stores": {
+        "median": 14165252.666666666,
+        "min": 14165241.333333334,
+        "max": 14165272.666666666
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "median": 427678.3333333333,
+        "min": 422736.6666666667,
+        "max": 430809.3333333333
+      },
+      "cycle_activity.stalls_total": {
+        "median": 64899299.0,
+        "min": 62629775.333333336,
+        "max": 84704760.0
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "median": 75482.0,
+        "min": 74588.33333333333,
+        "max": 75524.33333333333
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "median": 37608027.666666664,
+        "min": 34366426.333333336,
+        "max": 56210647.333333336
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "median": 32702209.0,
+        "min": 28855946.666666668,
+        "max": 51651428.0
+      },
+      "mem_load_retired.l2_miss": {
+        "median": 1173960.0,
+        "min": 1140778.3333333333,
+        "max": 1211887.0
+      }
+    },
+    "ms_per_gemm": {
+      "median": 145.25278033333333,
+      "min": 143.53826533333336,
+      "max": 147.99839833333334
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "01_original",
+    "metrics": {
+      "ipc": {
+        "median": 1.8980005947305865,
+        "min": 1.8698403110562238,
+        "max": 1.9828676306417359
+      },
+      "l1_load_miss_percent": {
+        "median": 3.559311881216841,
+        "min": 3.551663125235353,
+        "max": 3.5619139838911034
+      },
+      "l2_load_miss_percent": {
+        "median": 1.1999018628617237,
+        "min": 1.130104300498322,
+        "max": 1.205017473150267
+      },
+      "l3_load_miss_percent": {
+        "median": 1.1945192724306235,
+        "min": 1.1245767835203264,
+        "max": 1.2002064167727968
+      },
+      "l2_demand_request_miss_percent": {
+        "median": 0.47378403674771713,
+        "min": 0.4726201143322745,
+        "max": 0.4789827920712703
+      },
+      "llc_request_miss_percent": {
+        "median": 83.03800797664842,
+        "min": 82.7518249005567,
+        "max": 83.79234166874714
+      },
+      "load_dtlb_events_per_1000_loads": {
+        "median": 0.004717536008693447,
+        "min": 0.004649148472620089,
+        "max": 0.005465389254034499
+      },
+      "load_pagewalks_per_1000_loads": {
+        "median": 9.953232694891818e-05,
+        "min": 9.650053630596814e-05,
+        "max": 0.0002121220247299836
+      },
+      "load_pagewalk_active_cycle_percent": {
+        "median": 0.0014616393480691374,
+        "min": 0.0014380572007183226,
+        "max": 0.00215394191203918
+      },
+      "store_dtlb_events_per_1000_stores": {
+        "median": 22.70475146719526,
+        "min": 10.570359790042806,
+        "max": 26.31804509748457
+      },
+      "store_pagewalks_per_1000_stores": {
+        "median": 1.617664483120057,
+        "min": 1.40988009915496,
+        "max": 1.6267227240419064
+      },
+      "store_pagewalk_active_cycle_percent": {
+        "median": 0.002831037617806252,
+        "min": 0.0026805595784366244,
+        "max": 0.0030046210530407856
+      },
+      "l1_miss_stall_cycle_percent": {
+        "median": 45.048190061651134,
+        "min": 44.88524495533434,
+        "max": 45.35066100741762
+      },
+      "l2_miss_stall_cycle_percent": {
+        "median": 34.00226014272133,
+        "min": 33.87257670487069,
+        "max": 34.14403528215498
+      },
+      "l3_miss_stall_cycle_percent": {
+        "median": 24.570823079809742,
+        "min": 24.54531755680518,
+        "max": 24.598197181147725
+      },
+      "total_stall_cycle_percent": {
+        "median": 45.65854762463249,
+        "min": 45.50704470264995,
+        "max": 45.984617695479926
+      }
+    },
+    "event_counts_per_gemm": {
+      "dtlb_load_misses.walk_completed": {
+        "median": 963.0,
+        "min": 933.6666666666666,
+        "max": 2052.3333333333335
+      },
+      "longest_lat_cache.reference": {
+        "median": 549800219.0,
+        "min": 549769833.6666666,
+        "max": 549828818.3333334
+      },
+      "cycles": {
+        "median": 11383810552.0,
+        "min": 10849703784.666666,
+        "max": 11545552323.333334
+      },
+      "dtlb_store_misses.walk_active": {
+        "median": 318849.6666666667,
+        "min": 305347.6666666667,
+        "max": 342573.6666666667
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "median": 5097716230.666667,
+        "min": 5061379628.333333,
+        "max": 5169407853.0
+      },
+      "mem_load_retired.l3_miss": {
+        "median": 115572708.0,
+        "min": 108805597.66666667,
+        "max": 116122955.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "median": 160649.66666666666,
+        "min": 69788.0,
+        "max": 188108.0
+      },
+      "mem_load_retired.l1_miss": {
+        "median": 344372274.3333333,
+        "min": 343632231.0,
+        "max": 344624029.3333333
+      },
+      "longest_lat_cache.miss": {
+        "median": 456517918.3333333,
+        "min": 454993381.0,
+        "max": 460690478.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "median": 166200.66666666666,
+        "min": 164088.33333333334,
+        "max": 245200.66666666666
+      },
+      "mem_inst_retired.all_loads": {
+        "median": 9675248515.5,
+        "min": 9675248436.666666,
+        "max": 9675248649.666666
+      },
+      "instructions": {
+        "median": 21513526642.0,
+        "min": 21513526341.666668,
+        "max": 21513526969.666668
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "median": 230849061.0,
+        "min": 229348114.0,
+        "max": 231551648.66666666
+      },
+      "dtlb_store_misses.walk_completed": {
+        "median": 12324.0,
+        "min": 10741.0,
+        "max": 12393.0
+      },
+      "mem_inst_retired.all_stores": {
+        "median": 7618385.0,
+        "min": 7618378.333333333,
+        "max": 7618390.666666667
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "median": 1094359.6666666667,
+        "min": 1093726.0,
+        "max": 1098538.0
+      },
+      "cycle_activity.stalls_total": {
+        "median": 5166785146.666667,
+        "min": 5131495422.0,
+        "max": 5241670982.333333
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "median": 44680.333333333336,
+        "min": 44048.0,
+        "max": 50826.666666666664
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "median": 3847743342.6666665,
+        "min": 3819561859.6666665,
+        "max": 3891992756.0
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "median": 2777582485.0,
+        "min": 2770671375.6666665,
+        "max": 2803886665.6666665
+      },
+      "mem_load_retired.l2_miss": {
+        "median": 116093487.0,
+        "min": 109340398.66666667,
+        "max": 116588436.66666667
+      }
+    },
+    "ms_per_gemm": {
+      "median": 2179.987943,
+      "min": 2077.8064823333334,
+      "max": 2210.9821336666664
+    }
+  },
+  {
+    "size": 4096,
+    "variant": "02_panel_pack",
+    "metrics": {
+      "ipc": {
+        "median": 3.2298391766476082,
+        "min": 3.220424127423804,
+        "max": 3.2361899057779775
+      },
+      "l1_load_miss_percent": {
+        "median": 0.845847309271191,
+        "min": 0.8406262050789155,
+        "max": 0.9054258800414846
+      },
+      "l2_load_miss_percent": {
+        "median": 0.12325785150470228,
+        "min": 0.12191994853661788,
+        "max": 0.12341965838130348
+      },
+      "l3_load_miss_percent": {
+        "median": 0.11631915183998183,
+        "min": 0.11390812933569959,
+        "max": 0.11632930660414081
+      },
+      "l2_demand_request_miss_percent": {
+        "median": 4.362680358295341,
+        "min": 4.222175316401415,
+        "max": 4.601309451725008
+      },
+      "llc_request_miss_percent": {
+        "median": 62.83788076690718,
+        "min": 62.52607696737735,
+        "max": 62.83950897348281
+      },
+      "load_dtlb_events_per_1000_loads": {
+        "median": 0.02809767161866375,
+        "min": 0.027799295656881357,
+        "max": 0.0314355977648789
+      },
+      "load_pagewalks_per_1000_loads": {
+        "median": 0.0008311683136154666,
+        "min": 0.0006225458119716787,
+        "max": 0.0011353402599530145
+      },
+      "load_pagewalk_active_cycle_percent": {
+        "median": 0.016594570578029485,
+        "min": 0.014212838810576984,
+        "max": 0.02059260790848763
+      },
+      "store_dtlb_events_per_1000_stores": {
+        "median": 33.39482633194763,
+        "min": 25.343893297350238,
+        "max": 34.63067709611208
+      },
+      "store_pagewalks_per_1000_stores": {
+        "median": 0.14288889644978706,
+        "min": 0.13881387017408875,
+        "max": 0.1437089844844392
+      },
+      "store_pagewalk_active_cycle_percent": {
+        "median": 0.012924964984625129,
+        "min": 0.010914605944275802,
+        "max": 0.013223177549964377
+      },
+      "l1_miss_stall_cycle_percent": {
+        "median": 17.043468017172263,
+        "min": 16.79423583429262,
+        "max": 17.065254826121393
+      },
+      "l2_miss_stall_cycle_percent": {
+        "median": 16.045413097539573,
+        "min": 15.802039455642339,
+        "max": 16.096488716193832
+      },
+      "l3_miss_stall_cycle_percent": {
+        "median": 15.865893160635794,
+        "min": 15.624313808019513,
+        "max": 15.910849890733566
+      },
+      "total_stall_cycle_percent": {
+        "median": 17.990092465443464,
+        "min": 17.777808626468627,
+        "max": 18.022262987877482
+      }
+    },
+    "event_counts_per_gemm": {
+      "dtlb_load_misses.walk_completed": {
+        "median": 8174.0,
+        "min": 6122.333333333333,
+        "max": 11165.333333333334
+      },
+      "longest_lat_cache.reference": {
+        "median": 74686439.0,
+        "min": 74510086.0,
+        "max": 75350119.33333333
+      },
+      "cycles": {
+        "median": 6812775158.0,
+        "min": 6793349090.666667,
+        "max": 6866907062.333333
+      },
+      "dtlb_store_misses.walk_active": {
+        "median": 887545.3333333334,
+        "min": 749070.3333333334,
+        "max": 900014.3333333334
+      },
+      "cycle_activity.stalls_l1d_miss": {
+        "median": 1161731050.3333333,
+        "min": 1140891067.3333333,
+        "max": 1162276901.6666667
+      },
+      "mem_load_retired.l3_miss": {
+        "median": 11439232.333333334,
+        "min": 11202124.0,
+        "max": 11440231.0
+      },
+      "dtlb_store_misses.stlb_hit": {
+        "median": 3487459.6666666665,
+        "min": 2642754.3333333335,
+        "max": 3616545.6666666665
+      },
+      "mem_load_retired.l1_miss": {
+        "median": 83183583.66666667,
+        "min": 82670122.33333333,
+        "max": 89042748.66666667
+      },
+      "longest_lat_cache.miss": {
+        "median": 46820559.0,
+        "min": 46698500.333333336,
+        "max": 47349645.0
+      },
+      "dtlb_load_misses.walk_active": {
+        "median": 1130023.6666666667,
+        "min": 968138.6666666666,
+        "max": 1409017.3333333333
+      },
+      "mem_inst_retired.all_loads": {
+        "median": 9834349869.833332,
+        "min": 9834349849.0,
+        "max": 9834349897.0
+      },
+      "instructions": {
+        "median": 22004168158.333332,
+        "min": 22004167953.0,
+        "max": 22004168324.666668
+      },
+      "l2_rqsts.all_demand_data_rd": {
+        "median": 76198255.66666667,
+        "min": 72141949.33333333,
+        "max": 79311012.66666667
+      },
+      "dtlb_store_misses.walk_completed": {
+        "median": 14984.333333333334,
+        "min": 14557.0,
+        "max": 15070.333333333334
+      },
+      "mem_inst_retired.all_stores": {
+        "median": 104867024.0,
+        "min": 104867022.66666667,
+        "max": 104867042.33333333
+      },
+      "l2_rqsts.demand_data_rd_miss": {
+        "median": 3324286.3333333335,
+        "min": 3319474.3333333335,
+        "max": 3348650.0
+      },
+      "cycle_activity.stalls_total": {
+        "median": 1225265555.3333333,
+        "min": 1207708600.6666667,
+        "max": 1228448487.6666667
+      },
+      "dtlb_load_misses.stlb_hit": {
+        "median": 268148.3333333333,
+        "min": 267265.6666666667,
+        "max": 297983.3333333333
+      },
+      "cycle_activity.stalls_l2_miss": {
+        "median": 1093700800.3333333,
+        "min": 1073487703.6666666,
+        "max": 1096296376.6666667
+      },
+      "cycle_activity.stalls_l3_miss": {
+        "median": 1081464213.0,
+        "min": 1061414180.0,
+        "max": 1083652925.3333333
+      },
+      "mem_load_retired.l2_miss": {
+        "median": 12121608.333333334,
+        "min": 11990034.333333334,
+        "max": 12137521.0
+      }
+    },
+    "ms_per_gemm": {
+      "median": 1299.5184926666668,
+      "min": 1294.619602,
+      "max": 1309.2630883333331
+    }
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "scope": "system-wide IMC traffic during warm GEMM windows; includes background OS activity",
+  "background_mib_per_second": {
+    "read": 415.9725220909237,
+    "write": 52.54839302976822
+  },
+  "events": [
+    "uncore_imc_free_running_0/data_read/",
+    "uncore_imc_free_running_0/data_write/",
+    "uncore_imc_free_running_1/data_read/",
+    "uncore_imc_free_running_1/data_write/"
+  ],
+  "rounds": 3,
+  "iterations": 3,
+  "summary": [
+    {
+      "size": 2048,
+      "variant": "01_original",
+      "read_mib_per_gemm": 176.78666666666666,
+      "read_mib_per_gemm_background_adjusted": 116.56122343386774,
+      "write_mib_per_gemm": 73.95333333333333,
+      "write_mib_per_gemm_background_adjusted": 66.34525805595393,
+      "ms_per_gemm": 144.719605
+    },
+    {
+      "size": 2048,
+      "variant": "02_panel_pack",
+      "read_mib_per_gemm": 173.37333333333333,
+      "read_mib_per_gemm_background_adjusted": 113.36445939994319,
+      "write_mib_per_gemm": 39.056666666666665,
+      "write_mib_per_gemm_background_adjusted": 31.475949851827796,
+      "ms_per_gemm": 144.17527366666667
+    },
+    {
+      "size": 4096,
+      "variant": "01_original",
+      "read_mib_per_gemm": 29574.83,
+      "read_mib_per_gemm_background_adjusted": 28619.714879854135,
+      "write_mib_per_gemm": 433.03,
+      "write_mib_per_gemm_background_adjusted": 312.3735574306308,
+      "ms_per_gemm": 2296.1014716666664
+    },
+    {
+      "size": 4096,
+      "variant": "02_panel_pack",
+      "read_mib_per_gemm": 4734.903333333333,
+      "read_mib_per_gemm_background_adjusted": 4193.392255402469,
+      "write_mib_per_gemm": 278.3066666666667,
+      "write_mib_per_gemm_background_adjusted": 209.89941512502608,
+      "ms_per_gemm": 1307.1361403333333
+    }
+  ]
+}

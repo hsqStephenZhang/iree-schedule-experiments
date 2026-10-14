@@ -1,0 +1,8 @@
+# started on Wed Oct 14 16:01:48 2026
+
+2216506232;;cpu_core/cycles/u;429862680;100.00;;
+8083112527;;cpu_core/instructions/u;429862680;100.00;;
+3630928951;;cpu_core/mem_inst_retired.all_loads/u;429862680;100.00;;
+129140428;;cpu_core/mem_load_retired.l1_miss/u;429862680;100.00;;
+1441900;;cpu_core/mem_load_retired.l2_miss/u;429862680;100.00;;
+537209;;cpu_core/mem_load_retired.l3_miss/u;429862680;100.00;;

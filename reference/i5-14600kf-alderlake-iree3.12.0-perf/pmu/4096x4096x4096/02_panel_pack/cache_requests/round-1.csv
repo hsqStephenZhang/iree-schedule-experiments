@@ -1,0 +1,8 @@
+# started on Wed Oct 14 16:00:46 2026
+
+20436992129;;cpu_core/cycles/u;3894418585;100.00;;
+66012504564;;cpu_core/instructions/u;3894418585;100.00;;
+228594767;;cpu_core/l2_rqsts.all_demand_data_rd/u;3894418585;100.00;;
+9972859;;cpu_core/l2_rqsts.demand_data_rd_miss/u;3894418585;100.00;;
+224059317;;cpu_core/longest_lat_cache.reference/u;3894418585;100.00;;
+140095501;;cpu_core/longest_lat_cache.miss/u;3894418585;100.00;;

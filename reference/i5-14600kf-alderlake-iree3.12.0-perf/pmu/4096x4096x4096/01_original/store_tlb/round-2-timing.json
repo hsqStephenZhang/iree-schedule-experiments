@@ -1,0 +1,8 @@
+{
+  "iterations": 3,
+  "elapsed_ns": 6549840074,
+  "ms_per_gemm": 2183.2800246666666,
+  "logical_cpu": 0,
+  "anon_huge_pages_kb_before": 126976,
+  "scope": "preloaded device inputs; one untimed warmup; GEMM invocation and output lifetime, no readback; user-space hardware counters"
+}
