@@ -502,6 +502,12 @@ cross-compiled with Clang and checked for `fmla` and reserved macOS `x18`.
 A remote AMD host also resolved `host` to `znver3`, validated all four 256³
 variants, and completed timing when its container blocked perf. Event
 definitions are centralized in `pmu_profiles.py`.
-The Apple native measurements above come from `fix/macos`; this integration
-was not rerun on a Mac. Missing/blocked counters remain explicit in saved
-status and are never synthesized from elapsed time.
+The merged entry was also run natively on an Apple M2 Pro with macOS 27.0.1:
+`bash run.sh --sizes 2048 4096 --output results/readme-check` built and
+numerically verified all eight cases, completed three benchmark batches per
+case, and collected three independent timing windows of three GEMMs for
+original/panel at each size. A fresh Python 3.11 virtual environment, installed
+with the README's pip command, also completed the unified 256³ smoke command.
+The eight portability tests pass on macOS as well as the mocked Linux paths.
+macOS saved `timing: complete` and explicit unavailable core/memory counter
+status. Missing/blocked counters are never synthesized from elapsed time.

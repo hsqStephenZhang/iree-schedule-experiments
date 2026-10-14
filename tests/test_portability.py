@@ -25,7 +25,7 @@ class PortabilityTests(unittest.TestCase):
     def test_offline_cpu_is_not_selected(self):
         with (
             mock.patch.object(host, "affinity", return_value=[5, 7]),
-            mock.patch.object(host.os, "sched_setaffinity") as setter,
+            mock.patch.object(host.os, "sched_setaffinity", create=True) as setter,
         ):
             self.assertEqual(host.pin_cpu(), 5)
             setter.assert_called_once_with(0, {5})
