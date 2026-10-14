@@ -2,6 +2,7 @@
 """One-shot original/panel profiling, with explicit PMU permission diagnostics."""
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -146,6 +147,21 @@ def main():
         ]:
             if not (d / relative).is_file():
                 p.error(f"missing artifact: {d / relative}")
+    save_json(
+        out / "artifact-metadata.json",
+        {
+            "source_metadata": json.loads((root / "metadata.json").read_text()),
+            "module_sha256": {
+                f"{size}/{variant}": hashlib.sha256(
+                    (
+                        root / f"{size}x{size}x{size}" / variant / "module.vmfb"
+                    ).read_bytes()
+                ).hexdigest()
+                for size in args.sizes
+                for variant in ["01_original", "02_panel_pack"]
+            },
+        },
+    )
     commands = []
 
     def capture(label, command):
