@@ -1,0 +1,127 @@
+# IREE GEMM schedule experiments
+
+A standalone reproducer comparing four CPU GEMM variants: default IREE data
+tiling, interleaved panel packing, a custom AVX2 microkernel, and the same
+microkernel with complete input packing. No IREE source checkout or compiler
+rebuild is required.
+
+## Run
+
+Requirements: Linux x86-64 with AVX2/FMA, Python 3.11, and Clang on `PATH`.
+The pinned IREE packages and Clang 22.1.3 were tested. Clang emits LLVM bitcode,
+so its version must be compatible with the LLVM reader in IREE.
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+
+bash run.sh --cpu haswell --pin-cpu 0 --sizes 2048 4096 \
+  --repetitions 5 --min-time 0.2s --output results
+```
+
+Use the same `--cpu haswell` across AVX2 machines to keep the target ISA
+consistent. `--cpu host` instead selects the native target; the original
+version may then select another ukernel, including AVX512. Choose an available
+physical-core logical CPU for `--pin-cpu`; by default, the first permitted
+logical CPU is used. Execution uses the single-threaded `local-sync` driver.
+
+For a quick sanity check:
+
+```bash
+bash run.sh --cpu haswell --sizes 256 --repetitions 1 --min-time 0.05s
+```
+
+`--build-only` generates and compiles all four variants without benchmarking.
+Matrix sizes must be positive multiples of 256.
+
+The single-file alternative embeds all Python helpers:
+
+```bash
+python reproduce.pyz --cpu haswell --sizes 2048 4096 --output results
+```
+
+## Four versions
+
+| Version | Packing | Compute |
+| --- | --- | --- |
+| `01_original` | Complete A/B tensors, in separate encoding dispatches | Default target-selected ukernel; full K reduction per output microtile |
+| `02_panel_pack` | Current B panel, then current A panel immediately before use | Original AVX2 `8×8×1` ukernel; `nc → kc → mc` loops |
+| `03_panel_pack_kernel` | Same panel approach | Custom `6×16` output kernel; K unrolled by 8 |
+| `04_full_pack_kernel` | Complete A/B tensors, in separate encoding dispatches before compute | Same custom kernel; full K reduction without cache-panel K blocking |
+
+Version 02 uses `MC=64, NC=128, KC=256`; version 03 uses `MC=60` to align with
+its six-row microtile. Moving packing also changes compute blocking and
+dispatch granularity, so the comparison does not isolate only packing cost.
+Panel variants re-pack A for each N panel and retain an `M×NC` packed output
+strip across K panels.
+
+The custom row-major kernel mirrors the column-major `MR=16, K=8, NR=6`
+shape: its A/B/C tiles are `6×8`, `8×16`, and `6×16`. Twelve YMM accumulators
+hold C; B uses two vectors and A is broadcast. Pack calls use a K inner tile
+of one while compute groups K by eight. Their linear packed layouts are
+identical; this retains the faster pack implementation observed in testing.
+
+Version 04 preserves the original distribution granularity in microtile
+units: one M tile and two N tiles per workgroup. The new geometry produces a
+`6×32` output block, with one full-K kernel call and unpack. Its A pack tasks
+cover `60×64` input chunks; B pack tasks cover `64×64`. The final M microtile
+is zero-padded and output unpack clips to the real rows. New kernel geometry
+requires a corresponding packed layout, but packing stays before compute.
+
+## Reference results
+
+Intel Core i5-14600KF, logical CPU 0, `alderlake` target, FP32, single-threaded
+`local-sync`, five interleaved batches. Time includes runtime packing,
+VM/dispatch, and output allocation. Inputs are runtime A/B tensors, not
+pre-packed weights. Repeated identical inputs are used without explicit cache
+flushing. These are measurements on this machine, not portable speedup claims.
+
+| Version | 2048³ median | 4096³ median | 4096³ speedup |
+| --- | ---: | ---: | ---: |
+| Original | 153.96 ms | 2221.84 ms | 1.00× |
+| Panel packing | 144.94 ms | 1320.88 ms | 1.68× |
+| Panel packing + custom kernel | 127.00 ms | 1175.28 ms | 1.89× |
+| Complete packing + custom kernel | 115.57 ms | 2442.81 ms | 0.91× |
+
+All versions passed comparison with a float64 NumPy reference
+(`rtol=1e-3`, `atol=1e-3`). Forward/reverse variant ordering alternates across
+batches. A GEMM that exceeds `--min-time` can produce one timed iteration in
+a batch. Every sample and machine/compiler details are recorded in
+[results.json](reference/i5-14600kf-alderlake/results.json) and
+[metadata.json](reference/i5-14600kf-alderlake/metadata.json).
+
+## MLIR and LLVM IR
+
+Complete generated artifacts for both matrix sizes are under
+[reference/i5-14600kf-alderlake](reference/i5-14600kf-alderlake).
+
+| 4096³ version | Editable source | Readable SCF calls | Final LLVM dialect MLIR |
+| --- | --- | --- | --- |
+| Original | [source](reference/i5-14600kf-alderlake/4096x4096x4096/01_original/source.mlir) | [SCF](reference/i5-14600kf-alderlake/4096x4096x4096/01_original/scf-calls.mlir) | [final](reference/i5-14600kf-alderlake/4096x4096x4096/01_original/final.mlir) |
+| Panel packing | [source](reference/i5-14600kf-alderlake/4096x4096x4096/02_panel_pack/source.mlir) | [SCF](reference/i5-14600kf-alderlake/4096x4096x4096/02_panel_pack/scf-calls.mlir) | [final](reference/i5-14600kf-alderlake/4096x4096x4096/02_panel_pack/final.mlir) |
+| Panel packing + kernel | [source](reference/i5-14600kf-alderlake/4096x4096x4096/03_panel_pack_kernel/source.mlir) | [SCF](reference/i5-14600kf-alderlake/4096x4096x4096/03_panel_pack_kernel/scf-calls.mlir) | [final](reference/i5-14600kf-alderlake/4096x4096x4096/03_panel_pack_kernel/final.mlir) |
+| Complete packing + kernel | [source](reference/i5-14600kf-alderlake/4096x4096x4096/04_full_pack_kernel/source.mlir) | [SCF](reference/i5-14600kf-alderlake/4096x4096x4096/04_full_pack_kernel/scf-calls.mlir) | [final](reference/i5-14600kf-alderlake/4096x4096x4096/04_full_pack_kernel/final.mlir) |
+
+`source.mlir` is a complete module at `executable-configurations`.
+`scf-calls.mlir` contains diagnostic excerpts for all dispatches; it is meant
+for inspection. `final.mlir` is a complete module at `executable-targets`,
+which is subsequently serialized into the benchmarked VMFB. Custom kernel
+C and optimized LLVM IR are included beside the MLIR; bitcode linking inserts
+the custom kernel body after MLIR lowering.
+
+New runs additionally save VMFBs, linked IR/assembly, bitcode, exact compiler
+and benchmark command JSON, raw timings, and `summary.csv`. Large input
+arrays and build caches are generated locally and are not tracked here.
+
+## Validation
+
+The complete four-version experiment was run at 2048³ and 4096³. The
+reproducer was also copied outside the IREE checkout and successfully built,
+executed, and numerically validated all four variants at 256³ with the
+`haswell` target. Python files pass compilation checks.
+
+This is an experimental fixed-shape reproducer, not a general GEMM library
+or a patch to IREE's automatic scheduling passes. Generated IR comes from
+[IREE](https://github.com/iree-org/iree); its runtime and compiler retain their
+upstream licenses.

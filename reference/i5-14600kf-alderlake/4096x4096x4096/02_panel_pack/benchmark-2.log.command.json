@@ -1,0 +1,12 @@
+[
+  "/workspaces/ml-compiler/iree/.venv_iree/lib/python3.11/site-packages/iree/runtime/../_runtime_libs/iree-benchmark-module",
+  "--module=/workspaces/ml-compiler/iree/.local/gemm-four-versions/results/4096x4096x4096/02_panel_pack/module.vmfb",
+  "--function=gemm",
+  "--device=local-sync",
+  "--input=@/workspaces/ml-compiler/iree/.local/gemm-four-versions/results/4096x4096x4096/A.npy",
+  "--input=@/workspaces/ml-compiler/iree/.local/gemm-four-versions/results/4096x4096x4096/B.npy",
+  "--benchmark_min_time=0.2s",
+  "--benchmark_repetitions=1",
+  "--benchmark_out=/workspaces/ml-compiler/iree/.local/gemm-four-versions/results/4096x4096x4096/02_panel_pack/benchmark-2.json",
+  "--benchmark_out_format=json"
+]
