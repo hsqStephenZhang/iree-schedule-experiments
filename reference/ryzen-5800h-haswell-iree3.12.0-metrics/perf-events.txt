@@ -1,0 +1,1960 @@
+  amd_iommu/cmd_processed/                           [Kernel PMU event]
+        amd_iommu/csource=0x11/
+  amd_iommu/cmd_processed_inv/                       [Kernel PMU event]
+        amd_iommu/csource=0x12/
+  amd_iommu/ign_rd_wr_mmio_1ff8h/                    [Kernel PMU event]
+        amd_iommu/csource=0x14/
+  amd_iommu/int_dte_hit/                             [Kernel PMU event]
+        amd_iommu/csource=0x0f/
+  amd_iommu/int_dte_mis/                             [Kernel PMU event]
+        amd_iommu/csource=0x10/
+  amd_iommu/mem_dte_hit/                             [Kernel PMU event]
+        amd_iommu/csource=0x0a/
+  amd_iommu/mem_dte_mis/                             [Kernel PMU event]
+        amd_iommu/csource=0x0b/
+  amd_iommu/mem_iommu_tlb_pde_hit/                   [Kernel PMU event]
+        amd_iommu/csource=0x08/
+  amd_iommu/mem_iommu_tlb_pde_mis/                   [Kernel PMU event]
+        amd_iommu/csource=0x09/
+  amd_iommu/mem_iommu_tlb_pte_hit/                   [Kernel PMU event]
+        amd_iommu/csource=0x06/
+  amd_iommu/mem_iommu_tlb_pte_mis/                   [Kernel PMU event]
+        amd_iommu/csource=0x07/
+  amd_iommu/mem_pass_excl/                           [Kernel PMU event]
+        amd_iommu/csource=0x03/
+  amd_iommu/mem_pass_pretrans/                       [Kernel PMU event]
+        amd_iommu/csource=0x02/
+  amd_iommu/mem_pass_untrans/                        [Kernel PMU event]
+        amd_iommu/csource=0x01/
+  amd_iommu/mem_target_abort/                        [Kernel PMU event]
+        amd_iommu/csource=0x04/
+  amd_iommu/mem_trans_total/                         [Kernel PMU event]
+        amd_iommu/csource=0x05/
+  amd_iommu/page_tbl_read_gst/                       [Kernel PMU event]
+        amd_iommu/csource=0x0e/
+  amd_iommu/page_tbl_read_nst/                       [Kernel PMU event]
+        amd_iommu/csource=0x0d/
+  amd_iommu/page_tbl_read_tot/                       [Kernel PMU event]
+        amd_iommu/csource=0x0c/
+  amd_iommu/smi_blk/                                 [Kernel PMU event]
+        amd_iommu/csource=0x18/
+  amd_iommu/smi_recv/                                [Kernel PMU event]
+        amd_iommu/csource=0x17/
+  amd_iommu/tlb_inv/                                 [Kernel PMU event]
+        amd_iommu/csource=0x13/
+  amd_iommu/vapic_int_guest/                         [Kernel PMU event]
+        amd_iommu/csource=0x16/
+  amd_iommu/vapic_int_non_guest/                     [Kernel PMU event]
+        amd_iommu/csource=0x15/
+  msr/aperf/                                         [Kernel PMU event]
+        msr/event=0x01/
+  msr/irperf/                                        [Kernel PMU event]
+        msr/event=0x06/
+  msr/mperf/                                         [Kernel PMU event]
+        msr/event=0x02/
+  msr/tsc/                                           [Kernel PMU event]
+        msr/event=0x00/
+  power/energy-pkg/                                  [Kernel PMU event]
+        power/event=0x02/
+  power_core/energy-core/                            [Kernel PMU event]
+        power_core/event=0x01/
+
+cache:
+  l2_request_g1.all_no_prefetch OR cpu/l2_request_g1.all_no_prefetch/
+        cpu/event=0x60,umask=0xf9/
+
+branch:
+  bp_de_redirect
+       [Decode Redirects. Unit: cpu]
+        cpu/event=0x91/
+  bp_dyn_ind_pred
+       [Dynamic Indirect Predictions. Unit: cpu]
+        cpu/event=0x8e/
+  bp_l1_btb_correct
+       [L1 Branch Prediction Overrides Existing Prediction (speculative).
+        Unit: cpu]
+        cpu/event=0x8a/
+  bp_l1_tlb_fetch_hit
+       [The number of instruction fetches that hit in the L1 ITLB. Unit: cpu]
+        cpu/event=0x94,umask=0xff/
+  bp_l1_tlb_fetch_hit.if1g
+       [The number of instruction fetches that hit in the L1 ITLB. L1
+        Instruction TLB hit (1G page size). Unit: cpu]
+        cpu/event=0x94,umask=4/
+  bp_l1_tlb_fetch_hit.if2m
+       [The number of instruction fetches that hit in the L1 ITLB. L1
+        Instruction TLB hit (2M page size). Unit: cpu]
+        cpu/event=0x94,umask=2/
+  bp_l1_tlb_fetch_hit.if4k
+       [The number of instruction fetches that hit in the L1 ITLB. L1
+        Instrcution TLB hit (4K or 16K page size). Unit: cpu]
+        cpu/event=0x94,umask=1/
+  bp_l2_btb_correct
+       [L2 Branch Prediction Overrides Existing Prediction (speculative).
+        Unit: cpu]
+        cpu/event=0x8b/
+  bp_tlb_rel
+       [The number of ITLB reload requests. Unit: cpu]
+        cpu/event=0x99/
+
+cache:
+  bp_l1_tlb_miss_l2_tlb_hit
+       [L1 ITLB Miss,L2 ITLB Hit. The number of instruction fetches that miss
+        in the L1 ITLB but hit in the L2 ITLB. Unit: cpu]
+        cpu/event=0x84/
+  bp_l1_tlb_miss_l2_tlb_miss
+       [The number of instruction fetches that miss in both the L1 and L2
+        TLBs. Unit: cpu]
+        cpu/event=0x85,umask=0xff/
+  bp_l1_tlb_miss_l2_tlb_miss.coalesced_4k
+       [The number of valid fills into the ITLB originating from the LS
+        Page-Table Walker. Tablewalk requests are issued for L1-ITLB and
+        L2-ITLB misses. Walk for >4K Coalesced page. Unit: cpu]
+        cpu/event=0x85,umask=8/
+  bp_l1_tlb_miss_l2_tlb_miss.if1g
+       [The number of valid fills into the ITLB originating from the LS
+        Page-Table Walker. Tablewalk requests are issued for L1-ITLB and
+        L2-ITLB misses. Walk for 1G page. Unit: cpu]
+        cpu/event=0x85,umask=4/
+  bp_l1_tlb_miss_l2_tlb_miss.if2m
+       [The number of valid fills into the ITLB originating from the LS
+        Page-Table Walker. Tablewalk requests are issued for L1-ITLB and
+        L2-ITLB misses. Walk for 2M page. Unit: cpu]
+        cpu/event=0x85,umask=2/
+  bp_l1_tlb_miss_l2_tlb_miss.if4k
+       [The number of valid fills into the ITLB originating from the LS
+        Page-Table Walker. Tablewalk requests are issued for L1-ITLB and
+        L2-ITLB misses. Walk to 4K page. Unit: cpu]
+        cpu/event=0x85,umask=1/
+  bp_snp_re_sync
+       [The number of pipeline restarts caused by invalidating probes that hit
+        on the instruction stream currently being executed. This would happen
+        if the active instruction stream was being modified by another
+        processor in an MP system - typically a highly unlikely event. Unit:
+        cpu]
+        cpu/event=0x86/
+  ic_cache_fill_l2
+       [Instruction Cache Refills from L2. The number of 64 byte instruction
+        cache line was fulfilled from the L2 cache. Unit: cpu]
+        cpu/event=0x82/
+  ic_cache_fill_sys
+       [Instruction Cache Refills from System. The number of 64 byte
+        instruction cache line fulfilled from system memory or another cache.
+        Unit: cpu]
+        cpu/event=0x83/
+  ic_cache_inval.fill_invalidated
+       [IC line invalidated due to overwriting fill response. The number of
+        instruction cache lines invalidated. A non-SMC event is CMC (cross
+        modifying code),either from the other thread of the core or another
+        core. Unit: cpu]
+        cpu/event=0x8c,umask=1/
+  ic_cache_inval.l2_invalidating_probe
+       [IC line invalidated due to L2 invalidating probe (external or LS). The
+        number of instruction cache lines invalidated. A non-SMC event is CMC
+        (cross modifying code),either from the other thread of the core or
+        another core. Unit: cpu]
+        cpu/event=0x8c,umask=2/
+  ic_fetch_stall.ic_stall_any
+       [Instruction Pipe Stall. IC pipe was stalled during this clock cycle
+        for any reason (nothing valid in pipe ICM1). Unit: cpu]
+        cpu/event=0x87,umask=4/
+  ic_fetch_stall.ic_stall_back_pressure
+       [Instruction Pipe Stall. IC pipe was stalled during this clock cycle
+        (including IC to OC fetches) due to back-pressure. Unit: cpu]
+        cpu/event=0x87,umask=1/
+  ic_fetch_stall.ic_stall_dq_empty
+       [Instruction Pipe Stall. IC pipe was stalled during this clock cycle
+        (including IC to OC fetches) due to DQ empty. Unit: cpu]
+        cpu/event=0x87,umask=2/
+  ic_fw32
+       [The number of 32B fetch windows transferred from IC pipe to DE
+        instruction decoder (includes non-cacheable and cacheable fill
+        responses). Unit: cpu]
+        cpu/event=0x80/
+  ic_fw32_miss
+       [The number of 32B fetch windows tried to read the L1 IC and missed in
+        the full tag. Unit: cpu]
+        cpu/event=0x81/
+  ic_oc_mode_switch.ic_oc_mode_switch
+       [OC Mode Switch. IC to OC mode switch. Unit: cpu]
+        cpu/event=0x28a,umask=1/
+  ic_oc_mode_switch.oc_ic_mode_switch
+       [OC Mode Switch. OC to IC mode switch. Unit: cpu]
+        cpu/event=0x28a,umask=2/
+  ic_tag_hit_miss.all_instruction_cache_accesses
+       [All Instruction Cache Accesses. Counts various IC tag related hit and
+        miss events. Unit: cpu]
+        cpu/event=0x18e,umask=0x1f/
+  ic_tag_hit_miss.instruction_cache_hit
+       [Instruction Cache Hit. Counts various IC tag related hit and miss
+        events. Unit: cpu]
+        cpu/event=0x18e,umask=7/
+  ic_tag_hit_miss.instruction_cache_miss
+       [Instruction Cache Miss. Counts various IC tag related hit and miss
+        events. Unit: cpu]
+        cpu/event=0x18e,umask=0x18/
+  l2_cache_req_stat.ic_access_in_l2
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Instruction cache requests in L2. Unit: cpu]
+        cpu/event=0x64,umask=7/
+  l2_cache_req_stat.ic_dc_hit_in_l2
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Instruction cache request hit in L2 and Data cache request
+        hit in L2 (all types). Unit: cpu]
+        cpu/event=0x64,umask=0xf6/
+  l2_cache_req_stat.ic_dc_miss_in_l2
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Instruction cache request miss in L2 and Data cache request
+        miss in L2 (all types). Unit: cpu]
+        cpu/event=0x64,umask=9/
+  l2_cache_req_stat.ic_fill_hit_s
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Instruction cache hit non-modifiable line in L2. Unit: cpu]
+        cpu/event=0x64,umask=2/
+  l2_cache_req_stat.ic_fill_hit_x
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Instruction cache hit modifiable line in L2. Unit: cpu]
+        cpu/event=0x64,umask=4/
+  l2_cache_req_stat.ic_fill_miss
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Instruction cache request miss in L2. Use
+        l2_cache_misses_from_ic_miss instead. Unit: cpu]
+        cpu/event=0x64,umask=1/
+  l2_cache_req_stat.ls_rd_blk_c
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Data cache request miss in L2 (all types). Use
+        l2_cache_misses_from_dc_misses instead. Unit: cpu]
+        cpu/event=0x64,umask=8/
+  l2_cache_req_stat.ls_rd_blk_cs
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Data cache shared read hit in L2. Unit: cpu]
+        cpu/event=0x64,umask=0x80/
+  l2_cache_req_stat.ls_rd_blk_l_hit_s
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Data cache read hit non-modifiable line in L2. Unit: cpu]
+        cpu/event=0x64,umask=0x20/
+  l2_cache_req_stat.ls_rd_blk_l_hit_x
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Data cache read hit in L2. Modifiable. Unit: cpu]
+        cpu/event=0x64,umask=0x40/
+  l2_cache_req_stat.ls_rd_blk_x
+       [Core to L2 cacheable request access status (not including L2
+        Prefetch). Data cache store or state change hit in L2. Unit: cpu]
+        cpu/event=0x64,umask=0x10/
+  l2_fill_pending.l2_fill_busy
+       [Cycles with fill pending from L2. Total cycles spent with one or more
+        fill requests in flight from L2. Unit: cpu]
+        cpu/event=0x6d,umask=1/
+  l2_latency.l2_cycles_waiting_on_fills
+       [Total cycles spent waiting for L2 fills to complete from L3 or memory,
+        divided by four. Event counts are for both threads. To calculate
+        average latency,the number of fills from both threads must be used.
+        Unit: cpu]
+        cpu/event=0x62,umask=1/
+  l2_pf_hit_l2
+       [L2 prefetch hit in L2. Use l2_cache_hits_from_l2_hwpf instead. Unit:
+        cpu]
+        cpu/event=0x70,umask=0xff/
+  l2_pf_miss_l2_hit_l3
+       [L2 prefetcher hits in L3. Counts all L2 prefetches accepted by the L2
+        pipeline which miss the L2 cache and hit the L3. Unit: cpu]
+        cpu/event=0x71,umask=0xff/
+  l2_pf_miss_l2_l3
+       [L2 prefetcher misses in L3. Counts all L2 prefetches accepted by the
+        L2 pipeline which miss the L2 and the L3 caches. Unit: cpu]
+        cpu/event=0x72,umask=0xff/
+  l2_request_g1.cacheable_ic_read
+       [All L2 Cache Requests (Breakdown 1 - Common). Instruction cache reads.
+        Unit: cpu]
+        cpu/event=0x60,umask=0x10/
+  l2_request_g1.change_to_x
+       [All L2 Cache Requests (Breakdown 1 - Common). Data cache state change
+        requests. Request change to writable,check L2 for current state. Unit:
+        cpu]
+        cpu/event=0x60,umask=8/
+  l2_request_g1.group2
+       [Miscellaneous events covered in more detail by l2_request_g2
+        (PMCx061). Unit: cpu]
+        cpu/event=0x60,umask=1/
+  l2_request_g1.l2_hw_pf
+       [All L2 Cache Requests (Breakdown 1 - Common). L2 Prefetcher. All
+        prefetches accepted by L2 pipeline,hit or miss. Types of PF and L2
+        hit/miss broken out in a separate perfmon event. Unit: cpu]
+        cpu/event=0x60,umask=2/
+  l2_request_g1.ls_rd_blk_c_s
+       [All L2 Cache Requests (Breakdown 1 - Common). Data cache shared reads.
+        Unit: cpu]
+        cpu/event=0x60,umask=0x20/
+  l2_request_g1.prefetch_l2_cmd
+       [All L2 Cache Requests (Breakdown 1 - Common). PrefetchL2Cmd. Unit: cpu]
+        cpu/event=0x60,umask=4/
+  l2_request_g1.rd_blk_l
+       [All L2 Cache Requests (Breakdown 1 - Common). Data cache reads
+        (including hardware and software prefetch). Unit: cpu]
+        cpu/event=0x60,umask=0x80/
+  l2_request_g1.rd_blk_x
+       [All L2 Cache Requests (Breakdown 1 - Common). Data cache stores. Unit:
+        cpu]
+        cpu/event=0x60,umask=0x40/
+  l2_request_g2.bus_locks_originator
+       [All L2 Cache Requests (Breakdown 2 - Rare). Bus locks. Unit: cpu]
+        cpu/event=0x61,umask=2/
+  l2_request_g2.bus_locks_responses
+       [All L2 Cache Requests (Breakdown 2 - Rare). Bus lock response. Unit:
+        cpu]
+        cpu/event=0x61,umask=1/
+  l2_request_g2.group1
+       [Miscellaneous events covered in more detail by l2_request_g1
+        (PMCx060). Unit: cpu]
+        cpu/event=0x61,umask=0x80/
+  l2_request_g2.ic_rd_sized
+       [All L2 Cache Requests (Breakdown 2 - Rare). Instruction cache read
+        sized. Unit: cpu]
+        cpu/event=0x61,umask=0x10/
+  l2_request_g2.ic_rd_sized_nc
+       [All L2 Cache Requests (Breakdown 2 - Rare). Instruction cache read
+        sized non-cacheable. Unit: cpu]
+        cpu/event=0x61,umask=8/
+  l2_request_g2.ls_rd_sized
+       [All L2 Cache Requests (Breakdown 2 - Rare). Data cache read sized.
+        Unit: cpu]
+        cpu/event=0x61,umask=0x40/
+  l2_request_g2.ls_rd_sized_nc
+       [All L2 Cache Requests (Breakdown 2 - Rare). Data cache read sized
+        non-cacheable. Unit: cpu]
+        cpu/event=0x61,umask=0x20/
+  l2_request_g2.smc_inval
+       [All L2 Cache Requests (Breakdown 2 - Rare). Self-modifying code
+        invalidates. Unit: cpu]
+        cpu/event=0x61,umask=4/
+  l2_wcb_req.cl_zero
+       [LS to L2 WCB cache line zeroing requests. LS (Load/Store unit) to L2
+        WCB (Write Combining Buffer) cache line zeroing requests. Unit: cpu]
+        cpu/event=0x63,umask=1/
+  l2_wcb_req.wcb_close
+       [LS to L2 WCB close requests. LS (Load/Store unit) to L2 WCB (Write
+        Combining Buffer) close requests. Unit: cpu]
+        cpu/event=0x63,umask=0x20/
+  l2_wcb_req.wcb_write
+       [LS to L2 WCB write requests. LS (Load/Store unit) to L2 WCB (Write
+        Combining Buffer) write requests. Unit: cpu]
+        cpu/event=0x63,umask=0x40/
+  l2_wcb_req.zero_byte_store
+       [LS to L2 WCB zero byte store requests. LS (Load/Store unit) to L2 WCB
+        (Write Combining Buffer) zero byte store requests. Unit: cpu]
+        cpu/event=0x63,umask=4/
+  op_cache_hit_miss.all_op_cache_accesses
+       [All Op Cache accesses. Counts Op Cache micro-tag hit/miss events.
+        Unit: cpu]
+        cpu/event=0x28f,umask=7/
+  op_cache_hit_miss.op_cache_hit
+       [Op Cache Hit. Counts Op Cache micro-tag hit/miss events. Unit: cpu]
+        cpu/event=0x28f,umask=3/
+  op_cache_hit_miss.op_cache_miss
+       [Op Cache Miss. Counts Op Cache micro-tag hit/miss events. Unit: cpu]
+        cpu/event=0x28f,umask=4/
+
+core:
+  ex_div_busy
+       [Div Cycles Busy count. Unit: cpu]
+        cpu/event=0xd3/
+  ex_div_count
+       [Div Op Count. Unit: cpu]
+        cpu/event=0xd4/
+  ex_ret_brn
+       [Retired Branch Instructions. Unit: cpu]
+        cpu/event=0xc2/
+  ex_ret_brn_far
+       [Retired Far Control Transfers. Unit: cpu]
+        cpu/event=0xc6/
+  ex_ret_brn_ind_misp
+       [Retired Indirect Branch Instructions Mispredicted. Unit: cpu]
+        cpu/event=0xca/
+  ex_ret_brn_misp
+       [Retired Branch Instructions Mispredicted. Unit: cpu]
+        cpu/event=0xc3/
+  ex_ret_brn_resync
+       [Retired Branch Resyncs. Unit: cpu]
+        cpu/event=0xc7/
+  ex_ret_brn_tkn
+       [Retired Taken Branch Instructions. Unit: cpu]
+        cpu/event=0xc4/
+  ex_ret_brn_tkn_misp
+       [Retired Taken Branch Instructions Mispredicted. Unit: cpu]
+        cpu/event=0xc5/
+  ex_ret_cond
+       [Retired Conditional Branch Instructions. Unit: cpu]
+        cpu/event=0xd1/
+  ex_ret_fused_instr
+       [Counts retired Fused Instructions. Unit: cpu]
+        cpu/event=0x1d0/
+  ex_ret_ind_brch_instr
+       [Retired Indirect Branch Instructions. The number of indirect branches
+        retired. Unit: cpu]
+        cpu/event=0xcc/
+  ex_ret_instr
+       [Retired Instructions. Unit: cpu]
+        cpu/event=0xc0/
+  ex_ret_mmx_fp_instr.mmx_instr
+       [MMX instructions. Unit: cpu]
+        cpu/event=0xcb,umask=2/
+  ex_ret_mmx_fp_instr.sse_instr
+       [SSE instructions (SSE,SSE2,SSE3,SSSE3,SSE4A,SSE41,SSE42,AVX). Unit:
+        cpu]
+        cpu/event=0xcb,umask=4/
+  ex_ret_mmx_fp_instr.x87_instr
+       [x87 instructions. Unit: cpu]
+        cpu/event=0xcb,umask=1/
+  ex_ret_msprd_brnch_instr_dir_msmtch
+       [Retired Mispredicted Branch Instructions due to Direction Mismatch.
+        Unit: cpu]
+        cpu/event=0x1c7/
+  ex_ret_near_ret
+       [Retired Near Returns. Unit: cpu]
+        cpu/event=0xc8/
+  ex_ret_near_ret_mispred
+       [Retired Near Returns Mispredicted. Unit: cpu]
+        cpu/event=0xc9/
+  ex_ret_ops
+       [Retired Ops. Use macro_ops_retired instead. Unit: cpu]
+        cpu/event=0xc1/
+  ex_tagged_ibs_ops.ibs_count_rollover
+       [Tagged IBS Ops. Number of times an op could not be tagged by IBS
+        because of a previous tagged op that has not retired. Unit: cpu]
+        cpu/event=0x1cf,umask=4/
+  ex_tagged_ibs_ops.ibs_tagged_ops
+       [Tagged IBS Ops. Number of Ops tagged by IBS. Unit: cpu]
+        cpu/event=0x1cf,umask=1/
+  ex_tagged_ibs_ops.ibs_tagged_ops_ret
+       [Tagged IBS Ops. Number of Ops tagged by IBS that retired. Unit: cpu]
+        cpu/event=0x1cf,umask=2/
+
+floating point:
+  fp_disp_faults.x87_fill_fault
+       [Floating Point Dispatch Faults. x87 fill fault. Unit: cpu]
+        cpu/event=0xe,umask=1/
+  fp_disp_faults.xmm_fill_fault
+       [Floating Point Dispatch Faults. XMM fill fault. Unit: cpu]
+        cpu/event=0xe,umask=2/
+  fp_disp_faults.ymm_fill_fault
+       [Floating Point Dispatch Faults. YMM fill fault. Unit: cpu]
+        cpu/event=0xe,umask=4/
+  fp_disp_faults.ymm_spill_fault
+       [Floating Point Dispatch Faults. YMM spill fault. Unit: cpu]
+        cpu/event=0xe,umask=8/
+  fp_num_mov_elim_scal_op.opt_potential
+       [Number of Ops that are candidates for optimization (have Z-bit either
+        set or pass). This is a dispatch based speculative event,and is useful
+        for measuring the effectiveness of the Move elimination and Scalar
+        code optimization schemes. Unit: cpu]
+        cpu/event=4,umask=4/
+  fp_num_mov_elim_scal_op.optimized
+       [Number of Scalar Ops optimized. This is a dispatch based speculative
+        event,and is useful for measuring the effectiveness of the Move
+        elimination and Scalar code optimization schemes. Unit: cpu]
+        cpu/event=4,umask=8/
+  fp_num_mov_elim_scal_op.sse_mov_ops
+       [Number of SSE Move Ops. This is a dispatch based speculative event,and
+        is useful for measuring the effectiveness of the Move elimination and
+        Scalar code optimization schemes. Unit: cpu]
+        cpu/event=4,umask=1/
+  fp_num_mov_elim_scal_op.sse_mov_ops_elim
+       [Number of SSE Move Ops eliminated. This is a dispatch based
+        speculative event,and is useful for measuring the effectiveness of the
+        Move elimination and Scalar code optimization schemes. Unit: cpu]
+        cpu/event=4,umask=2/
+  fp_ret_sse_avx_ops.add_sub_flops
+       [Add/subtract FLOPs. This is a retire-based event. The number of
+        retired SSE/AVX FLOPs. The number of events logged per cycle can vary
+        from 0 to 64. This event requires the use of the MergeEvent since it
+        can count above 15 events per cycle. See 2.1.17.3 [Large Increment per
+        Cycle Events]. It does not provide a useful count without the use of
+        the MergeEvent. Unit: cpu]
+        cpu/event=3,umask=1/
+  fp_ret_sse_avx_ops.all
+       [All FLOPS. This is a retire-based event. The number of retired SSE/AVX
+        FLOPS. The number of events logged per cycle can vary from 0 to 64.
+        This event can count above 15. Unit: cpu]
+        cpu/event=3,umask=0xff/
+  fp_ret_sse_avx_ops.div_flops
+       [Divide/square root FLOPs. This is a retire-based event. The number of
+        retired SSE/AVX FLOPs. The number of events logged per cycle can vary
+        from 0 to 64. This event requires the use of the MergeEvent since it
+        can count above 15 events per cycle. See 2.1.17.3 [Large Increment per
+        Cycle Events]. It does not provide a useful count without the use of
+        the MergeEvent. Unit: cpu]
+        cpu/event=3,umask=4/
+  fp_ret_sse_avx_ops.mac_flops
+       [Multiply-Accumulate FLOPs. Each MAC operation is counted as 2 FLOPS.
+        This is a retire-based event. The number of retired SSE/AVX FLOPs. The
+        number of events logged per cycle can vary from 0 to 64. This event
+        requires the use of the MergeEvent since it can count above 15 events
+        per cycle. See 2.1.17.3 [Large Increment per Cycle Events]. It does
+        not provide a useful count without the use of the MergeEvent. Unit:
+        cpu]
+        cpu/event=3,umask=8/
+  fp_ret_sse_avx_ops.mult_flops
+       [Multiply FLOPs. This is a retire-based event. The number of retired
+        SSE/AVX FLOPs. The number of events logged per cycle can vary from 0
+        to 64. This event requires the use of the MergeEvent since it can
+        count above 15 events per cycle. See 2.1.17.3 [Large Increment per
+        Cycle Events]. It does not provide a useful count without the use of
+        the MergeEvent. Unit: cpu]
+        cpu/event=3,umask=2/
+  fp_retired_ser_ops.sse_bot_ret
+       [SSE/AVX bottom-executing ops retired. The number of serializing Ops
+        retired. Unit: cpu]
+        cpu/event=5,umask=8/
+  fp_retired_ser_ops.sse_ctrl_ret
+       [SSE/AVX control word mispredict traps. The number of serializing Ops
+        retired. Unit: cpu]
+        cpu/event=5,umask=4/
+  fp_retired_ser_ops.x87_bot_ret
+       [x87 bottom-executing ops retired. The number of serializing Ops
+        retired. Unit: cpu]
+        cpu/event=5,umask=2/
+  fp_retired_ser_ops.x87_ctrl_ret
+       [x87 control word mispredict traps due to mispredictions in RC or PC,or
+        changes in mask bits. The number of serializing Ops retired. Unit: cpu]
+        cpu/event=5,umask=1/
+  fpu_pipe_assignment.total
+       [Total number of fp uOps. Unit: cpu]
+        cpu/event=0,umask=0xf/
+  fpu_pipe_assignment.total0
+       [Total number of fp uOps on pipe 0. Unit: cpu]
+        cpu/event=0,umask=1/
+  fpu_pipe_assignment.total1
+       [Total number uOps assigned to pipe 1. Unit: cpu]
+        cpu/event=0,umask=2/
+  fpu_pipe_assignment.total2
+       [Total number uOps assigned to pipe 2. Unit: cpu]
+        cpu/event=0,umask=4/
+  fpu_pipe_assignment.total3
+       [Total number uOps assigned to pipe 3. Unit: cpu]
+        cpu/event=0,umask=8/
+
+hwmon:
+  in_vddgfx OR in0
+       [Voltage in unit amdgpu named vddgfx. Unit: hwmon_amdgpu]
+        hwmon_amdgpu/config=0x60000/
+  in_vddnb OR in1
+       [Voltage in unit amdgpu named vddnb. Unit: hwmon_amdgpu]
+        hwmon_amdgpu/config=0x60001/
+  power_ppt OR power1
+       [Power use in unit amdgpu named PPT. Unit: hwmon_amdgpu]
+        hwmon_amdgpu/config=0x80001/
+  temp_edge OR temp1
+       [Temperature in unit amdgpu named edge. Unit: hwmon_amdgpu]
+        hwmon_amdgpu/config=0xa0001/
+  temp1
+       [Temperature in unit iwlwifi_1 named temp1. Unit: hwmon_iwlwifi_1]
+        hwmon_iwlwifi_1/config=0xa0001/
+  temp_tctl OR temp1
+       [Temperature in unit k10temp named Tctl. Unit: hwmon_k10temp]
+        hwmon_k10temp/config=0xa0001/
+  temp_composite OR temp1
+       [Temperature in unit nvme named Composite. alarm=0'C,crit=109.85'C,
+        max=99.85'C,min=-0.15'C. Unit: hwmon_nvme]
+        hwmon_nvme/config=0xa0001/
+  temp_sensor_1 OR temp2
+       [Temperature in unit nvme named Sensor 1. Unit: hwmon_nvme]
+        hwmon_nvme/config=0xa0002/
+
+memory:
+  ls_alloc_mab_count
+       [Count of Allocated Mabs. Unit: cpu]
+        cpu/event=0x5f/
+  ls_any_fills_from_sys.ext_cache_local
+       [Any Data Cache Fills by Data Source. From cache of different CCX in
+        same node. Unit: cpu]
+        cpu/event=0x44,umask=4/
+  ls_any_fills_from_sys.ext_cache_remote
+       [Any Data Cache Fills by Data Source. From CCX Cache in different Node.
+        Unit: cpu]
+        cpu/event=0x44,umask=0x10/
+  ls_any_fills_from_sys.int_cache
+       [Any Data Cache Fills by Data Source. From L3 or different L2 in same
+        CCX. Unit: cpu]
+        cpu/event=0x44,umask=2/
+  ls_any_fills_from_sys.lcl_l2
+       [Any Data Cache Fills by Data Source. From Local L2 to the core. Unit:
+        cpu]
+        cpu/event=0x44,umask=1/
+  ls_any_fills_from_sys.mem_io_local
+       [Any Data Cache Fills by Data Source. From DRAM or IO connected in same
+        node. Unit: cpu]
+        cpu/event=0x44,umask=8/
+  ls_any_fills_from_sys.mem_io_remote
+       [Any Data Cache Fills by Data Source. From DRAM or IO connected in
+        different Node. Unit: cpu]
+        cpu/event=0x44,umask=0x40/
+  ls_bad_status2.stli_other
+       [Non-forwardable conflict; used to reduce STLI's via software. All
+        reasons. Store To Load Interlock (STLI) are loads that were unable to
+        complete because of a possible match with an older store,and the older
+        store could not do STLF for some reason. Unit: cpu]
+        cpu/event=0x24,umask=2/
+  ls_dc_accesses
+       [Number of accesses to the dcache for load/store references. Unit: cpu]
+        cpu/event=0x40/
+  ls_dispatch.ld_dispatch
+       [Dispatch of a single op that performs a memory load. Counts the number
+        of operations dispatched to the LS unit. Unit Masks ADDed. Unit: cpu]
+        cpu/event=0x29,umask=1/
+  ls_dispatch.ld_st_dispatch
+       [Load-op-Store Dispatch. Dispatch of a single op that performs a load
+        from and store to the same memory address. Counts the number of
+        operations dispatched to the LS unit. Unit Masks ADDed. Unit: cpu]
+        cpu/event=0x29,umask=4/
+  ls_dispatch.store_dispatch
+       [Dispatch of a single op that performs a memory store. Counts the
+        number of operations dispatched to the LS unit. Unit Masks ADDed.
+        Unit: cpu]
+        cpu/event=0x29,umask=2/
+  ls_dmnd_fills_from_sys.ext_cache_local
+       [Demand Data Cache Fills by Data Source. From cache of different CCX in
+        same node. Unit: cpu]
+        cpu/event=0x43,umask=4/
+  ls_dmnd_fills_from_sys.ext_cache_remote
+       [Demand Data Cache Fills by Data Source. From CCX Cache in different
+        Node. Unit: cpu]
+        cpu/event=0x43,umask=0x10/
+  ls_dmnd_fills_from_sys.int_cache
+       [Demand Data Cache Fills by Data Source. From L3 or different L2 in
+        same CCX. Unit: cpu]
+        cpu/event=0x43,umask=2/
+  ls_dmnd_fills_from_sys.lcl_l2
+       [Demand Data Cache Fills by Data Source. From Local L2 to the core.
+        Unit: cpu]
+        cpu/event=0x43,umask=1/
+  ls_dmnd_fills_from_sys.mem_io_local
+       [Demand Data Cache Fills by Data Source. From DRAM or IO connected in
+        same node. Unit: cpu]
+        cpu/event=0x43,umask=8/
+  ls_dmnd_fills_from_sys.mem_io_remote
+       [Demand Data Cache Fills by Data Source. From DRAM or IO connected in
+        different Node. Unit: cpu]
+        cpu/event=0x43,umask=0x40/
+  ls_hw_pf_dc_fills.ext_cache_local
+       [Hardware Prefetch Data Cache Fills by Data Source. From cache of
+        different CCX in same node. Unit: cpu]
+        cpu/event=0x5a,umask=4/
+  ls_hw_pf_dc_fills.ext_cache_remote
+       [Hardware Prefetch Data Cache Fills by Data Source. From CCX Cache in
+        different Node. Unit: cpu]
+        cpu/event=0x5a,umask=0x10/
+  ls_hw_pf_dc_fills.int_cache
+       [Hardware Prefetch Data Cache Fills by Data Source. From L3 or
+        different L2 in same CCX. Unit: cpu]
+        cpu/event=0x5a,umask=2/
+  ls_hw_pf_dc_fills.lcl_l2
+       [Hardware Prefetch Data Cache Fills by Data Source. From Local L2 to
+        the core. Unit: cpu]
+        cpu/event=0x5a,umask=1/
+  ls_hw_pf_dc_fills.mem_io_local
+       [Hardware Prefetch Data Cache Fills by Data Source. From DRAM or IO
+        connected in same node. Unit: cpu]
+        cpu/event=0x5a,umask=8/
+  ls_hw_pf_dc_fills.mem_io_remote
+       [Hardware Prefetch Data Cache Fills by Data Source. From DRAM or IO
+        connected in different Node. Unit: cpu]
+        cpu/event=0x5a,umask=0x40/
+  ls_inef_sw_pref.data_pipe_sw_pf_dc_hit
+       [The number of software prefetches that did not fetch data outside of
+        the processor core. Software PREFETCH instruction saw a DC hit. Unit:
+        cpu]
+        cpu/event=0x52,umask=1/
+  ls_inef_sw_pref.mab_mch_cnt
+       [The number of software prefetches that did not fetch data outside of
+        the processor core. Software PREFETCH instruction saw a match on an
+        already-allocated miss request buffer. Unit: cpu]
+        cpu/event=0x52,umask=2/
+  ls_int_taken
+       [Counts the number of interrupts taken. Unit: cpu]
+        cpu/event=0x2c/
+  ls_l1_d_tlb_miss.all
+       [All L1 DTLB Misses or Reloads. Use l1_dtlb_misses instead. Unit: cpu]
+        cpu/event=0x45,umask=0xff/
+  ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit
+       [L1 DTLB Miss. DTLB reload to a 1G page that hit in the L2 TLB. Unit:
+        cpu]
+        cpu/event=0x45,umask=8/
+  ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss
+       [L1 DTLB Miss. DTLB reload to a 1G page that also missed in the L2 TLB.
+        Unit: cpu]
+        cpu/event=0x45,umask=0x80/
+  ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit
+       [L1 DTLB Miss. DTLB reload to a 2M page that hit in the L2 TLB. Unit:
+        cpu]
+        cpu/event=0x45,umask=4/
+  ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss
+       [L1 DTLB Miss. DTLB reload to a 2M page that also missed in the L2 TLB.
+        Unit: cpu]
+        cpu/event=0x45,umask=0x40/
+  ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit
+       [L1 DTLB Miss. DTLB reload to a 4K page that hit in the L2 TLB. Unit:
+        cpu]
+        cpu/event=0x45,umask=1/
+  ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss
+       [L1 DTLB Miss. DTLB reload to a 4K page that missed the L2 TLB. Unit:
+        cpu]
+        cpu/event=0x45,umask=0x10/
+  ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit
+       [L1 DTLB Miss. DTLB reload to a coalesced page that hit in the L2 TLB.
+        Unit: cpu]
+        cpu/event=0x45,umask=2/
+  ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss
+       [L1 DTLB Miss. DTLB reload coalesced page that also missed in the L2
+        TLB. Unit: cpu]
+        cpu/event=0x45,umask=0x20/
+  ls_locks.bus_lock
+       [Retired lock instructions. Comparable to legacy bus lock. Unit: cpu]
+        cpu/event=0x25,umask=1/
+  ls_locks.non_spec_lock
+       [Retired lock instructions. Non-speculative lock succeeded. Unit: cpu]
+        cpu/event=0x25,umask=2/
+  ls_locks.spec_lock_hi_spec
+       [Retired lock instructions. High speculative cacheable lock speculation
+        succeeded. Unit: cpu]
+        cpu/event=0x25,umask=8/
+  ls_locks.spec_lock_lo_spec
+       [Retired lock instructions. Low speculative cacheable lock speculation
+        succeeded. Unit: cpu]
+        cpu/event=0x25,umask=4/
+  ls_mab_alloc.all_allocations
+       [All Allocations. Counts when a LS pipe allocates a MAB entry. Unit:
+        cpu]
+        cpu/event=0x41,umask=0x7f/
+  ls_mab_alloc.dc_prefetcher
+       [LS MAB Allocates by Type. DC prefetcher. Unit: cpu]
+        cpu/event=0x41,umask=8/
+  ls_mab_alloc.hardware_prefetcher_allocations
+       [Hardware Prefetcher Allocations. Counts when a LS pipe allocates a MAB
+        entry. Unit: cpu]
+        cpu/event=0x41,umask=0x40/
+  ls_mab_alloc.load_store_allocations
+       [Load Store Allocations. Counts when a LS pipe allocates a MAB entry.
+        Unit: cpu]
+        cpu/event=0x41,umask=0x3f/
+  ls_mab_alloc.loads
+       [LS MAB Allocates by Type. Loads. Unit: cpu]
+        cpu/event=0x41,umask=1/
+  ls_mab_alloc.stores
+       [LS MAB Allocates by Type. Stores. Unit: cpu]
+        cpu/event=0x41,umask=2/
+  ls_misal_loads.ma4k
+       [The number of 4KB misaligned (i.e.,page crossing) loads. Unit: cpu]
+        cpu/event=0x47,umask=2/
+  ls_misal_loads.ma64
+       [The number of 64B misaligned (i.e.,cacheline crossing) loads. Unit:
+        cpu]
+        cpu/event=0x47,umask=1/
+  ls_not_halted_cyc
+       [Cycles not in Halt. Unit: cpu]
+        cpu/event=0x76/
+  ls_pref_instr_disp
+       [Software Prefetch Instructions Dispatched (Speculative). Unit: cpu]
+        cpu/event=0x4b,umask=0xff/
+  ls_pref_instr_disp.prefetch
+       [Software Prefetch Instructions Dispatched (Speculative). PrefetchT0,T1
+        and T2 instructions. See docAPM3 PREFETCHlevel. Unit: cpu]
+        cpu/event=0x4b,umask=1/
+  ls_pref_instr_disp.prefetch_nta
+       [Software Prefetch Instructions Dispatched (Speculative). PrefetchNTA
+        instruction. See docAPM3 PREFETCHlevel. Unit: cpu]
+        cpu/event=0x4b,umask=4/
+  ls_pref_instr_disp.prefetch_w
+       [Software Prefetch Instructions Dispatched (Speculative). PrefetchW
+        instruction. See docAPM3 PREFETCHW. Unit: cpu]
+        cpu/event=0x4b,umask=2/
+  ls_rdtsc
+       [Number of reads of the TSC (RDTSC instructions). The count is
+        speculative. Unit: cpu]
+        cpu/event=0x2d/
+  ls_ret_cl_flush
+       [The number of retired CLFLUSH instructions. This is a non-speculative
+        event. Unit: cpu]
+        cpu/event=0x26/
+  ls_ret_cpuid
+       [The number of CPUID instructions retired. Unit: cpu]
+        cpu/event=0x27/
+  ls_smi_rx
+       [Counts the number of SMIs received. Unit: cpu]
+        cpu/event=0x2b/
+  ls_st_commit_cancel2.st_commit_cancel_wcb_full
+       [A non-cacheable store and the non-cacheable commit buffer is full.
+        Unit: cpu]
+        cpu/event=0x37,umask=1/
+  ls_stlf
+       [Number of STLF hits. Unit: cpu]
+        cpu/event=0x35/
+  ls_sw_pf_dc_fills.ext_cache_local
+       [Software Prefetch Data Cache Fills by Data Source. From cache of
+        different CCX in same node. Unit: cpu]
+        cpu/event=0x59,umask=4/
+  ls_sw_pf_dc_fills.ext_cache_remote
+       [Software Prefetch Data Cache Fills by Data Source. From CCX Cache in
+        different Node. Unit: cpu]
+        cpu/event=0x59,umask=0x10/
+  ls_sw_pf_dc_fills.int_cache
+       [Software Prefetch Data Cache Fills by Data Source. From L3 or
+        different L2 in same CCX. Unit: cpu]
+        cpu/event=0x59,umask=2/
+  ls_sw_pf_dc_fills.lcl_l2
+       [Software Prefetch Data Cache Fills by Data Source. From Local L2 to
+        the core. Unit: cpu]
+        cpu/event=0x59,umask=1/
+  ls_sw_pf_dc_fills.mem_io_local
+       [Software Prefetch Data Cache Fills by Data Source. From DRAM or IO
+        connected in same node. Unit: cpu]
+        cpu/event=0x59,umask=8/
+  ls_sw_pf_dc_fills.mem_io_remote
+       [Software Prefetch Data Cache Fills by Data Source. From DRAM or IO
+        connected in different Node. Unit: cpu]
+        cpu/event=0x59,umask=0x40/
+  ls_tablewalker.dc_type0
+       [Total Page Table Walks DC Type 0. Unit: cpu]
+        cpu/event=0x46,umask=1/
+  ls_tablewalker.dc_type1
+       [Total Page Table Walks DC Type 1. Unit: cpu]
+        cpu/event=0x46,umask=2/
+  ls_tablewalker.dside
+       [Total Page Table Walks on D-side. Unit: cpu]
+        cpu/event=0x46,umask=3/
+  ls_tablewalker.ic_type0
+       [Total Page Table Walks IC Type 0. Unit: cpu]
+        cpu/event=0x46,umask=4/
+  ls_tablewalker.ic_type1
+       [Total Page Table Walks IC Type 1. Unit: cpu]
+        cpu/event=0x46,umask=8/
+  ls_tablewalker.iside
+       [Total Page Table Walks on I-side. Unit: cpu]
+        cpu/event=0x46,umask=0xc/
+  ls_tlb_flush.all_tlb_flushes
+       [All TLB Flushes. Requires unit mask 0xFF to engage event for counting.
+        Use all_tlbs_flushed instead. Unit: cpu]
+        cpu/event=0x78,umask=0xff/
+
+other:
+  de_dis_cops_from_decoder.disp_op_type.any_fp_dispatch
+       [Any FP dispatch. Types of Oops Dispatched from Decoder. Unit: cpu]
+        cpu/event=0xab,umask=4/
+  de_dis_cops_from_decoder.disp_op_type.any_integer_dispatch
+       [Any Integer dispatch. Types of Oops Dispatched from Decoder. Unit: cpu]
+        cpu/event=0xab,umask=8/
+  de_dis_dispatch_token_stalls1.fp_flush_recovery_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a Token Stall. Also counts cycles when the thread is not selected
+        to dispatch but would have been stalled due to a Token Stall. FP Flush
+        recovery stall. Unit: cpu]
+        cpu/event=0xae,umask=0x80/
+  de_dis_dispatch_token_stalls1.fp_reg_file_rsrc_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a Token Stall. Also counts cycles when the thread is not selected
+        to dispatch but would have been stalled due to a Token Stall. Floating
+        point register file resource stall. Applies to all FP ops that have a
+        destination register. Unit: cpu]
+        cpu/event=0xae,umask=0x20/
+  de_dis_dispatch_token_stalls1.fp_sch_rsrc_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a Token Stall. Also counts cycles when the thread is not selected
+        to dispatch but would have been stalled due to a Token Stall. FP
+        scheduler resource stall. Applies to ops that use the FP scheduler.
+        Unit: cpu]
+        cpu/event=0xae,umask=0x40/
+  de_dis_dispatch_token_stalls1.int_phy_reg_file_rsrc_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a Token Stall. Also counts cycles when the thread is not selected
+        to dispatch but would have been stalled due to a Token Stall. Integer
+        Physical Register File resource stall. Integer Physical Register File,
+        applies to all ops that have an integer destination register. Unit:
+        cpu]
+        cpu/event=0xae,umask=1/
+  de_dis_dispatch_token_stalls1.int_sched_misc_token_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a token stall. Integer Scheduler miscellaneous resource stall.
+        Unit: cpu]
+        cpu/event=0xae,umask=8/
+  de_dis_dispatch_token_stalls1.load_queue_rsrc_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a Token Stall. Also counts cycles when the thread is not selected
+        to dispatch but would have been stalled due to a Token Stall. Load
+        Queue resource stall. Applies to all ops with load semantics. Unit:
+        cpu]
+        cpu/event=0xae,umask=2/
+  de_dis_dispatch_token_stalls1.store_queue_rsrc_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a Token Stall. Also counts cycles when the thread is not selected
+        to dispatch but would have been stalled due to a Token Stall. Store
+        Queue resource stall. Applies to all ops with store semantics. Unit:
+        cpu]
+        cpu/event=0xae,umask=4/
+  de_dis_dispatch_token_stalls1.taken_brnch_buffer_rsrc
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a Token Stall. Also counts cycles when the thread is not selected
+        to dispatch but would have been stalled due to a Token Stall. Taken
+        branch buffer resource stall. Unit: cpu]
+        cpu/event=0xae,umask=0x10/
+  de_dis_dispatch_token_stalls2.agsq_token_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a token stall. AGSQ Tokens unavailable. Unit: cpu]
+        cpu/event=0xaf,umask=0x10/
+  de_dis_dispatch_token_stalls2.int_sch0_token_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a token stall. No tokens for Integer Scheduler Queue 0 available.
+        Unit: cpu]
+        cpu/event=0xaf,umask=1/
+  de_dis_dispatch_token_stalls2.int_sch1_token_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a token stall. No tokens for Integer Scheduler Queue 1 available.
+        Unit: cpu]
+        cpu/event=0xaf,umask=2/
+  de_dis_dispatch_token_stalls2.int_sch2_token_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a token stall. No tokens for Integer Scheduler Queue 2 available.
+        Unit: cpu]
+        cpu/event=0xaf,umask=4/
+  de_dis_dispatch_token_stalls2.int_sch3_token_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a token stall. No tokens for Integer Scheduler Queue 3 available.
+        Unit: cpu]
+        cpu/event=0xaf,umask=8/
+  de_dis_dispatch_token_stalls2.retire_token_stall
+       [Cycles where a dispatch group is valid but does not get dispatched due
+        to a token stall. Insufficient Retire Queue tokens available. Unit:
+        cpu]
+        cpu/event=0xaf,umask=0x20/
+  de_dis_uop_queue_empty_di0
+       [Cycles where the Micro-Op Queue is empty. Unit: cpu]
+        cpu/event=0xa9/
+
+recommended:
+  all_data_cache_accesses
+       [All L1 Data Cache Accesses. Unit: cpu]
+        cpu/event=0x29,umask=7/
+  all_tlbs_flushed
+       [All TLBs Flushed. Unit: cpu]
+        cpu/event=0x78,umask=0xff/
+  l1_data_cache_fills_all
+       [L1 Data Cache Fills: All. Unit: cpu]
+        cpu/event=0x44,umask=0xff/
+  l1_data_cache_fills_from_external_ccx_cache
+       [L1 Data Cache Fills: From External CCX Cache. Unit: cpu]
+        cpu/event=0x44,umask=0x14/
+  l1_data_cache_fills_from_memory
+       [L1 Data Cache Fills: From Memory. Unit: cpu]
+        cpu/event=0x44,umask=0x48/
+  l1_data_cache_fills_from_remote_node
+       [L1 Data Cache Fills: From Remote Node. Unit: cpu]
+        cpu/event=0x44,umask=0x50/
+  l1_data_cache_fills_from_within_same_ccx
+       [L1 Data Cache Fills: From within same CCX. Unit: cpu]
+        cpu/event=0x44,umask=3/
+  l1_dtlb_misses
+       [L1 DTLB Misses. Unit: cpu]
+        cpu/event=0x45,umask=0xff/
+  l2_cache_accesses_from_dc_misses
+       [L2 Cache Accesses from L1 Data Cache Misses (including prefetch).
+        Unit: cpu]
+        cpu/event=0x60,umask=0xe8/
+  l2_cache_accesses_from_ic_misses
+       [L2 Cache Accesses from L1 Instruction Cache Misses (including
+        prefetch). Unit: cpu]
+        cpu/event=0x60,umask=0x10/
+  l2_cache_hits_from_dc_misses
+       [L2 Cache Hits from L1 Data Cache Misses. Unit: cpu]
+        cpu/event=0x64,umask=0xf0/
+  l2_cache_hits_from_ic_misses
+       [L2 Cache Hits from L1 Instruction Cache Misses. Unit: cpu]
+        cpu/event=0x64,umask=6/
+  l2_cache_hits_from_l2_hwpf
+       [L2 Cache Hits from L2 Cache HWPF. Unit: cpu]
+        cpu/event=0x70,umask=0xff/
+  l2_cache_misses_from_dc_misses
+       [L2 Cache Misses from L1 Data Cache Misses. Unit: cpu]
+        cpu/event=0x64,umask=8/
+  l2_cache_misses_from_ic_miss
+       [L2 Cache Misses from L1 Instruction Cache Misses. Unit: cpu]
+        cpu/event=0x64,umask=1/
+  l2_dtlb_misses
+       [L2 DTLB Misses & Data page walks. Unit: cpu]
+        cpu/event=0x45,umask=0xf0/
+  l2_itlb_misses
+       [L2 ITLB Misses & Instruction page walks. Unit: cpu]
+        cpu/event=0x85,umask=7/
+  macro_ops_retired
+       [Macro-ops Retired. Unit: cpu]
+        cpu/event=0xc1/
+  sse_avx_stalls
+       [Mixed SSE/AVX Stalls. Unit: cpu]
+        cpu/event=0xe,umask=0xe/
+
+software:
+  alignment-faults
+       [Number of kernel handled memory alignment faults. Unit: software]
+        software/config=7/
+  bpf-output
+       [An event used by BPF programs to write to the perf ring buffer. Unit:
+        software]
+        software/config=0xa/
+  cgroup-switches
+       [Number of context switches to a task in a different cgroup. Unit:
+        software]
+        software/config=0xb/
+  context-switches
+       [Number of context switches [This event is an alias of cs]. Unit:
+        software]
+        software/config=3/
+  cpu-clock
+       [Per-CPU high-resolution timer based event. Unit: software]
+        software/config=0/
+  cpu-migrations
+       [Number of times a process has migrated to a new CPU [This event is an
+        alias of migrations]. Unit: software]
+        software/config=4/
+  cs
+       [Number of context switches [This event is an alias of
+        context-switches]. Unit: software]
+        software/config=3/
+  dummy
+       [A placeholder event that doesn't count anything. Unit: software]
+        software/config=9/
+  emulation-faults
+       [Number of kernel handled unimplemented instruction faults handled
+        through emulation. Unit: software]
+        software/config=8/
+  faults
+       [Number of page faults [This event is an alias of page-faults]. Unit:
+        software]
+        software/config=2/
+  major-faults
+       [Number of major page faults. Major faults require I/O to handle. Unit:
+        software]
+        software/config=6/
+  migrations
+       [Number of times a process has migrated to a new CPU [This event is an
+        alias of cpu-migrations]. Unit: software]
+        software/config=4/
+  minor-faults
+       [Number of minor page faults. Minor faults don't require I/O to handle.
+        Unit: software]
+        software/config=5/
+  page-faults
+       [Number of page faults [This event is an alias of faults]. Unit:
+        software]
+        software/config=2/
+  task-clock
+       [Per-task high-resolution timer based event. Unit: software]
+        software/config=1/
+
+tool:
+  core_wide
+       [1 if not SMT,if SMT are events being gathered on all SMT threads 1
+        otherwise 0. Unit: tool]
+        tool/config=0xd/
+  duration_time
+       [Wall clock interval time in nanoseconds. Unit: tool]
+        tool/config=1/
+  has_pmem
+       [1 if persistent memory installed otherwise 0. Unit: tool]
+        tool/config=4/
+  num_cores
+       [Number of cores. A core consists of 1 or more thread,with each thread
+        being associated with a logical Linux CPU. Unit: tool]
+        tool/config=5/
+  num_cpus
+       [Number of logical Linux CPUs. There may be multiple such CPUs on a
+        core. Unit: tool]
+        tool/config=6/
+  num_cpus_online
+       [Number of online logical Linux CPUs. There may be multiple such CPUs
+        on a core. Unit: tool]
+        tool/config=7/
+  num_dies
+       [Number of dies. Each die has 1 or more cores. Unit: tool]
+        tool/config=8/
+  num_packages
+       [Number of packages. Each package has 1 or more die. Unit: tool]
+        tool/config=9/
+  smt_on
+       [1 if simultaneous multithreading (aka hyperthreading) is enable
+        otherwise 0. Unit: tool]
+        tool/config=0xb/
+  system_time
+       [System/kernel time in nanoseconds. Unit: tool]
+        tool/config=3/
+  system_tsc_freq
+       [The amount a Time Stamp Counter (TSC) increases per second. Unit: tool]
+        tool/config=0xc/
+  target_cpu
+       [1 if CPUs being analyzed,0 if threads/processes. Unit: tool]
+        tool/config=0xe/
+  user_time
+       [User (non-kernel) time in nanoseconds. Unit: tool]
+        tool/config=2/
+  rNNN                                               [Raw event descriptor]
+  cpu/event=0..0xfff,edge,inv,.../modifier           [Raw event descriptor]
+       [(see 'man perf-list' or 'man perf-record' on how to encode it)]
+        cpu/event=0..0xfff,edge,inv,umask=0..255,cmask=0..255,
+        config=0..0xffffffffffffffff,config1=0..0xffffffffffffffff,
+        config2=0..0xffffffffffffffff,config3=0..0xffffffffffffffff,
+        config4=0..0xffffffffffffffff,legacy-hardware-config=0..9,
+        legacy-cache-config=0..0xffffff,name=string,period=number,freq=number,
+        branch_type=(u|k|hv|any|...),time,call-graph=(fp|dwarf|lbr),
+        stack-size=number,max-stack=number,nr=number,inherit,no-inherit,
+        overwrite,no-overwrite,percore,aux-output,
+        aux-action=(pause|resume|start-paused),aux-sample-size=number,
+        cpu=number,ratio-to-prev=string/modifier
+  amd_iommu/devid=0..0xffff,devid_mask=0..0xffff,pasid_mask=0..0xfffff,.../modifier[Raw event descriptor]
+        amd_iommu/devid=0..0xffff,devid_mask=0..0xffff,pasid_mask=0..0xfffff,
+        csource=0..255,pasid=0..0xfffff,domid=0..0xffff,
+        domid_mask=0..0xffff/modifier
+  breakpoint//modifier                               [Raw event descriptor]
+        breakpoint//modifier
+  hwmon_amdgpu//modifier                             [Raw event descriptor]
+        hwmon_amdgpu//modifier
+  hwmon_iwlwifi//modifier                            [Raw event descriptor]
+        hwmon_iwlwifi//modifier
+  hwmon_k10temp//modifier                            [Raw event descriptor]
+        hwmon_k10temp//modifier
+  hwmon_nvme//modifier                               [Raw event descriptor]
+        hwmon_nvme//modifier
+  ibs_fetch/rand_en,swfilt/modifier                  [Raw event descriptor]
+        ibs_fetch/rand_en,swfilt/modifier
+  ibs_op/cnt_ctl,swfilt/modifier                     [Raw event descriptor]
+        ibs_op/cnt_ctl,swfilt/modifier
+  kprobe/retprobe/modifier                           [Raw event descriptor]
+        kprobe/retprobe/modifier
+  msr/event=0..0xffffffffffffffff/modifier           [Raw event descriptor]
+        msr/event=0..0xffffffffffffffff/modifier
+  power/event=0..255/modifier                        [Raw event descriptor]
+        power/event=0..255/modifier
+  power_core/event=0..255/modifier                   [Raw event descriptor]
+        power_core/event=0..255/modifier
+  software//modifier                                 [Raw event descriptor]
+        software//modifier
+  tool//modifier                                     [Raw event descriptor]
+        tool//modifier
+  tracepoint//modifier                               [Raw event descriptor]
+        tracepoint//modifier
+  uprobe/ref_ctr_offset=0..0xffffffff,retprobe/modifier[Raw event descriptor]
+        uprobe/ref_ctr_offset=0..0xffffffff,retprobe/modifier
+  mem:<addr>[/len][:access]                          [Hardware breakpoint]
+
+Metric Groups:
+
+Default:
+  CPUs_utilized
+       [Average CPU utilization]
+       [(software@cpu\-clock\,name\=cpu\-clock@ if #target_cpu else
+        software@task\-clock\,name\=task\-clock@) / (duration_time * 1e9)]
+  backend_cycles_idle
+       [Backend stalls per cycle]
+       [(stalled\-cycles\-backend / cpu\-cycles if
+        has_event(stalled\-cycles\-backend) else 0)]
+       [backend_cycles_idle > 0.2]
+  branch_frequency
+       [Branches per CPU second]
+       [branches / (software@cpu\-clock\,name\=cpu\-clock@ if #target_cpu else
+        software@task\-clock\,name\=task\-clock@)]
+  branch_miss_rate
+       [Branch miss rate]
+       [branch\-misses / branches]
+       [branch_miss_rate > 0.05]
+  cs_per_second
+       [Context switches per CPU second]
+       [software@context\-switches\,name\=context\-switches@ * 1e9 /
+        (software@cpu\-clock\,name\=cpu\-clock@ if #target_cpu else
+        software@task\-clock\,name\=task\-clock@)]
+  cycles_frequency
+       [Cycles per CPU second]
+       [cpu\-cycles / (software@cpu\-clock\,name\=cpu\-clock@ if #target_cpu
+        else software@task\-clock\,name\=task\-clock@)]
+  frontend_cycles_idle
+       [Frontend stalls per cycle]
+       [(stalled\-cycles\-frontend / cpu\-cycles if
+        has_event(stalled\-cycles\-frontend) else 0)]
+       [frontend_cycles_idle > 0.1]
+  insn_per_cycle
+       [Instructions Per Cycle]
+       [instructions / cpu\-cycles]
+       [insn_per_cycle < 1]
+  migrations_per_second
+       [Process migrations to a new CPU per CPU second]
+       [software@cpu\-migrations\,name\=cpu\-migrations@ * 1e9 /
+        (software@cpu\-clock\,name\=cpu\-clock@ if #target_cpu else
+        software@task\-clock\,name\=task\-clock@)]
+  page_faults_per_second
+       [Page faults per CPU second]
+       [software@page\-faults\,name\=page\-faults@ * 1e9 /
+        (software@cpu\-clock\,name\=cpu\-clock@ if #target_cpu else
+        software@task\-clock\,name\=task\-clock@)]
+  stalled_cycles_per_instruction
+       [Max front or backend stalls per instruction]
+       [(max(stalled\-cycles\-frontend,stalled\-cycles\-backend) /
+        instructions if has_event(stalled\-cycles\-frontend) &
+        has_event(stalled\-cycles\-backend) else (stalled\-cycles\-frontend /
+        instructions if has_event(stalled\-cycles\-frontend) else
+        (stalled\-cycles\-backend / instructions if
+        has_event(stalled\-cycles\-backend) else 0)))]
+
+Default2:
+  l1d_miss_rate
+       [L1D miss rate]
+       [L1\-dcache\-load\-misses / L1\-dcache\-loads]
+       [l1d_miss_rate > 0.05]
+  llc_miss_rate
+       [LLC miss rate]
+       [LLC\-load\-misses / LLC\-loads]
+       [llc_miss_rate > 0.05]
+
+Default3:
+  dtlb_miss_rate
+       [dTLB miss rate]
+       [dTLB\-load\-misses / dTLB\-loads]
+       [dtlb_miss_rate > 0.05]
+  itlb_miss_rate
+       [iTLB miss rate]
+       [iTLB\-load\-misses / iTLB\-loads]
+       [itlb_miss_rate > 0.05]
+  l1i_miss_rate
+       [L1I miss rate]
+       [L1\-icache\-load\-misses / L1\-icache\-loads]
+       [l1i_miss_rate > 0.05]
+
+Default4:
+  l1_prefetch_miss_rate
+       [L1 prefetch miss rate]
+       [L1\-dcache\-prefetch\-misses / L1\-dcache\-prefetches]
+       [l1_prefetch_miss_rate > 0.05]
+
+branch_prediction:
+  branch_misprediction_ratio
+       [Execution-Time Branch Misprediction Ratio (Non-Speculative)]
+       [d_ratio(ex_ret_brn_misp,ex_ret_brn)]
+
+data_fabric:
+  all_remote_links_outbound
+       [Approximate: Outbound data bytes for all Remote Links for a node (die)]
+       [remote_outbound_data_controller_0 + remote_outbound_data_controller_1
+        + remote_outbound_data_controller_2 +
+        remote_outbound_data_controller_3]
+  nps1_die_to_dram
+       [Approximate: Combined DRAM B/bytes of all channels on a NPS1 node
+        (die)]
+       [dram_channel_data_controller_0 + dram_channel_data_controller_1 +
+        dram_channel_data_controller_2 + dram_channel_data_controller_3 +
+        dram_channel_data_controller_4 + dram_channel_data_controller_5 +
+        dram_channel_data_controller_6 + dram_channel_data_controller_7]
+
+decoder:
+  macro_ops_dispatched
+       [Macro-ops Dispatched]
+       [de_dis_cops_from_decoder.disp_op_type.any_integer_dispatch +
+        de_dis_cops_from_decoder.disp_op_type.any_fp_dispatch]
+
+iotlb: [IOMMU TLB metrics]
+  iotlb_interrupt_cache_hit
+       [IOTLB interrupt cache hit]
+       [amd_iommu@int_dte_hit@]
+  iotlb_interrupt_cache_lookup
+       [IOTLB interrupt cache lookup]
+       [amd_iommu@int_dte_hit@ + amd_iommu@int_dte_mis@]
+  iotlb_interrupt_cache_miss
+       [IOTLB interrupt cache miss]
+       [amd_iommu@int_dte_mis@]
+  iotlb_interrupt_cache_miss_rate
+       [IOTLB interrupt cache miss rate]
+       [d_ratio(amd_iommu@int_dte_mis@,amd_iommu@int_dte_mis@ +
+        amd_iommu@int_dte_hit@)]
+  iotlb_miss_rate
+       [IOTLB miss rate]
+       [d_ratio(amd_iommu@mem_iommu_tlb_pte_mis@ +
+        amd_iommu@mem_iommu_tlb_pde_mis@,amd_iommu@mem_iommu_tlb_pte_mis@ +
+        amd_iommu@mem_iommu_tlb_pde_mis@ + (amd_iommu@mem_iommu_tlb_pte_hit@ +
+        amd_iommu@mem_iommu_tlb_pde_hit@))]
+  iotlb_total_hit
+       [IOTLB total hit]
+       [amd_iommu@mem_iommu_tlb_pte_hit@ + amd_iommu@mem_iommu_tlb_pde_hit@]
+  iotlb_total_miss
+       [IOTLB total miss]
+       [amd_iommu@mem_iommu_tlb_pte_mis@ + amd_iommu@mem_iommu_tlb_pde_mis@]
+
+l2_cache:
+  all_l2_cache_accesses
+       [All L2 Cache Accesses]
+       [l2_request_g1.all_no_prefetch + l2_pf_hit_l2 + l2_pf_miss_l2_hit_l3 +
+        l2_pf_miss_l2_l3]
+  all_l2_cache_hits
+       [All L2 Cache Hits]
+       [l2_cache_req_stat.ic_dc_hit_in_l2 + l2_pf_hit_l2]
+  all_l2_cache_misses
+       [All L2 Cache Misses]
+       [l2_cache_req_stat.ic_dc_miss_in_l2 + l2_pf_miss_l2_hit_l3 +
+        l2_pf_miss_l2_l3]
+  ic_fetch_miss_ratio
+       [Instruction Cache (32B) Fetch Miss Ratio]
+       [d_ratio(ic_tag_hit_miss.instruction_cache_miss,
+        ic_tag_hit_miss.all_instruction_cache_accesses)]
+  l2_cache_accesses_from_l2_hwpf
+       [L2 Cache Accesses from L2 HWPF]
+       [l2_pf_hit_l2 + l2_pf_miss_l2_hit_l3 + l2_pf_miss_l2_l3]
+  l2_cache_misses_from_l2_hwpf
+       [L2 Cache Misses from L2 Cache HWPF]
+       [l2_pf_miss_l2_hit_l3 + l2_pf_miss_l2_l3]
+  op_cache_fetch_miss_ratio
+       [Op Cache (64B) Fetch Miss Ratio]
+       [d_ratio(op_cache_hit_miss.op_cache_miss,
+        op_cache_hit_miss.all_op_cache_accesses)]
+
+l3_cache:
+  l3_read_miss_latency
+       [Average L3 Read Miss Latency (in core clocks)]
+       [xi_sys_fill_latency * 16 / xi_ccx_sdp_req1]
+
+lpm_br: [breakdown of retired branch instructions]
+  lpm_br_cond_insn_between_branches
+       [The number of instructions divided by the number of conditional
+        branches]
+       [d_ratio(instructions,ex_ret_cond)]
+  lpm_br_cond_retired
+       [Retired conditional branch instructions]
+       [d_ratio(ex_ret_cond,duration_time)]
+  lpm_br_far_insn_between_branches
+       [The number of instructions divided by the number of far branches]
+       [d_ratio(instructions,ex_ret_brn_far)]
+  lpm_br_far_retired
+       [Retired far control transfers per second]
+       [d_ratio(ex_ret_brn_far,duration_time)]
+  lpm_br_fused_insn_between_branches
+       [The number of instructions divided by the number of fused branches]
+       [d_ratio(instructions,ex_ret_fused_instr)]
+  lpm_br_fused_retired
+       [Retired fused branch instructions per second]
+       [d_ratio(ex_ret_fused_instr,duration_time)]
+  lpm_br_taken_insn_between_branches
+       [The number of instructions divided by the number of taken branches]
+       [d_ratio(instructions,ex_ret_brn_tkn)]
+  lpm_br_taken_mispred
+       [The number of retired taken branch instructions that were mispredicted
+        as a percentage of all taken branches]
+       [d_ratio(ex_ret_brn_tkn_misp,ex_ret_brn_tkn)]
+  lpm_br_taken_retired
+       [The number of taken branches that were retired per second]
+       [d_ratio(ex_ret_brn_tkn,duration_time)]
+  lpm_br_total_insn_between_branches
+       [The number of instructions divided by the number of branches]
+       [d_ratio(instructions,ex_ret_brn)]
+  lpm_br_total_insn_fe_resteers
+       [The number of resync branches per second]
+       [d_ratio(ex_ret_msprd_brnch_instr_dir_msmtch,duration_time)]
+  lpm_br_total_mispred
+       [The number of branch instructions retired,of any type,that were not
+        correctly predicted as a percentage of all branch instrucions]
+       [d_ratio(ex_ret_brn_misp,ex_ret_brn)]
+  lpm_br_total_retired
+       [The number of branch instructions retired per second]
+       [d_ratio(ex_ret_brn,duration_time)]
+
+lpm_br_cond:
+  lpm_br_cond_insn_between_branches
+       [The number of instructions divided by the number of conditional
+        branches]
+       [d_ratio(instructions,ex_ret_cond)]
+  lpm_br_cond_retired
+       [Retired conditional branch instructions]
+       [d_ratio(ex_ret_cond,duration_time)]
+  lpm_br_fused_insn_between_branches
+       [The number of instructions divided by the number of fused branches]
+       [d_ratio(instructions,ex_ret_fused_instr)]
+  lpm_br_fused_retired
+       [Retired fused branch instructions per second]
+       [d_ratio(ex_ret_fused_instr,duration_time)]
+
+lpm_br_far:
+  lpm_br_far_insn_between_branches
+       [The number of instructions divided by the number of far branches]
+       [d_ratio(instructions,ex_ret_brn_far)]
+  lpm_br_far_retired
+       [Retired far control transfers per second]
+       [d_ratio(ex_ret_brn_far,duration_time)]
+
+lpm_br_taken:
+  lpm_br_taken_insn_between_branches
+       [The number of instructions divided by the number of taken branches]
+       [d_ratio(instructions,ex_ret_brn_tkn)]
+  lpm_br_taken_mispred
+       [The number of retired taken branch instructions that were mispredicted
+        as a percentage of all taken branches]
+       [d_ratio(ex_ret_brn_tkn_misp,ex_ret_brn_tkn)]
+  lpm_br_taken_retired
+       [The number of taken branches that were retired per second]
+       [d_ratio(ex_ret_brn_tkn,duration_time)]
+
+lpm_br_total:
+  lpm_br_total_insn_between_branches
+       [The number of instructions divided by the number of branches]
+       [d_ratio(instructions,ex_ret_brn)]
+  lpm_br_total_insn_fe_resteers
+       [The number of resync branches per second]
+       [d_ratio(ex_ret_msprd_brnch_instr_dir_msmtch,duration_time)]
+  lpm_br_total_mispred
+       [The number of branch instructions retired,of any type,that were not
+        correctly predicted as a percentage of all branch instrucions]
+       [d_ratio(ex_ret_brn_misp,ex_ret_brn)]
+  lpm_br_total_retired
+       [The number of branch instructions retired per second]
+       [d_ratio(ex_ret_brn,duration_time)]
+
+lpm_cpu_power: [Running Average Power Limit (RAPL) power consumption estimates]
+  lpm_cpu_power_pkg
+       [d_ratio((power@energy\-pkg@ if has_event(power@energy\-pkg@) else NaN)
+        * 232.83064365386963e-12,duration_time)]
+
+lpm_cs: [Number of context switches per second, instructions retired & core cycles between context switches]
+  lpm_cs_br_taken
+       [Branches taken per context switch]
+       [d_ratio(ex_ret_brn_tkn,context\-switches)]
+  lpm_cs_cycles
+       [Cycles per context switch]
+       [d_ratio(cycles,context\-switches)]
+  lpm_cs_instr
+       [Instructions per context switch]
+       [d_ratio(instructions,context\-switches)]
+  lpm_cs_loads
+       [Loads per context switch]
+       [d_ratio(ls_dispatch.ld_dispatch,context\-switches)]
+  lpm_cs_rate
+       [Context switches per second]
+       [d_ratio(context\-switches,duration_time)]
+  lpm_cs_stores
+       [Stores per context switch]
+       [d_ratio(ls_dispatch.store_dispatch,context\-switches)]
+
+lpm_cycles: [cycles breakdown per privilege level (users, kernel, guest)]
+  lpm_cycles_guest
+       [Hypervisor guest cycles as a percentage of all cycles]
+       [d_ratio(cpu\-cycles:G,cpu\-cycles:kHh + cpu\-cycles:G +
+        cpu\-cycles:uH)]
+  lpm_cycles_kernel
+       [Kernel cycles as a percentage of all cycles]
+       [d_ratio(cpu\-cycles:kHh,cpu\-cycles:kHh + cpu\-cycles:G +
+        cpu\-cycles:uH)]
+  lpm_cycles_total
+       [Total number of cycles]
+       [cpu\-cycles:kHh + cpu\-cycles:G + cpu\-cycles:uH]
+  lpm_cycles_user
+       [User cycles as a percentage of all cycles]
+       [d_ratio(cpu\-cycles:uH,cpu\-cycles:kHh + cpu\-cycles:G +
+        cpu\-cycles:uH)]
+
+lpm_dtlb: [Data TLB metrics]
+  lpm_dtlb_l1_hits
+       [DTLB L1 hits as percentage of all DTLB L1 accesses]
+       [d_ratio(max(ls_dc_accesses - (ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss) + (ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1)),0),ls_dc_accesses)]
+  lpm_dtlb_l1_miss
+       [DTLB L1 misses as percentage of all DTLB L1 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss) + (ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1),ls_dc_accesses)]
+  lpm_dtlb_l1_reqs
+       [DTLB L1 accesses per second]
+       [d_ratio(ls_dc_accesses,duration_time)]
+  lpm_dtlb_l2_1g_hits
+       [DTLB L2 1gb page size hits as percentage of all DTLB L2 1gb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss)]
+  lpm_dtlb_l2_1g_miss
+       [DTLB L2 1gb page size misses as percentage of all DTLB L2 1gb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss)]
+  lpm_dtlb_l2_2mb_hits
+       [DTLB L2 2mb page size hits as percentage of all DTLB L2 2mb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss)]
+  lpm_dtlb_l2_2mb_miss
+       [DTLB L2 2mb page size misses as percentage of all DTLB L2 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss)]
+  lpm_dtlb_l2_4kb_hits
+       [DTLB L2 4kb page size hits as percentage of all DTLB L2 4kb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss)]
+  lpm_dtlb_l2_4kb_miss
+       [DTLB L2 4kb page size misses as percentage of all DTLB L2 4kbaccesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss)]
+  lpm_dtlb_l2_coal_hits
+       [DTLB L2 coalesced page (16kb) hits as percentage of all DTLB L2
+        coalesced accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit,
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss)]
+  lpm_dtlb_l2_coal_miss
+       [DTLB L2 coalesced page (16kb) misses as percentage of all DTLB L2
+        coalesced accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss,
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss)]
+  lpm_dtlb_l2_hits
+       [DTLB L2 hits as percentage of all DTLB L2 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss))]
+  lpm_dtlb_l2_miss
+       [DTLB L2 misses as percentage of all DTLB L2 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss))]
+  lpm_dtlb_l2_reqs
+       [DTLB L2 accesses per second]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss),duration_time)]
+  lpm_dtlb_ov_insn_bt_l1_miss
+       [DTLB overview: instructions between l1 misses]
+       [d_ratio(instructions,ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss) + (ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1))]
+  lpm_dtlb_ov_insn_bt_walks
+       [DTLB overview: instructions between dtlb page table walks]
+       [d_ratio(instructions,ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1)]
+  lpm_dtlb_walks_reqs
+       [DTLB page table walks per second]
+       [d_ratio(ls_tablewalker.dc_type0 + ls_tablewalker.dc_type1,
+        duration_time)]
+
+lpm_dtlb_l1:
+  lpm_dtlb_l1_hits
+       [DTLB L1 hits as percentage of all DTLB L1 accesses]
+       [d_ratio(max(ls_dc_accesses - (ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss) + (ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1)),0),ls_dc_accesses)]
+  lpm_dtlb_l1_miss
+       [DTLB L1 misses as percentage of all DTLB L1 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss) + (ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1),ls_dc_accesses)]
+  lpm_dtlb_l1_reqs
+       [DTLB L1 accesses per second]
+       [d_ratio(ls_dc_accesses,duration_time)]
+
+lpm_dtlb_l2:
+  lpm_dtlb_l2_1g_hits
+       [DTLB L2 1gb page size hits as percentage of all DTLB L2 1gb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss)]
+  lpm_dtlb_l2_1g_miss
+       [DTLB L2 1gb page size misses as percentage of all DTLB L2 1gb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss)]
+  lpm_dtlb_l2_2mb_hits
+       [DTLB L2 2mb page size hits as percentage of all DTLB L2 2mb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss)]
+  lpm_dtlb_l2_2mb_miss
+       [DTLB L2 2mb page size misses as percentage of all DTLB L2 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss)]
+  lpm_dtlb_l2_4kb_hits
+       [DTLB L2 4kb page size hits as percentage of all DTLB L2 4kb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss)]
+  lpm_dtlb_l2_4kb_miss
+       [DTLB L2 4kb page size misses as percentage of all DTLB L2 4kbaccesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss)]
+  lpm_dtlb_l2_coal_hits
+       [DTLB L2 coalesced page (16kb) hits as percentage of all DTLB L2
+        coalesced accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit,
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss)]
+  lpm_dtlb_l2_coal_miss
+       [DTLB L2 coalesced page (16kb) misses as percentage of all DTLB L2
+        coalesced accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss,
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss)]
+  lpm_dtlb_l2_hits
+       [DTLB L2 hits as percentage of all DTLB L2 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss))]
+  lpm_dtlb_l2_miss
+       [DTLB L2 misses as percentage of all DTLB L2 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss))]
+  lpm_dtlb_l2_reqs
+       [DTLB L2 accesses per second]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss),duration_time)]
+
+lpm_dtlb_l2_1g:
+  lpm_dtlb_l2_1g_hits
+       [DTLB L2 1gb page size hits as percentage of all DTLB L2 1gb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss)]
+  lpm_dtlb_l2_1g_miss
+       [DTLB L2 1gb page size misses as percentage of all DTLB L2 1gb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss)]
+
+lpm_dtlb_l2_2mb:
+  lpm_dtlb_l2_2mb_hits
+       [DTLB L2 2mb page size hits as percentage of all DTLB L2 2mb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss)]
+  lpm_dtlb_l2_2mb_miss
+       [DTLB L2 2mb page size misses as percentage of all DTLB L2 accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss)]
+
+lpm_dtlb_l2_4kb:
+  lpm_dtlb_l2_4kb_hits
+       [DTLB L2 4kb page size hits as percentage of all DTLB L2 4kb accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss)]
+  lpm_dtlb_l2_4kb_miss
+       [DTLB L2 4kb page size misses as percentage of all DTLB L2 4kbaccesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss,
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss)]
+
+lpm_dtlb_l2_coalesced:
+  lpm_dtlb_l2_coal_hits
+       [DTLB L2 coalesced page (16kb) hits as percentage of all DTLB L2
+        coalesced accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit,
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss)]
+  lpm_dtlb_l2_coal_miss
+       [DTLB L2 coalesced page (16kb) misses as percentage of all DTLB L2
+        coalesced accesses]
+       [d_ratio(ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss,
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss)]
+
+lpm_dtlb_ov:
+  lpm_dtlb_ov_insn_bt_l1_miss
+       [DTLB overview: instructions between l1 misses]
+       [d_ratio(instructions,ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_hit +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_hit +
+        (ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_coalesced_page_miss +
+        ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss +
+        ls_l1_d_tlb_miss.tlb_reload_1g_l2_miss) + (ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1))]
+  lpm_dtlb_ov_insn_bt_walks
+       [DTLB overview: instructions between dtlb page table walks]
+       [d_ratio(instructions,ls_tablewalker.dc_type0 +
+        ls_tablewalker.dc_type1)]
+
+lpm_dtlb_walks:
+  lpm_dtlb_walks_reqs
+       [DTLB page table walks per second]
+       [d_ratio(ls_tablewalker.dc_type0 + ls_tablewalker.dc_type1,
+        duration_time)]
+
+lpm_idle:
+  lpm_idle
+       [Percentage of total wallclock cycles where CPUs are in low power state
+        (C1 or deeper sleep state)]
+       [d_ratio(max(msr@tsc@ - msr@mperf@,0),msr@tsc@)]
+
+lpm_itlb: [Instruction TLB breakdown]
+  lpm_itlb_l1_hits
+       [L1 ITLB hits as a perecentage of L1 ITLB accesses]
+       [d_ratio(max(ic_fw32 - (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses),0),
+        max(ic_fw32 - (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses),0) +
+        (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses))]
+  lpm_itlb_l1_miss
+       [L1 ITLB misses as a perecentage of L1 ITLB accesses]
+       [d_ratio(bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses,max(ic_fw32 -
+        (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses),0) +
+        (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses))]
+  lpm_itlb_l1_reqs
+       [The number of 32B fetch windows transferred from IC pipe to DE
+        instruction decoder per second]
+       [d_ratio(ic_fw32,duration_time)]
+  lpm_itlb_l2_hits
+       [L2 ITLB hits as a percentage of all L2 ITLB accesses]
+       [d_ratio(bp_l1_tlb_miss_l2_tlb_hit,bp_l1_tlb_miss_l2_tlb_hit +
+        l2_itlb_misses)]
+  lpm_itlb_l2_miss
+       [L2 ITLB misses as a percentage of all L2 ITLB accesses]
+       [d_ratio(l2_itlb_misses,bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses)]
+  lpm_itlb_l2_reqs
+       [ITLB accesses per second]
+       [d_ratio(bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses,duration_time)]
+  lpm_itlb_ov_insn_bt_l1_miss
+       [Number of instructions between l1 misses]
+       [d_ratio(instructions,bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses)]
+  lpm_itlb_ov_insn_bt_l2_miss
+       [Number of instructions between l2 misses]
+       [d_ratio(instructions,l2_itlb_misses)]
+
+lpm_itlb_l1:
+  lpm_itlb_l1_hits
+       [L1 ITLB hits as a perecentage of L1 ITLB accesses]
+       [d_ratio(max(ic_fw32 - (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses),0),
+        max(ic_fw32 - (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses),0) +
+        (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses))]
+  lpm_itlb_l1_miss
+       [L1 ITLB misses as a perecentage of L1 ITLB accesses]
+       [d_ratio(bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses,max(ic_fw32 -
+        (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses),0) +
+        (bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses))]
+  lpm_itlb_l1_reqs
+       [The number of 32B fetch windows transferred from IC pipe to DE
+        instruction decoder per second]
+       [d_ratio(ic_fw32,duration_time)]
+
+lpm_itlb_l2:
+  lpm_itlb_l2_hits
+       [L2 ITLB hits as a percentage of all L2 ITLB accesses]
+       [d_ratio(bp_l1_tlb_miss_l2_tlb_hit,bp_l1_tlb_miss_l2_tlb_hit +
+        l2_itlb_misses)]
+  lpm_itlb_l2_miss
+       [L2 ITLB misses as a percentage of all L2 ITLB accesses]
+       [d_ratio(l2_itlb_misses,bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses)]
+  lpm_itlb_l2_reqs
+       [ITLB accesses per second]
+       [d_ratio(bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses,duration_time)]
+
+lpm_itlb_ov:
+  lpm_itlb_ov_insn_bt_l1_miss
+       [Number of instructions between l1 misses]
+       [d_ratio(instructions,bp_l1_tlb_miss_l2_tlb_hit + l2_itlb_misses)]
+  lpm_itlb_ov_insn_bt_l2_miss
+       [Number of instructions between l2 misses]
+       [d_ratio(instructions,l2_itlb_misses)]
+
+lpm_l3: [L3 cache breakdown per CCX]
+  lpm_l3_accesses
+       [L3 victim cache accesses]
+       [d_ratio(max(l3_lookup_state.all_l3_req_typs,
+        l3_comb_clstr_state.request_miss),duration_time)]
+  lpm_l3_hits
+       [L3 victim cache hit rate]
+       [d_ratio(max(l3_lookup_state.all_l3_req_typs,
+        l3_comb_clstr_state.request_miss) - l3_comb_clstr_state.request_miss,
+        max(l3_lookup_state.all_l3_req_typs,l3_comb_clstr_state.request_miss))]
+  lpm_l3_miss
+       [L3 victim cache miss rate]
+       [d_ratio(l3_comb_clstr_state.request_miss,
+        max(l3_lookup_state.all_l3_req_typs,l3_comb_clstr_state.request_miss))]
+
+lpm_ldst: [Breakdown of load/store instructions]
+  lpm_ldst_insn_bt_ld
+       [Number of instructions between loads]
+       [d_ratio(instructions,ls_dispatch.ld_dispatch)]
+  lpm_ldst_insn_bt_st
+       [Number of instructions between stores]
+       [d_ratio(instructions,ls_dispatch.store_dispatch)]
+  lpm_ldst_percent_insn_ld
+       [Load instructions as a percentage of all instructions]
+       [d_ratio(ls_dispatch.ld_dispatch,instructions)]
+  lpm_ldst_percent_insn_st
+       [Store instructions as a percentage of all instructions]
+       [d_ratio(ls_dispatch.store_dispatch,instructions)]
+  lpm_ldst_ret_loads_per_cycle_1
+       [Load instructions retiring in 1 cycle as a percentage of all unhalted
+        cycles]
+       [d_ratio(max(ls_dispatch.ld_dispatch@cmask\=1@ -
+        ls_dispatch.ld_dispatch@cmask\=2@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_loads_per_cycle_2
+       [Load instructions retiring in 2 cycles as a percentage of all unhalted
+        cycles]
+       [d_ratio(max(ls_dispatch.ld_dispatch@cmask\=2@ -
+        ls_dispatch.ld_dispatch@cmask\=3@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_loads_per_cycle_3
+       [Load instructions retiring in 3 or more cycles as a percentageof all
+        unhalted cycles]
+       [d_ratio(ls_dispatch.ld_dispatch@cmask\=3@,ls_not_halted_cyc)]
+  lpm_ldst_ret_stores_per_cycle_1
+       [Store instructions retiring in 1 cycle as a percentage of all unhalted
+        cycles]
+       [d_ratio(max(ls_dispatch.store_dispatch@cmask\=1@ -
+        ls_dispatch.store_dispatch@cmask\=2@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_stores_per_cycle_2
+       [Store instructions retiring in 2 cycles as a percentage of all
+        unhalted cycles]
+       [d_ratio(max(ls_dispatch.store_dispatch@cmask\=2@ -
+        ls_dispatch.store_dispatch@cmask\=3@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_stores_per_cycle_3
+       [Store instructions retiring in 3 or more cycles as a percentageof all
+        unhalted cycles]
+       [d_ratio(ls_dispatch.store_dispatch@cmask\=3@,ls_not_halted_cyc)]
+  lpm_ldst_total_ld
+       [Number of loads dispatched per second]
+       [d_ratio(ls_dispatch.ld_dispatch,duration_time)]
+  lpm_ldst_total_st
+       [Number of stores dispatched per second]
+       [d_ratio(ls_dispatch.store_dispatch,duration_time)]
+
+lpm_ldst_insn_bt:
+  lpm_ldst_insn_bt_ld
+       [Number of instructions between loads]
+       [d_ratio(instructions,ls_dispatch.ld_dispatch)]
+  lpm_ldst_insn_bt_st
+       [Number of instructions between stores]
+       [d_ratio(instructions,ls_dispatch.store_dispatch)]
+
+lpm_ldst_percent_insn:
+  lpm_ldst_percent_insn_ld
+       [Load instructions as a percentage of all instructions]
+       [d_ratio(ls_dispatch.ld_dispatch,instructions)]
+  lpm_ldst_percent_insn_st
+       [Store instructions as a percentage of all instructions]
+       [d_ratio(ls_dispatch.store_dispatch,instructions)]
+
+lpm_ldst_ret_loads_per_cycle:
+  lpm_ldst_ret_loads_per_cycle_1
+       [Load instructions retiring in 1 cycle as a percentage of all unhalted
+        cycles]
+       [d_ratio(max(ls_dispatch.ld_dispatch@cmask\=1@ -
+        ls_dispatch.ld_dispatch@cmask\=2@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_loads_per_cycle_2
+       [Load instructions retiring in 2 cycles as a percentage of all unhalted
+        cycles]
+       [d_ratio(max(ls_dispatch.ld_dispatch@cmask\=2@ -
+        ls_dispatch.ld_dispatch@cmask\=3@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_loads_per_cycle_3
+       [Load instructions retiring in 3 or more cycles as a percentageof all
+        unhalted cycles]
+       [d_ratio(ls_dispatch.ld_dispatch@cmask\=3@,ls_not_halted_cyc)]
+
+lpm_ldst_ret_stores_per_cycle:
+  lpm_ldst_ret_stores_per_cycle_1
+       [Store instructions retiring in 1 cycle as a percentage of all unhalted
+        cycles]
+       [d_ratio(max(ls_dispatch.store_dispatch@cmask\=1@ -
+        ls_dispatch.store_dispatch@cmask\=2@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_stores_per_cycle_2
+       [Store instructions retiring in 2 cycles as a percentage of all
+        unhalted cycles]
+       [d_ratio(max(ls_dispatch.store_dispatch@cmask\=2@ -
+        ls_dispatch.store_dispatch@cmask\=3@,0),ls_not_halted_cyc)]
+  lpm_ldst_ret_stores_per_cycle_3
+       [Store instructions retiring in 3 or more cycles as a percentageof all
+        unhalted cycles]
+       [d_ratio(ls_dispatch.store_dispatch@cmask\=3@,ls_not_halted_cyc)]
+
+lpm_ldst_total:
+  lpm_ldst_total_ld
+       [Number of loads dispatched per second]
+       [d_ratio(ls_dispatch.ld_dispatch,duration_time)]
+  lpm_ldst_total_st
+       [Number of stores dispatched per second]
+       [d_ratio(ls_dispatch.store_dispatch,duration_time)]
+
+lpm_upc:
+  lpm_upc
+       [Micro-ops retired per core cycle (higher is better)]
+       [d_ratio(ex_ret_ops,(cycles / 2 if #smt_on else cycles))]
+
+tlb:
+  l1_itlb_misses
+       [L1 ITLB Misses]
+       [bp_l1_tlb_miss_l2_tlb_hit + bp_l1_tlb_miss_l2_tlb_miss]

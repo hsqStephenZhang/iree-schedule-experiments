@@ -1,0 +1,26 @@
+timing 1/5: 2048 01_original 224.42 ms
+timing 1/5: 2048 02_panel_pack 180.79 ms
+timing 1/5: 4096 01_original 1906.11 ms
+timing 1/5: 4096 02_panel_pack 1496.42 ms
+timing 2/5: 4096 02_panel_pack 1522.63 ms
+timing 2/5: 4096 01_original 1910.87 ms
+timing 2/5: 2048 02_panel_pack 187.74 ms
+timing 2/5: 2048 01_original 225.18 ms
+timing 3/5: 2048 01_original 225.82 ms
+timing 3/5: 2048 02_panel_pack 186.04 ms
+timing 3/5: 4096 01_original 1924.05 ms
+timing 3/5: 4096 02_panel_pack 1558.60 ms
+timing 4/5: 4096 02_panel_pack 1560.42 ms
+timing 4/5: 4096 01_original 1946.91 ms
+timing 4/5: 2048 02_panel_pack 187.20 ms
+timing 4/5: 2048 01_original 225.03 ms
+timing 5/5: 2048 01_original 228.78 ms
+timing 5/5: 2048 02_panel_pack 187.85 ms
+timing 5/5: 4096 01_original 1945.83 ms
+timing 5/5: 4096 02_panel_pack 1572.23 ms
+{
+  "core_pmu": "blocked: perf preflight failed; see perf-preflight.txt (no counters fabricated)",
+  "memory": "unavailable: supported Intel IMC free-running PMU not exposed, or core perf blocked; no DRAM bandwidth inferred",
+  "timing": "complete"
+}
+Results: /root/workspaces/iree-schedule-experiments/metrics-results

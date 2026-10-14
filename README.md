@@ -255,3 +255,11 @@ When perf permissions are blocked, the script completes independent timings
 and saves the failure in `perf-preflight.txt`; it does **not** report cache/TLB
 rates. Containers may block `perf_event_open` through seccomp even with root
 and `CAP_PERFMON`; that requires a host/container policy change.
+
+The [Ryzen 7 5800H remote run](reference/ryzen-5800h-haswell-iree3.12.0-metrics)
+contains five rounds of timing and perf permission diagnostics. Original
+2048³/4096³ medians were 225.18/1924.05 ms; panel medians were
+187.20/1558.60 ms. Container perf access was blocked, so this dataset contains
+**no measured cache/TLB rates**. Its original scaling was 8.545×, compared
+with panel's 8.326×; it did not reproduce the Intel host's much larger scaling
+penalty. See that dataset's README for the exact scope and remaining blocker.

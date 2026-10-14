@@ -1,0 +1,5 @@
+{
+  "core_pmu": "blocked: perf preflight failed; see perf-preflight.txt (no counters fabricated)",
+  "memory": "unavailable: supported Intel IMC free-running PMU not exposed, or core perf blocked; no DRAM bandwidth inferred",
+  "timing": "complete"
+}

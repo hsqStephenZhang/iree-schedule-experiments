@@ -1,0 +1,148 @@
+{
+  "groups": {
+    "dc_access": [
+      "ls_dc_accesses",
+      "ls_dispatch.ld_dispatch",
+      "ls_dispatch.store_dispatch",
+      "ls_mab_alloc.loads"
+    ],
+    "l2": [
+      "l2_cache_accesses_from_dc_misses",
+      "l2_cache_misses_from_dc_misses"
+    ],
+    "demand_fills": [
+      "ls_dmnd_fills_from_sys.lcl_l2",
+      "ls_dmnd_fills_from_sys.int_cache",
+      "ls_dmnd_fills_from_sys.mem_io_local",
+      "ls_dc_accesses"
+    ],
+    "all_fills": [
+      "ls_any_fills_from_sys.lcl_l2",
+      "ls_any_fills_from_sys.int_cache",
+      "ls_any_fills_from_sys.mem_io_local",
+      "ls_dc_accesses"
+    ],
+    "dtlb": [
+      "ls_dc_accesses",
+      "l1_dtlb_misses",
+      "ls_tablewalker.dside"
+    ],
+    "dtlb_4k": [
+      "ls_l1_d_tlb_miss.tlb_reload_4k_l2_hit",
+      "ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss",
+      "ls_dc_accesses"
+    ],
+    "dtlb_2m": [
+      "ls_l1_d_tlb_miss.tlb_reload_2m_l2_hit",
+      "ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss",
+      "ls_dc_accesses"
+    ]
+  },
+  "metrics": {
+    "ipc": {
+      "group": "dc_access",
+      "numerator": [
+        "instructions"
+      ],
+      "denominator": [
+        "cycles"
+      ],
+      "factor": 1
+    },
+    "l2_dc_request_miss_percent_including_prefetch": {
+      "group": "l2",
+      "numerator": [
+        "l2_cache_misses_from_dc_misses"
+      ],
+      "denominator": [
+        "l2_cache_accesses_from_dc_misses"
+      ],
+      "factor": 100
+    },
+    "demand_memory_io_fills_per_1000_dc_accesses": {
+      "group": "demand_fills",
+      "numerator": [
+        "ls_dmnd_fills_from_sys.mem_io_local"
+      ],
+      "denominator": [
+        "ls_dc_accesses"
+      ],
+      "factor": 1000
+    },
+    "demand_memory_io_share_of_local_fills_percent": {
+      "group": "demand_fills",
+      "numerator": [
+        "ls_dmnd_fills_from_sys.mem_io_local"
+      ],
+      "denominator": [
+        "ls_dmnd_fills_from_sys.lcl_l2",
+        "ls_dmnd_fills_from_sys.int_cache",
+        "ls_dmnd_fills_from_sys.mem_io_local"
+      ],
+      "factor": 100
+    },
+    "all_memory_io_fills_per_1000_dc_accesses": {
+      "group": "all_fills",
+      "numerator": [
+        "ls_any_fills_from_sys.mem_io_local"
+      ],
+      "denominator": [
+        "ls_dc_accesses"
+      ],
+      "factor": 1000
+    },
+    "all_memory_io_share_of_local_fills_percent": {
+      "group": "all_fills",
+      "numerator": [
+        "ls_any_fills_from_sys.mem_io_local"
+      ],
+      "denominator": [
+        "ls_any_fills_from_sys.lcl_l2",
+        "ls_any_fills_from_sys.int_cache",
+        "ls_any_fills_from_sys.mem_io_local"
+      ],
+      "factor": 100
+    },
+    "l1_dtlb_misses_per_1000_dc_accesses": {
+      "group": "dtlb",
+      "numerator": [
+        "l1_dtlb_misses"
+      ],
+      "denominator": [
+        "ls_dc_accesses"
+      ],
+      "factor": 1000
+    },
+    "dside_pagewalks_per_1000_dc_accesses": {
+      "group": "dtlb",
+      "numerator": [
+        "ls_tablewalker.dside"
+      ],
+      "denominator": [
+        "ls_dc_accesses"
+      ],
+      "factor": 1000
+    },
+    "dtlb_4k_l2_misses_per_1000_dc_accesses": {
+      "group": "dtlb_4k",
+      "numerator": [
+        "ls_l1_d_tlb_miss.tlb_reload_4k_l2_miss"
+      ],
+      "denominator": [
+        "ls_dc_accesses"
+      ],
+      "factor": 1000
+    },
+    "dtlb_2m_l2_misses_per_1000_dc_accesses": {
+      "group": "dtlb_2m",
+      "numerator": [
+        "ls_l1_d_tlb_miss.tlb_reload_2m_l2_miss"
+      ],
+      "denominator": [
+        "ls_dc_accesses"
+      ],
+      "factor": 1000
+    }
+  },
+  "note": "Zen 3 core events. DC accesses/dispatched operations include speculative activity. Fill ratios are normalized event rates, not retired-load miss probabilities. int_cache includes L3 or other L2 in the CCX; mem_io_local includes DRAM or IO. Core fill events do not measure total system DRAM bandwidth. L2 requests include prefetch. AMD shared-L3 PMU and IMC are not assumed available."
+}
