@@ -11,40 +11,8 @@ from pathlib import Path
 import statistics
 import subprocess
 import sys
-from host_platform import pin_cpu
-
-GROUPS = {
-    "retired_loads": [
-        "mem_inst_retired.all_loads",
-        "mem_load_retired.l1_miss",
-        "mem_load_retired.l2_miss",
-        "mem_load_retired.l3_miss",
-    ],
-    "cache_requests": [
-        "l2_rqsts.all_demand_data_rd",
-        "l2_rqsts.demand_data_rd_miss",
-        "longest_lat_cache.reference",
-        "longest_lat_cache.miss",
-    ],
-    "load_tlb": [
-        "mem_inst_retired.all_loads",
-        "dtlb_load_misses.stlb_hit",
-        "dtlb_load_misses.walk_completed",
-        "dtlb_load_misses.walk_active",
-    ],
-    "store_tlb": [
-        "mem_inst_retired.all_stores",
-        "dtlb_store_misses.stlb_hit",
-        "dtlb_store_misses.walk_completed",
-        "dtlb_store_misses.walk_active",
-    ],
-    "stalls": [
-        "cycle_activity.stalls_l1d_miss",
-        "cycle_activity.stalls_l2_miss",
-        "cycle_activity.stalls_l3_miss",
-        "cycle_activity.stalls_total",
-    ],
-}
+from host_platform import native_pmu, pin_cpu
+from pmu_profiles import select_profile
 
 
 def parse_counts(path):
@@ -68,10 +36,6 @@ def parse_counts(path):
     return result
 
 
-def ratio(counts, numerator, denominator):
-    return counts[numerator]["count"] / counts[denominator]["count"]
-
-
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument(
@@ -86,7 +50,7 @@ def main():
     p.add_argument("--variants", nargs="+", default=["01_original", "02_panel_pack"])
     p.add_argument("--rounds", type=int, default=3)
     p.add_argument("--iterations", type=int, default=3)
-    p.add_argument("--pmu", default="cpu_core")
+    p.add_argument("--pmu", default=None)
     p.add_argument(
         "--event-config", type=Path, help="JSON groups and ratio definitions"
     )
@@ -95,8 +59,19 @@ def main():
     if args.rounds < 1 or args.iterations < 1:
         p.error("rounds and iterations must be positive")
     args.cpu = pin_cpu(args.cpu)
-    config = json.loads(args.event_config.read_text()) if args.event_config else None
-    groups = config["groups"] if config else GROUPS
+    if args.pmu is None:
+        args.pmu = native_pmu(args.cpu) or ""
+    descriptions = subprocess.check_output(["perf", "list", "--details"], text=True)
+    cpuinfo = Path("/proc/cpuinfo")
+    config = (
+        json.loads(args.event_config.read_text())
+        if args.event_config
+        else select_profile(
+            cpuinfo.read_text() if cpuinfo.exists() else "",
+            set(re.findall(r"^  ([\w.]+)(?:\s|$)", descriptions, re.M)),
+        )
+    )
+    groups = config["groups"]
     root = args.input.resolve()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -119,7 +94,6 @@ def main():
             for s, v in cases
         },
     }
-    descriptions = subprocess.check_output(["perf", "list", "--details"], text=True)
     selected = {event for events in groups.values() for event in events}
     definitions = {}
     for event in selected:
@@ -258,128 +232,19 @@ def main():
                 "min": min(values),
                 "max": max(values),
             }
-        metrics = {
-            "ipc": ("retired_loads", lambda c: ratio(c, "instructions", "cycles")),
-            "l1_load_miss_percent": (
-                "retired_loads",
-                lambda c: (
-                    100
-                    * ratio(c, "mem_load_retired.l1_miss", "mem_inst_retired.all_loads")
-                ),
-            ),
-            "l2_load_miss_percent": (
-                "retired_loads",
-                lambda c: (
-                    100
-                    * ratio(c, "mem_load_retired.l2_miss", "mem_inst_retired.all_loads")
-                ),
-            ),
-            "l3_load_miss_percent": (
-                "retired_loads",
-                lambda c: (
-                    100
-                    * ratio(c, "mem_load_retired.l3_miss", "mem_inst_retired.all_loads")
-                ),
-            ),
-            "l2_demand_request_miss_percent": (
-                "cache_requests",
-                lambda c: (
-                    100
-                    * ratio(
-                        c, "l2_rqsts.demand_data_rd_miss", "l2_rqsts.all_demand_data_rd"
-                    )
-                ),
-            ),
-            "llc_request_miss_percent": (
-                "cache_requests",
-                lambda c: (
-                    100
-                    * ratio(c, "longest_lat_cache.miss", "longest_lat_cache.reference")
-                ),
-            ),
-            "load_dtlb_events_per_1000_loads": (
-                "load_tlb",
-                lambda c: (
-                    1000
-                    * (
-                        c["dtlb_load_misses.stlb_hit"]["count"]
-                        + c["dtlb_load_misses.walk_completed"]["count"]
-                    )
-                    / c["mem_inst_retired.all_loads"]["count"]
-                ),
-            ),
-            "load_pagewalks_per_1000_loads": (
-                "load_tlb",
-                lambda c: (
-                    1000
-                    * ratio(
-                        c,
-                        "dtlb_load_misses.walk_completed",
-                        "mem_inst_retired.all_loads",
-                    )
-                ),
-            ),
-            "load_pagewalk_active_cycle_percent": (
-                "load_tlb",
-                lambda c: 100 * ratio(c, "dtlb_load_misses.walk_active", "cycles"),
-            ),
-            "store_dtlb_events_per_1000_stores": (
-                "store_tlb",
-                lambda c: (
-                    1000
-                    * (
-                        c["dtlb_store_misses.stlb_hit"]["count"]
-                        + c["dtlb_store_misses.walk_completed"]["count"]
-                    )
-                    / c["mem_inst_retired.all_stores"]["count"]
-                ),
-            ),
-            "store_pagewalks_per_1000_stores": (
-                "store_tlb",
-                lambda c: (
-                    1000
-                    * ratio(
-                        c,
-                        "dtlb_store_misses.walk_completed",
-                        "mem_inst_retired.all_stores",
-                    )
-                ),
-            ),
-            "store_pagewalk_active_cycle_percent": (
-                "store_tlb",
-                lambda c: 100 * ratio(c, "dtlb_store_misses.walk_active", "cycles"),
-            ),
-            "l1_miss_stall_cycle_percent": (
-                "stalls",
-                lambda c: 100 * ratio(c, "cycle_activity.stalls_l1d_miss", "cycles"),
-            ),
-            "l2_miss_stall_cycle_percent": (
-                "stalls",
-                lambda c: 100 * ratio(c, "cycle_activity.stalls_l2_miss", "cycles"),
-            ),
-            "l3_miss_stall_cycle_percent": (
-                "stalls",
-                lambda c: 100 * ratio(c, "cycle_activity.stalls_l3_miss", "cycles"),
-            ),
-            "total_stall_cycle_percent": (
-                "stalls",
-                lambda c: 100 * ratio(c, "cycle_activity.stalls_total", "cycles"),
-            ),
-        }
-        if config:
-            metrics = {}
-            for name, spec in config["metrics"].items():
+        metrics = {}
+        for name, spec in config["metrics"].items():
 
-                def compute(c, spec=spec):
-                    numerator = sum(c[e]["count"] for e in spec["numerator"])
-                    denominator = sum(c[e]["count"] for e in spec["denominator"])
-                    return (
-                        spec.get("factor", 1) * numerator / denominator
-                        if denominator
-                        else 0.0
-                    )
+            def compute(c, spec=spec):
+                numerator = sum(c[e]["count"] for e in spec["numerator"])
+                denominator = sum(c[e]["count"] for e in spec["denominator"])
+                return (
+                    spec.get("factor", 1) * numerator / denominator
+                    if denominator
+                    else 0.0
+                )
 
-                metrics[name] = (spec["group"], compute)
+            metrics[name] = (spec["group"], compute)
         for name, (group, fn) in metrics.items():
             values = [fn(r["counts"]) for r in by_group[group]]
             result["metrics"][name] = {

@@ -499,6 +499,9 @@ The merged entry was checked with eight dependency-free portability tests
 built, executed and numerically verified all four variants, and completed all
 selected core PMU groups plus independent timing. NEON generation was
 cross-compiled with Clang and checked for `fmla` and reserved macOS `x18`.
+A remote AMD host also resolved `host` to `znver3`, validated all four 256³
+variants, and completed timing when its container blocked perf. Event
+definitions are centralized in `pmu_profiles.py`.
 The Apple native measurements above come from `fix/macos`; this integration
 was not rerun on a Mac. Missing/blocked counters remain explicit in saved
 status and are never synthesized from elapsed time.

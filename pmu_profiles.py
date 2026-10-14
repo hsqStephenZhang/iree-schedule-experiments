@@ -1,5 +1,38 @@
 """Named counter profiles; event availability is checked on the current machine."""
 
+INTEL_GROUPS = {
+    "retired_loads": [
+        "mem_inst_retired.all_loads",
+        "mem_load_retired.l1_miss",
+        "mem_load_retired.l2_miss",
+        "mem_load_retired.l3_miss",
+    ],
+    "cache_requests": [
+        "l2_rqsts.all_demand_data_rd",
+        "l2_rqsts.demand_data_rd_miss",
+        "longest_lat_cache.reference",
+        "longest_lat_cache.miss",
+    ],
+    "load_tlb": [
+        "mem_inst_retired.all_loads",
+        "dtlb_load_misses.stlb_hit",
+        "dtlb_load_misses.walk_completed",
+        "dtlb_load_misses.walk_active",
+    ],
+    "store_tlb": [
+        "mem_inst_retired.all_stores",
+        "dtlb_store_misses.stlb_hit",
+        "dtlb_store_misses.walk_completed",
+        "dtlb_store_misses.walk_active",
+    ],
+    "stalls": [
+        "cycle_activity.stalls_l1d_miss",
+        "cycle_activity.stalls_l2_miss",
+        "cycle_activity.stalls_l3_miss",
+        "cycle_activity.stalls_total",
+    ],
+}
+
 
 def amd_config():
     # Core-scoped Zen 3 events; do not substitute Intel LLC/TLB semantics.
@@ -98,8 +131,6 @@ def amd_config():
 
 
 def intel_config():
-    from profile_perf import GROUPS
-
     metrics = {}
 
     def metric(name, group, numerator, denominator, factor=100):
@@ -163,7 +194,7 @@ def intel_config():
             "cycles",
         )
     return dict(
-        groups=GROUPS,
+        groups=INTEL_GROUPS,
         metrics=metrics,
         note="Intel retired-load miss ratios and speculative DTLB event rates. DTLB events divided by retired loads/stores are normalized rates, not probabilities. Stall events overlap; do not sum them.",
     )

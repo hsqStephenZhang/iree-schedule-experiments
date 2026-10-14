@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run only preloaded GEMM calls inside a perf stat control window."""
+"""Run warmed/preloaded GEMM calls, optionally in a perf stat control window."""
 
 import argparse
 import gc
