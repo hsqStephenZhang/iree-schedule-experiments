@@ -1,0 +1,113 @@
+name: GEMM experiments
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gemm-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  benchmark:
+    name: Benchmark (${{ matrix.runner }})
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Select Clang 18
+        shell: bash
+        run: |
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            if [[ ! -x /usr/lib/llvm-18/bin/clang ]]; then
+              sudo apt-get update
+              sudo apt-get install -y clang-18
+            fi
+            echo /usr/lib/llvm-18/bin >> "$GITHUB_PATH"
+          else
+            llvm_prefix="$(brew --prefix llvm@18)"
+            if [[ ! -x "$llvm_prefix/bin/clang" ]]; then
+              brew install llvm@18
+            fi
+            echo "$llvm_prefix/bin" >> "$GITHUB_PATH"
+          fi
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Portability and report tests
+        run: python -m unittest discover -s tests -v
+      - name: Inspect native host
+        shell: bash
+        run: |
+          mkdir -p results
+          python experiment.py doctor > results/doctor.json
+          cat results/doctor.json
+      - name: Build, validate, benchmark and profile all four variants
+        id: experiment
+        run: >-
+          python -u experiment.py --sizes 2048 4096
+          --rounds 5 --iterations 3 --min-time 3x --backend auto
+          --profile-variants 01_original 02_panel_pack 03_panel_pack_kernel 04_full_pack_kernel
+          --output results/experiment
+      - name: Record runner and outcome
+        if: always()
+        env:
+          CI_RUNNER_LABEL: ${{ matrix.runner }}
+          CI_JOB_STATUS: ${{ job.status }}
+          CI_EXPERIMENT_OUTCOME: ${{ steps.experiment.outcome }}
+        run: python ci_results.py context --output results/context.json
+      - name: Upload raw data and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: gemm-run-${{ matrix.runner }}
+          path: |
+            results/
+            !results/**/.build/**
+          if-no-files-found: error
+          retention-days: 14
+
+  summary:
+    name: Combined results
+    if: always()
+    needs: benchmark
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.11"
+      - name: Download runner data
+        uses: actions/download-artifact@v8.0.2
+        with:
+          pattern: gemm-run-*
+          path: downloaded
+      - name: Combine every runner, size and variant into one table
+        run: >-
+          python ci_results.py summarize --input downloaded --output combined
+          --expected-runners ubuntu-24.04 macos-15 --sizes 2048 4096
+      - name: Upload combined table and samples
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: gemm-combined-results
+          path: combined/
+          if-no-files-found: error
+          retention-days: 30

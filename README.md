@@ -85,6 +85,46 @@ The unified entry uses `--target-cpu` and `--pin-cpu` to avoid this ambiguity.
 `run.sh` forwards to the unified entry; its output now contains `artifacts/`
 and `metrics/`. It accepts the legacy `--cpu`/`--repetitions` spellings.
 
+## GitHub Actions
+
+[GEMM experiments](.github/workflows/gemm.yml) runs on `ubuntu-24.04` and
+`macos-15` for pushes to `main`, pull requests, and manual dispatch. Each
+native runner validates all four variants at 2048³ and 4096³, then measures
+five batches of exactly three timed GEMMs per version/size (`--min-time 3x`).
+Clang 18 is selected on both platforms, Python is 3.11, and IREE stays pinned
+by `requirements.txt`. Native CPU selection and the existing Linux affinity
+policy are retained; actual runner CPU/ISA, image version, compiler, and
+resolved target are recorded rather than assumed from the runner label.
+
+CI passes `--profile-variants` with all four versions, so every case also
+gets five independent timing windows of three GEMMs and any available
+counter groups. The default local profiling scope remains original/panel.
+Hosted runners commonly restrict PMU access; missing core or memory counters
+remain explicitly unavailable. The workflow does not change perf permissions.
+
+The **Combined results** job produces one table with all 16 runner/size/version
+combinations in the Actions run summary. Download `gemm-combined-results` for
+`summary.csv` (the full flat table), `summary.md`, and `summary.json` (all
+samples, metadata, and source reports). It includes batch median/p10/p90,
+GFLOPS, same-runner speedup, numerical error, independent timing, and any
+measured PMU/DRAM fields. Different event profiles retain their original
+names and definitions. Hosted-runner variation limits cross-machine comparisons.
+
+The `gemm-run-*` artifacts retain inputs, VMFBs, MLIR/LLVM IR, compiler and
+benchmark commands, raw reports, and diagnostics for 14 days; combined data
+is retained for 30 days. Failed runners still upload partial data. Missing
+cases appear in the combined table and make aggregation fail rather than
+silently disappearing. Native reports are checked for the requested batch
+and iteration counts.
+
+To reproduce the CI measurement parameters locally in a new output directory:
+
+```sh
+python experiment.py --sizes 2048 4096 --rounds 5 --iterations 3 --min-time 3x \
+  --profile-variants 01_original 02_panel_pack 03_panel_pack_kernel 04_full_pack_kernel \
+  --output results/ci-local
+```
+
 The single-file zipapp retains the lower-level four-way builder entry point:
 
 ```sh

@@ -50,6 +50,12 @@ def main():
         "--min-time", default="0.2s", help="native benchmark minimum time"
     )
     parser.add_argument("--backend", choices=["auto", "perf", "timing"], default="auto")
+    parser.add_argument(
+        "--profile-variants",
+        nargs="+",
+        choices=["01_original", "02_panel_pack", "03_panel_pack_kernel", "04_full_pack_kernel"],
+        help="variants for independent timing/counters (default: original and panel)",
+    )
     parser.add_argument("--memory", choices=["auto", "skip"], default="auto")
     parser.add_argument(
         "--timeout", type=int, default=300, help="per profiling subprocess timeout"
@@ -151,6 +157,7 @@ def main():
                 str(artifacts),
                 "--output",
                 str(out / "metrics"),
+                *(["--variants", *args.profile_variants] if args.profile_variants else []),
                 *cpu_args,
                 *(["--sizes", *map(str, args.sizes)] if args.sizes else []),
                 "--rounds",
