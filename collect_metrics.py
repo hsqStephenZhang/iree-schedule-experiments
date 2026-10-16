@@ -12,7 +12,7 @@ import statistics
 import subprocess
 import sys
 
-from host_platform import hardware_info, native_pmu, pin_cpu
+from host_platform import hardware_info, native_pmu, perf_event_group, pin_cpu
 from pmu_profiles import select_profile
 from profile_perf import parse_counts
 
@@ -175,13 +175,8 @@ def main():
                 # Advertising an event does not guarantee its group can be scheduled.
                 for group, selected in list(config["groups"].items()):
                     report = out / f"probe-{group}.csv"
-                    event_group = (
-                        "{"
-                        + ",".join(
-                            f"{pmu}/{e}/u" if pmu else f"{e}:u"
-                            for e in ["cycles", "instructions", *selected]
-                        )
-                        + "}"
+                    event_group = perf_event_group(
+                        pmu, ["cycles", "instructions", *selected]
                     )
                     probe = capture(
                         f"probe-{group}",

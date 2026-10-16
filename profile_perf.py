@@ -11,7 +11,7 @@ from pathlib import Path
 import statistics
 import subprocess
 import sys
-from host_platform import native_pmu, pin_cpu
+from host_platform import native_pmu, perf_event_group, pin_cpu
 from pmu_profiles import select_profile
 
 
@@ -132,13 +132,7 @@ def main():
                 ctl_r, ctl_w = os.pipe()
                 ack_r, ack_w = os.pipe()
                 selected = ["cycles", "instructions", *events]
-                event_group = (
-                    "{"
-                    + ",".join(
-                        f"{args.pmu}/{e}/u" if args.pmu else f"{e}:u" for e in selected
-                    )
-                    + "}"
-                )
+                event_group = perf_event_group(args.pmu, selected)
                 command = [
                     "perf",
                     "stat",

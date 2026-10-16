@@ -92,3 +92,14 @@ def native_pmu(cpu):
                 if int(bounds[0]) <= cpu <= int(bounds[-1]):
                     return pmu
     return "cpu" if (devices / "cpu").exists() else None
+
+
+def perf_event_group(pmu, events):
+    # Older perf accepts portable aliases but rejects cpu/cycles/u. Hybrid
+    # PMUs still need explicit qualification to select the pinned core type.
+    def selector(event):
+        if not pmu or (pmu == "cpu" and event in ("cycles", "instructions")):
+            return f"{event}:u"
+        return f"{pmu}/{event}/u"
+
+    return "{" + ",".join(selector(event) for event in events) + "}"

@@ -84,6 +84,18 @@ class PortabilityTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "not measured"):
                 parse_counts(report)
 
+    def test_older_perf_aliases_preserve_hybrid_pmu_selection(self):
+        events = ["cycles", "instructions", "mem_inst_retired.all_loads"]
+        self.assertEqual(
+            host.perf_event_group("cpu", events),
+            "{cycles:u,instructions:u,cpu/mem_inst_retired.all_loads/u}",
+        )
+        self.assertEqual(
+            host.perf_event_group("cpu_atom", events),
+            "{cpu_atom/cycles/u,cpu_atom/instructions/u,cpu_atom/mem_inst_retired.all_loads/u}",
+        )
+        self.assertEqual(host.perf_event_group(None, events[:2]), "{cycles:u,instructions:u}")
+
     def test_blocked_perf_and_macos_still_finish_timing(self):
         import collect_metrics
 
