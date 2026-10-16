@@ -1,0 +1,26 @@
+{
+  "source": "User-provided table in this conversation; original results/full JSON not supplied",
+  "machine": "AMD EPYC 7662 64-Core Processor",
+  "architecture": "x86_64",
+  "visible_logical_cpus": 256,
+  "cpu_family": 23,
+  "ssh_alias": null,
+  "rounds": 3,
+  "driver": "local-sync",
+  "threads": 1,
+  "iree_version": null,
+  "target_cpu": null,
+  "statistic": "reported summary; exact aggregation not explicitly supplied",
+  "weights_mode": "not verified from raw artifacts",
+  "validation": "not supplied",
+  "results": [
+    {"size":2048,"variant":"01_original","reported_ms":633.5,"reported_speedup":1.00},
+    {"size":2048,"variant":"02_panel_pack","reported_ms":546.7,"reported_speedup":1.16},
+    {"size":2048,"variant":"03_panel_pack_kernel","reported_ms":367.0,"reported_speedup":1.73},
+    {"size":2048,"variant":"04_full_pack_kernel","reported_ms":721.0,"reported_speedup":0.88},
+    {"size":4096,"variant":"01_original","reported_ms":4779,"reported_speedup":1.00},
+    {"size":4096,"variant":"02_panel_pack","reported_ms":3348,"reported_speedup":1.43},
+    {"size":4096,"variant":"03_panel_pack_kernel","reported_ms":3007,"reported_speedup":1.59},
+    {"size":4096,"variant":"04_full_pack_kernel","reported_ms":5128,"reported_speedup":0.93}
+  ]
+}

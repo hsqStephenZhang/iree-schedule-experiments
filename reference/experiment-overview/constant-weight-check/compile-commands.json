@@ -1,0 +1,52 @@
+{
+  "iree_source_checkout": "89ece87b89852100c0a4ac3d515e14842d090967",
+  "note": "Commands reconstructed from the executed tool invocations; actual compiler version is in verification.json.",
+  "commands": [
+    [
+      ".venv/bin/iree-compile",
+      "reference/experiment-overview/constant-weight-check/dynamic.mlir",
+      "--iree-hal-target-backends=llvm-cpu",
+      "--iree-llvmcpu-target-cpu=host",
+      "--iree-llvmcpu-enable-ukernels=all",
+      "--iree-opt-data-tiling=true",
+      "--compile-to=executable-configurations",
+      "-o",
+      "reference/experiment-overview/constant-weight-check/dynamic-compiled.mlir"
+    ],
+    [
+      ".venv/bin/iree-compile",
+      "reference/experiment-overview/constant-weight-check/constant-b.mlir",
+      "--iree-hal-target-backends=llvm-cpu",
+      "--iree-llvmcpu-target-cpu=host",
+      "--iree-llvmcpu-enable-ukernels=all",
+      "--iree-opt-data-tiling=true",
+      "--compile-to=executable-configurations",
+      "-o",
+      "reference/experiment-overview/constant-weight-check/constant-b-compiled.mlir"
+    ],
+    [
+      ".venv/bin/iree-compile",
+      "reference/experiment-overview/constant-weight-check/constant-b.mlir",
+      "--iree-hal-target-backends=llvm-cpu",
+      "--iree-llvmcpu-target-cpu=host",
+      "--iree-llvmcpu-enable-ukernels=all",
+      "--iree-opt-data-tiling=true",
+      "--iree-opt-const-eval=false",
+      "--compile-to=executable-configurations",
+      "-o",
+      "reference/experiment-overview/constant-weight-check/constant-b-no-consteval-compiled.mlir"
+    ],
+    [
+      ".venv/bin/iree-compile",
+      "reference/experiment-overview/constant-weight-check/constant-b.mlir",
+      "--iree-hal-target-backends=llvm-cpu",
+      "--iree-llvmcpu-target-cpu=host",
+      "--iree-llvmcpu-enable-ukernels=all",
+      "--iree-global-opt-data-tiling=true",
+      "--iree-global-opt-enable-early-materialization=true",
+      "--compile-to=executable-configurations",
+      "-o",
+      "reference/experiment-overview/constant-weight-check/constant-b-early-materialized-compiled.mlir"
+    ]
+  ]
+}

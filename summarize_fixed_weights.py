@@ -22,7 +22,7 @@ def cpu_model(hardware):
 def summarize(datasets, output, expected_hosts=()):
     output.mkdir(parents=True, exist_ok=True)
     entries = []
-    lines = ["# 固定 B 实验汇总", "", "时延为毫秒，中位数；每个正式结果为 10 轮 × 每轮 3 次 GEMM，单线程 local-sync。三组控制实验共用 IREE 8×8×1 微内核和预打包 B。原生 IREE 两条基线使用目标 CPU 默认微内核。", "", "| 主机 / CPU | 尺寸 | 动态 A/B 原生 | 固定 B 原生 | ① full A/full K | ② full A/panel | ③ panel A/panel | ①/② 调度收益 | ②/③ A 策略收益 |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
+    lines = ["# 固定 B 实验汇总", "", "时延为毫秒，是各批原生调用均值的中位数；单线程 local-sync，轮数和每批次数见下方配置。三组控制实验共用 IREE 8×8×1 微内核和预打包 B。原生 IREE 两条基线使用目标 CPU 默认微内核。", "", "| 主机 / CPU | 尺寸 | 动态 A/B 原生 | 固定 B 原生 | ① full A/full K | ② full A/panel | ③ panel A/panel | ①/② 调度收益 | ②/③ A 策略收益 |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
     labels = set()
     for label, source in datasets:
         if label in labels:
@@ -38,6 +38,7 @@ def summarize(datasets, output, expected_hosts=()):
             assert set(rows) == set(VARIANTS), (label, size, set(rows))
             for row in rows.values():
                 assert len(row["times_ms"]) == md["rounds"]
+                assert len(row["samples"]) == md["rounds"]
                 assert abs(statistics.median(row["times_ms"]) - row["median_ms"]) < 1e-8
                 assert all(s["iterations"] == md["iterations"] for s in row["samples"])
             setup = data["setup"][str(size)]
@@ -54,7 +55,12 @@ def summarize(datasets, output, expected_hosts=()):
     missing = sorted(set(expected_hosts) - labels)
     if missing:
         lines += ["", "尚缺结果：" + ", ".join(missing)]
-    lines += ["", "比值 >1 表示后一个策略更快。①/②包含 K 分块、循环次序与 C 累加次数变化；②/③包含 A 的打包次数、布局 stride、临时空间与 dispatch 差异，不能把时延差直接当作独立 pack 函数成本。", "", "B 在稳态计时外打包/加载。原生固定 B 基线由 IREE 自行 hoist B packing；三组控制实验使用同一个预打包参数文件。A packing、输出转换、dispatch 和临时/输出分配均在稳态计时内。每轮复用输入，不清空 cache。", "", "原始样本、验证记录、模块与源码 SHA256、硬件和编译器信息保存在 combined.json；各机器完整生成物保留在对应运行目录/CI artifact。", ""]
+    lines += ["", "比值 >1 表示后一个策略更快。①/②包含 K 分块、循环次序与 C 累加次数变化；②/③包含 A 的打包次数、布局 stride、临时空间与 dispatch 差异，不能把时延差直接当作独立 pack 函数成本。", "", "| 主机 | LLVM target | 固定逻辑 CPU | 轮数 | 每批 GEMM 次数 |", "|---|---|---:|---:|---:|"]
+    for entry in entries:
+        md = entry["data"]["metadata"]
+        cpu = md.get("logical_cpu")
+        lines.append(f"| {entry['host']} | {md.get('target_cpu', '未提供')} | {cpu if cpu is not None else '未绑定'} | {md['rounds']} | {md['iterations']} |")
+    lines += ["", "B 在 GEMM 计时外打包/加载。原生固定 B 基线由 IREE 自行 hoist B packing；三组控制实验使用同一个预打包参数文件。A packing、输出转换、dispatch 和临时/输出分配均在计时内。每轮复用输入，没有额外配置 warmup 时长，不清空 cache；结果不声称剔除了首次 GEMM 的 cache/分配效应。", "", "原始样本、验证记录、模块与源码 SHA256、硬件和编译器信息保存在 combined.json；各机器完整生成物保留在对应运行目录/CI artifact。", ""]
     (output / "README.md").write_text("\n".join(lines))
     (output / "combined.json").write_text(json.dumps({"experiments": entries, "missing_hosts": missing}, indent=2))
     print("\n".join(lines))

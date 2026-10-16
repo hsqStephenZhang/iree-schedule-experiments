@@ -1,0 +1,243 @@
+{
+  "magic.root": {
+    "hostname": "rusty",
+    "pid": 3124554,
+    "started_at": "2026-10-16T18:31:35.043520+00:00",
+    "state": "complete",
+    "commands": [
+      [
+        "/tmp/iree-schedule-stable311-venv/bin/python",
+        "-u",
+        "/tmp/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "512",
+        "--rounds",
+        "1",
+        "--iterations",
+        "1",
+        "--output",
+        "/tmp/iree-fixed-b-20261016/run/smoke",
+        "--target-cpu",
+        "host",
+        "--pin-cpu",
+        "0"
+      ],
+      [
+        "/tmp/iree-schedule-stable311-venv/bin/python",
+        "-u",
+        "/tmp/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "2048",
+        "4096",
+        "--rounds",
+        "10",
+        "--iterations",
+        "3",
+        "--output",
+        "/tmp/iree-fixed-b-20261016/run/full",
+        "--target-cpu",
+        "host",
+        "--pin-cpu",
+        "0"
+      ]
+    ],
+    "stage": "full",
+    "smoke_exit_code": 0,
+    "full_exit_code": 0,
+    "finished_at": "2026-10-16T18:36:43.644435+00:00"
+  },
+  "oracle.usa.amd1": {
+    "hostname": "usa.amd1",
+    "pid": 1839778,
+    "started_at": "2026-10-16T18:31:35.104650+00:00",
+    "state": "complete",
+    "commands": [
+      [
+        "/root/iree-perf-20261016-a4d3bf6/.venv/bin/python",
+        "-u",
+        "/root/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "512",
+        "--rounds",
+        "1",
+        "--iterations",
+        "1",
+        "--output",
+        "/root/iree-fixed-b-20261016/run/smoke",
+        "--target-cpu",
+        "host",
+        "--pin-cpu",
+        "0"
+      ],
+      [
+        "/root/iree-perf-20261016-a4d3bf6/.venv/bin/python",
+        "-u",
+        "/root/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "2048",
+        "--rounds",
+        "10",
+        "--iterations",
+        "3",
+        "--output",
+        "/root/iree-fixed-b-20261016/run/full",
+        "--target-cpu",
+        "host",
+        "--pin-cpu",
+        "0"
+      ]
+    ],
+    "stage": "full",
+    "smoke_exit_code": 0,
+    "full_exit_code": 0,
+    "finished_at": "2026-10-16T18:37:13.129169+00:00"
+  },
+  "ss420e": {
+    "hostname": "ss420e",
+    "pid": 1071625,
+    "started_at": "2026-10-16T18:31:38.394780+00:00",
+    "state": "complete",
+    "commands": [
+      [
+        "/home/sunqi/iree-perf-20261016-a4d3bf6/.venv/bin/python",
+        "-u",
+        "/home/sunqi/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "512",
+        "--rounds",
+        "1",
+        "--iterations",
+        "1",
+        "--output",
+        "/home/sunqi/iree-fixed-b-20261016/run/smoke",
+        "--target-cpu",
+        "host",
+        "--pin-cpu",
+        "0"
+      ],
+      [
+        "/home/sunqi/iree-perf-20261016-a4d3bf6/.venv/bin/python",
+        "-u",
+        "/home/sunqi/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "2048",
+        "4096",
+        "--rounds",
+        "10",
+        "--iterations",
+        "3",
+        "--output",
+        "/home/sunqi/iree-fixed-b-20261016/run/full",
+        "--target-cpu",
+        "host",
+        "--pin-cpu",
+        "0"
+      ]
+    ],
+    "stage": "full",
+    "smoke_exit_code": 0,
+    "full_exit_code": 0,
+    "finished_at": "2026-10-16T18:39:03.725686+00:00"
+  },
+  "ihciah": {
+    "hostname": "zhangchong",
+    "pid": 101976,
+    "started_at": "2026-10-16T18:46:50.906295+00:00",
+    "state": "complete",
+    "commands": [
+      [
+        "/root/workspaces/iree-schedule-experiments/.venv/bin/python",
+        "-u",
+        "/root/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "512",
+        "--rounds",
+        "1",
+        "--iterations",
+        "1",
+        "--output",
+        "/root/iree-fixed-b-20261016/run/smoke",
+        "--target-cpu",
+        "haswell",
+        "--pin-cpu",
+        "5"
+      ],
+      [
+        "/root/workspaces/iree-schedule-experiments/.venv/bin/python",
+        "-u",
+        "/root/iree-fixed-b-20261016/fixed_weights.py",
+        "--sizes",
+        "2048",
+        "4096",
+        "--rounds",
+        "10",
+        "--iterations",
+        "3",
+        "--output",
+        "/root/iree-fixed-b-20261016/run/full",
+        "--target-cpu",
+        "haswell",
+        "--pin-cpu",
+        "5"
+      ]
+    ],
+    "stage": "full",
+    "smoke_exit_code": 0,
+    "full_exit_code": 0,
+    "finished_at": "2026-10-16T18:53:09.986743+00:00"
+  },
+  "local M2 Pro": {
+    "hostname": "asapool2066.vpn.uni-saarland.de",
+    "pid": 83032,
+    "started_at": "2026-10-16T18:32:04.481060+00:00",
+    "state": "complete",
+    "commands": [
+      [
+        "/Users/zc/courses/compiler/iree-schedule-experiments/.venv/bin/python",
+        "-u",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/fixed_weights.py",
+        "--sizes",
+        "512",
+        "--rounds",
+        "1",
+        "--iterations",
+        "1",
+        "--output",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/results/fixed-b-m2-pro/smoke",
+        "--target-cpu",
+        "host"
+      ],
+      [
+        "/Users/zc/courses/compiler/iree-schedule-experiments/.venv/bin/python",
+        "-u",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/fixed_weights.py",
+        "--sizes",
+        "2048",
+        "4096",
+        "--rounds",
+        "10",
+        "--iterations",
+        "3",
+        "--output",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/results/fixed-b-m2-pro/full",
+        "--target-cpu",
+        "host"
+      ]
+    ],
+    "stage": "full",
+    "smoke_exit_code": 0,
+    "full_exit_code": 0,
+    "finished_at": "2026-10-16T18:38:23.807699+00:00"
+  },
+  "GitHub CI": {
+    "run_id": 38948593054,
+    "conclusion": "success",
+    "jobs": [
+      "Fixed B (ubuntu-24.04)",
+      "Fixed B (macos-15)",
+      "Fixed B combined results"
+    ],
+    "commit": "99784775ef5329e90b584fac0f241c8d61d783c6",
+    "scope": "Raw JSON downloaded from successful combined artifact; original VMFB/IR retained in per-runner artifacts."
+  }
+}

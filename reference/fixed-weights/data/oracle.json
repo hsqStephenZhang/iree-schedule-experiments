@@ -1,0 +1,727 @@
+{
+  "metadata": {
+    "schema_version": 1,
+    "experiment": "fixed_b_controlled",
+    "platform": "Linux-6.5.0-1020-oracle-x86_64-with-glibc2.35",
+    "hardware": {
+      "system": "Linux",
+      "architecture": "x86_64",
+      "platform": "Linux-6.5.0-1020-oracle-x86_64-with-glibc2.35",
+      "affinity": [
+        0
+      ],
+      "logical_cpu": 0,
+      "/proc/cpuinfo": "processor\t: 0\nvendor_id\t: AuthenticAMD\ncpu family\t: 23\nmodel\t\t: 1\nmodel name\t: AMD EPYC 7551 32-Core Processor\nstepping\t: 2\nmicrocode\t: 0x1000065\ncpu MHz\t\t: 1996.249\ncache size\t: 512 KB\nphysical id\t: 0\nsiblings\t: 2\ncore id\t\t: 0\ncpu cores\t: 1\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibpb vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec xgetbv1 clzero xsaveerptr virt_ssbd arat npt nrip_save arch_capabilities\nbugs\t\t: sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass retbleed smt_rsb srso div0\nbogomips\t: 3992.49\nTLB size\t: 1024 4K pages\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 40 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 1\nvendor_id\t: AuthenticAMD\ncpu family\t: 23\nmodel\t\t: 1\nmodel name\t: AMD EPYC 7551 32-Core Processor\nstepping\t: 2\nmicrocode\t: 0x1000065\ncpu MHz\t\t: 1996.249\ncache size\t: 512 KB\nphysical id\t: 0\nsiblings\t: 2\ncore id\t\t: 0\ncpu cores\t: 1\napicid\t\t: 1\ninitial apicid\t: 1\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibpb vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec xgetbv1 clzero xsaveerptr virt_ssbd arat npt nrip_save arch_capabilities\nbugs\t\t: sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass retbleed smt_rsb srso div0\nbogomips\t: 3992.49\nTLB size\t: 1024 4K pages\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 40 bits physical, 48 bits virtual\npower management:\n\n",
+      "/proc/self/status": "Name:\tpython\nUmask:\t0022\nState:\tR (running)\nTgid:\t1839842\nNgid:\t0\nPid:\t1839842\nPPid:\t1839778\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1839842\nNSpid:\t1839842\nNSpgid:\t1839777\nNSsid:\t1839777\nKthread:\t0\nVmPeak:\t  374464 kB\nVmSize:\t  374464 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   99516 kB\nVmRSS:\t   99516 kB\nRssAnon:\t   22716 kB\nRssFile:\t   76800 kB\nRssShmem:\t       0 kB\nVmData:\t   55516 kB\nVmStk:\t     132 kB\nVmExe:\t   10416 kB\nVmLib:\t  194628 kB\nVmPTE:\t     500 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t0/3461\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001007\nSigCgt:\t0000000000000000\nCapInh:\t0000000000000000\nCapPrm:\t000001ffffffffff\nCapEff:\t000001ffffffffff\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t1\nCpus_allowed_list:\t0\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t223\nnonvoluntary_ctxt_switches:\t2\n",
+      "/proc/sys/kernel/perf_event_paranoid": "4\n",
+      "/sys/kernel/mm/transparent_hugepage/enabled": "always [madvise] never\n",
+      "topology/thread_siblings_list": "0-1",
+      "cpu_details": "Architecture:                       x86_64\nCPU op-mode(s):                     32-bit, 64-bit\nAddress sizes:                      40 bits physical, 48 bits virtual\nByte Order:                         Little Endian\nCPU(s):                             2\nOn-line CPU(s) list:                0,1\nVendor ID:                          AuthenticAMD\nModel name:                         AMD EPYC 7551 32-Core Processor\nCPU family:                         23\nModel:                              1\nThread(s) per core:                 2\nCore(s) per socket:                 1\nSocket(s):                          1\nStepping:                           2\nBogoMIPS:                           3992.49\nFlags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibpb vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec xgetbv1 clzero xsaveerptr virt_ssbd arat npt nrip_save arch_capabilities\nVirtualization:                     AMD-V\nHypervisor vendor:                  KVM\nVirtualization type:                full\nL1d cache:                          64 KiB (1 instance)\nL1i cache:                          64 KiB (1 instance)\nL2 cache:                           512 KiB (1 instance)\nL3 cache:                           16 MiB (1 instance)\nNUMA node(s):                       1\nNUMA node0 CPU(s):                  0,1\nVulnerability Gather data sampling: Not affected\nVulnerability Itlb multihit:        Not affected\nVulnerability L1tf:                 Not affected\nVulnerability Mds:                  Not affected\nVulnerability Meltdown:             Not affected\nVulnerability Mmio stale data:      Not affected\nVulnerability Retbleed:             Mitigation; untrained return thunk; SMT vulnerable\nVulnerability Spec rstack overflow: Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:           Mitigation; Retpolines, IBPB conditional, STIBP disabled, RSB filling, PBRSB-eIBRS Not affected\nVulnerability Srbds:                Not affected\nVulnerability Tsx async abort:      Not affected\n"
+    },
+    "target_cpu": "host",
+    "logical_cpu": 0,
+    "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+    "sizes": [
+      2048
+    ],
+    "rounds": 10,
+    "iterations": 3,
+    "driver": "local-sync",
+    "dtype": "float32",
+    "microkernel": "IREE 8x8x1 for all three controlled groups; native baseline target-selected",
+    "blocking": {
+      "MC": 64,
+      "NC": 128,
+      "KC": 256
+    },
+    "scope": "native Google Benchmark real_time; A packing, GEMM, C unpack, dispatch and output/transient allocation included; parameter archive loading and one-time B packing excluded; no cache flush",
+    "b_lifetime": "one IREE pack_b invocation creates shared weights.irpa; each benchmark context initializes immutable B once and reuses across warmup/timed calls",
+    "variants": {
+      "00_dynamic_baseline": "original native IREE data-tiling, dynamic A/B; historical reference",
+      "00_native_fixed_b": "native IREE matmul with immutable raw B; IREE hoists native B packing into context initialization",
+      "01_full_a_full_k": "full A pack each call, NC/MC/full-K",
+      "02_full_a_panel": "full A pack each call, NC/KC/MC",
+      "03_panel_a_panel": "panel A pack each call, NC/KC/MC; A repacked size/NC times"
+    },
+    "source_hashes": {
+      "fixed_weights.py": "06f031ab4a414d2952707a713477a1ea88d33b98e983673ad354f33b65480171",
+      "build_fixed_weights.py": "7e3f8e94fc6de046b6efd650cc1b09cd5853be237e82bcd576a1018067783fe9",
+      "common.py": "5b2844786ebb63284fbd33978063e381a441a68af692e4b875f2b0fced142273",
+      "host_platform.py": "2f7bbd67aa41ece8ec9d65cc1fd4b9892e468f7b12bc65a1b19b96e5a279be61"
+    }
+  },
+  "setup": {
+    "2048": {
+      "b_pack_invocations": 1,
+      "b_pack_once_ms_including_python_and_output_allocation": 95.639959,
+      "b_pack_layout_verified_exactly": true,
+      "weights_archive_sha256": "9e80cd7241322372de4bc42698d6d855655a51da9cf6ac80a2af87727cadae34",
+      "validation": [
+        {
+          "variant": "00_dynamic_baseline",
+          "same_context_distinct_inputs": [
+            {
+              "input_index": 0,
+              "max_abs_error": 0.0005978364204679565,
+              "invocation_ms_including_python": 1603.443792
+            },
+            {
+              "input_index": 1,
+              "max_abs_error": 0.00024218613188509153,
+              "invocation_ms_including_python": 1420.692013
+            }
+          ],
+          "context_init_ms_including_parameter_load": 3.755128
+        },
+        {
+          "variant": "00_native_fixed_b",
+          "same_context_distinct_inputs": [
+            {
+              "input_index": 0,
+              "max_abs_error": 0.0005978364204679565,
+              "invocation_ms_including_python": 1390.146717
+            },
+            {
+              "input_index": 1,
+              "max_abs_error": 0.00024218613188509153,
+              "invocation_ms_including_python": 1632.699656
+            }
+          ],
+          "context_init_ms_including_parameter_load": 12.753035
+        },
+        {
+          "variant": "01_full_a_full_k",
+          "same_context_distinct_inputs": [
+            {
+              "input_index": 0,
+              "max_abs_error": 0.0005978364204679565,
+              "invocation_ms_including_python": 1475.093518
+            },
+            {
+              "input_index": 1,
+              "max_abs_error": 0.00024218613188509153,
+              "invocation_ms_including_python": 1389.701148
+            }
+          ],
+          "context_init_ms_including_parameter_load": 3.408152
+        },
+        {
+          "variant": "02_full_a_panel",
+          "same_context_distinct_inputs": [
+            {
+              "input_index": 0,
+              "max_abs_error": 0.0005978364204679565,
+              "invocation_ms_including_python": 1720.844679
+            },
+            {
+              "input_index": 1,
+              "max_abs_error": 0.00024218613188509153,
+              "invocation_ms_including_python": 1422.247446
+            }
+          ],
+          "context_init_ms_including_parameter_load": 3.529641
+        },
+        {
+          "variant": "03_panel_a_panel",
+          "same_context_distinct_inputs": [
+            {
+              "input_index": 0,
+              "max_abs_error": 0.0005978364204679565,
+              "invocation_ms_including_python": 1459.242516
+            },
+            {
+              "input_index": 1,
+              "max_abs_error": 0.00024218613188509153,
+              "invocation_ms_including_python": 1568.90105
+            }
+          ],
+          "context_init_ms_including_parameter_load": 1.300358
+        }
+      ]
+    }
+  },
+  "module_audit": {
+    "2048": {
+      "00_dynamic_baseline": {
+        "module_sha256": "9742e4aa24626bc3019deb93b5a953e692a29172acfd1f2129ba4c9708ea79de",
+        "source_sha256": "0e2aba273edc02784e13d24b71f68b3c2ca63e2252020267825c8c4a1061d92e"
+      },
+      "00_native_fixed_b": {
+        "module_sha256": "df4f7089ebeca6b464ea9c5fc6111005dfbf4035d816c6156336ef532b678b6d",
+        "source_sha256": "f1de0e2cff77671e8c079697877b5b9bde56437bbce2e30f1f3794f278c0ae20",
+        "gemm_runtime_inputs": 1,
+        "b_pack_in_initializer": true,
+        "microkernel": "native IREE target-selected"
+      },
+      "01_full_a_full_k": {
+        "module_sha256": "cf31304bdf4dabb92f070af6a45866f5dd243b48534c931e9f0ec04250db60e1",
+        "source_sha256": "f5fdbad698abc1a6f8d28015460508eabcbed4a526621001aecf4b8ebe797355",
+        "gemm_runtime_inputs": 1,
+        "b_load_in_initializer_only": true,
+        "mmt4d_geometry": [
+          8,
+          8,
+          1
+        ],
+        "gemm_dispatches": 3,
+        "a_pack_call_sites": 1,
+        "a_panel_stack_bytes": 0
+      },
+      "02_full_a_panel": {
+        "module_sha256": "53c8bcd911a45ec9618dbfc963158089dd67a615fdfde18c63c43c44b520da1a",
+        "source_sha256": "0ab6a95a07d7be007a48dfb333aebbcb4f500c9b10c1158aa932c2500518e7a6",
+        "gemm_runtime_inputs": 1,
+        "b_load_in_initializer_only": true,
+        "mmt4d_geometry": [
+          8,
+          8,
+          1
+        ],
+        "gemm_dispatches": 3,
+        "a_pack_call_sites": 1,
+        "a_panel_stack_bytes": 0
+      },
+      "03_panel_a_panel": {
+        "module_sha256": "54565a38d52a2842bb6e751c5d21d9dddcc67db1b2cee884d06d8ae43c35f1f5",
+        "source_sha256": "c9d9822cd3293af0767aab79a1b955c47284e5e475ed084b2795b79c97128396",
+        "gemm_runtime_inputs": 1,
+        "b_load_in_initializer_only": true,
+        "mmt4d_geometry": [
+          8,
+          8,
+          1
+        ],
+        "gemm_dispatches": 2,
+        "a_pack_call_sites": 1,
+        "a_panel_stack_bytes": 65536
+      }
+    }
+  },
+  "results": [
+    {
+      "size": 2048,
+      "variant": "00_dynamic_baseline",
+      "times_ms": [
+        2201.5655090411506,
+        1471.1000820000966,
+        1562.5420411427815,
+        1462.2365136941273,
+        1467.383603254954,
+        1506.9576253493626,
+        1470.4978714386623,
+        1634.8579128583272,
+        1671.012004216512,
+        1502.47260928154
+      ],
+      "samples": [
+        {
+          "round": 0,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 2201.5655090411506,
+          "cpu_time": 2198.69354,
+          "time_unit": "ms"
+        },
+        {
+          "round": 1,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1471.1000820000966,
+          "cpu_time": 1470.359692,
+          "time_unit": "ms"
+        },
+        {
+          "round": 2,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1562.5420411427815,
+          "cpu_time": 1562.1375546666668,
+          "time_unit": "ms"
+        },
+        {
+          "round": 3,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1462.2365136941273,
+          "cpu_time": 1461.6239346666669,
+          "time_unit": "ms"
+        },
+        {
+          "round": 4,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1467.383603254954,
+          "cpu_time": 1467.0665593333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 5,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1506.9576253493626,
+          "cpu_time": 1491.1348639999997,
+          "time_unit": "ms"
+        },
+        {
+          "round": 6,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1470.4978714386623,
+          "cpu_time": 1470.126666,
+          "time_unit": "ms"
+        },
+        {
+          "round": 7,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1634.8579128583272,
+          "cpu_time": 1632.0822353333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 8,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1671.012004216512,
+          "cpu_time": 1668.5241863333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 9,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1502.47260928154,
+          "cpu_time": 1500.7770233333333,
+          "time_unit": "ms"
+        }
+      ],
+      "median_ms": 1504.7151173154512,
+      "min_ms": 1462.2365136941273,
+      "max_ms": 2201.5655090411506,
+      "speedup_vs_dynamic_baseline": 1.0,
+      "speedup_vs_fixed_b_full_a_full_k": 0.9582065942602374,
+      "speedup_vs_native_fixed_b": 1.0050472146525828,
+      "gflops": 11.417356671906408
+    },
+    {
+      "size": 2048,
+      "variant": "00_native_fixed_b",
+      "times_ms": [
+        1468.8770671685536,
+        1729.6984791755676,
+        1555.7424078385036,
+        1709.8532319068909,
+        1400.9883006413777,
+        1400.9529898564022,
+        1411.9680573542912,
+        1421.405131618182,
+        1701.0617107152939,
+        1636.0940337181091
+      ],
+      "samples": [
+        {
+          "round": 0,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1468.8770671685536,
+          "cpu_time": 1466.1856036666666,
+          "time_unit": "ms"
+        },
+        {
+          "round": 1,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1729.6984791755676,
+          "cpu_time": 1695.2468449999997,
+          "time_unit": "ms"
+        },
+        {
+          "round": 2,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1555.7424078385036,
+          "cpu_time": 1554.3426789999996,
+          "time_unit": "ms"
+        },
+        {
+          "round": 3,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1709.8532319068909,
+          "cpu_time": 1703.901502,
+          "time_unit": "ms"
+        },
+        {
+          "round": 4,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1400.9883006413777,
+          "cpu_time": 1400.717378666667,
+          "time_unit": "ms"
+        },
+        {
+          "round": 5,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1400.9529898564022,
+          "cpu_time": 1400.6243936666667,
+          "time_unit": "ms"
+        },
+        {
+          "round": 6,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1411.9680573542912,
+          "cpu_time": 1410.2555236666665,
+          "time_unit": "ms"
+        },
+        {
+          "round": 7,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1421.405131618182,
+          "cpu_time": 1420.992233,
+          "time_unit": "ms"
+        },
+        {
+          "round": 8,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1701.0617107152939,
+          "cpu_time": 1643.7918253333335,
+          "time_unit": "ms"
+        },
+        {
+          "round": 9,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1636.0940337181091,
+          "cpu_time": 1635.3399333333334,
+          "time_unit": "ms"
+        }
+      ],
+      "median_ms": 1512.3097375035286,
+      "min_ms": 1400.9529898564022,
+      "max_ms": 1729.6984791755676,
+      "speedup_vs_dynamic_baseline": 0.9949781317942088,
+      "speedup_vs_fixed_b_full_a_full_k": 0.9533946070299424,
+      "speedup_vs_native_fixed_b": 1.0,
+      "gflops": 11.360020211441583
+    },
+    {
+      "size": 2048,
+      "variant": "01_full_a_full_k",
+      "times_ms": [
+        1444.2455470561981,
+        1435.6307536363602,
+        1441.0956104596455,
+        1400.9446402390797,
+        1442.5602853298187,
+        1410.4580481847127,
+        1520.86907128493,
+        1460.9639545281727,
+        1403.8233757019043,
+        1572.6895531018574
+      ],
+      "samples": [
+        {
+          "round": 0,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1444.2455470561981,
+          "cpu_time": 1443.7761753333336,
+          "time_unit": "ms"
+        },
+        {
+          "round": 1,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1435.6307536363602,
+          "cpu_time": 1435.3724533333332,
+          "time_unit": "ms"
+        },
+        {
+          "round": 2,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1441.0956104596455,
+          "cpu_time": 1440.8087233333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 3,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1400.9446402390797,
+          "cpu_time": 1400.6061433333334,
+          "time_unit": "ms"
+        },
+        {
+          "round": 4,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1442.5602853298187,
+          "cpu_time": 1442.204231333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 5,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1410.4580481847127,
+          "cpu_time": 1410.002545,
+          "time_unit": "ms"
+        },
+        {
+          "round": 6,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1520.86907128493,
+          "cpu_time": 1494.1628216666668,
+          "time_unit": "ms"
+        },
+        {
+          "round": 7,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1460.9639545281727,
+          "cpu_time": 1460.6594493333332,
+          "time_unit": "ms"
+        },
+        {
+          "round": 8,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1403.8233757019043,
+          "cpu_time": 1403.513256333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 9,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1572.6895531018574,
+          "cpu_time": 1571.4845210000003,
+          "time_unit": "ms"
+        }
+      ],
+      "median_ms": 1441.827947894732,
+      "min_ms": 1400.9446402390797,
+      "max_ms": 1572.6895531018574,
+      "speedup_vs_dynamic_baseline": 1.0436162785667618,
+      "speedup_vs_fixed_b_full_a_full_k": 1.0,
+      "speedup_vs_native_fixed_b": 1.048883633939618,
+      "gflops": 11.915339281004355
+    },
+    {
+      "size": 2048,
+      "variant": "02_full_a_panel",
+      "times_ms": [
+        2159.793049097061,
+        1457.8269372383754,
+        1428.467482328415,
+        1586.243396004041,
+        1480.1626950502396,
+        1430.81596493721,
+        2228.6463330189385,
+        1978.6147723595302,
+        1424.4565665721893,
+        1427.4193346500397
+      ],
+      "samples": [
+        {
+          "round": 0,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 2159.793049097061,
+          "cpu_time": 2155.8975083333335,
+          "time_unit": "ms"
+        },
+        {
+          "round": 1,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1457.8269372383754,
+          "cpu_time": 1457.300972,
+          "time_unit": "ms"
+        },
+        {
+          "round": 2,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1428.467482328415,
+          "cpu_time": 1428.1905526666662,
+          "time_unit": "ms"
+        },
+        {
+          "round": 3,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1586.243396004041,
+          "cpu_time": 1585.0767643333331,
+          "time_unit": "ms"
+        },
+        {
+          "round": 4,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1480.1626950502396,
+          "cpu_time": 1479.6986636666663,
+          "time_unit": "ms"
+        },
+        {
+          "round": 5,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1430.81596493721,
+          "cpu_time": 1430.4352630000003,
+          "time_unit": "ms"
+        },
+        {
+          "round": 6,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 2228.6463330189385,
+          "cpu_time": 2196.7300470000005,
+          "time_unit": "ms"
+        },
+        {
+          "round": 7,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1978.6147723595302,
+          "cpu_time": 1933.360633666667,
+          "time_unit": "ms"
+        },
+        {
+          "round": 8,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1424.4565665721893,
+          "cpu_time": 1424.143368,
+          "time_unit": "ms"
+        },
+        {
+          "round": 9,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1427.4193346500397,
+          "cpu_time": 1427.035181,
+          "time_unit": "ms"
+        }
+      ],
+      "median_ms": 1468.9948161443076,
+      "min_ms": 1424.4565665721893,
+      "max_ms": 2228.6463330189385,
+      "speedup_vs_dynamic_baseline": 1.0243161519554569,
+      "speedup_vs_fixed_b_full_a_full_k": 0.9815064914109902,
+      "speedup_vs_native_fixed_b": 1.0294860954464837,
+      "gflops": 11.694982851670135
+    },
+    {
+      "size": 2048,
+      "variant": "03_panel_a_panel",
+      "times_ms": [
+        1704.1400223970413,
+        1464.3627554178238,
+        1636.437753836314,
+        1464.6471788485844,
+        1524.4612445433934,
+        1805.9930354356766,
+        1471.6292023658752,
+        2166.7308608690896,
+        1466.128369172414,
+        1469.084993004799
+      ],
+      "samples": [
+        {
+          "round": 0,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1704.1400223970413,
+          "cpu_time": 1701.1948886666667,
+          "time_unit": "ms"
+        },
+        {
+          "round": 1,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 1464.3627554178238,
+          "cpu_time": 1464.0871630000001,
+          "time_unit": "ms"
+        },
+        {
+          "round": 2,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1636.437753836314,
+          "cpu_time": 1635.541116333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 3,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1464.6471788485844,
+          "cpu_time": 1464.2985483333334,
+          "time_unit": "ms"
+        },
+        {
+          "round": 4,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1524.4612445433934,
+          "cpu_time": 1524.0431666666666,
+          "time_unit": "ms"
+        },
+        {
+          "round": 5,
+          "position": 0,
+          "iterations": 3,
+          "real_time": 1805.9930354356766,
+          "cpu_time": 1800.3544446666665,
+          "time_unit": "ms"
+        },
+        {
+          "round": 6,
+          "position": 4,
+          "iterations": 3,
+          "real_time": 1471.6292023658752,
+          "cpu_time": 1471.3287603333335,
+          "time_unit": "ms"
+        },
+        {
+          "round": 7,
+          "position": 3,
+          "iterations": 3,
+          "real_time": 2166.7308608690896,
+          "cpu_time": 2104.564018333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 8,
+          "position": 2,
+          "iterations": 3,
+          "real_time": 1466.128369172414,
+          "cpu_time": 1465.7728873333333,
+          "time_unit": "ms"
+        },
+        {
+          "round": 9,
+          "position": 1,
+          "iterations": 3,
+          "real_time": 1469.084993004799,
+          "cpu_time": 1468.7188143333333,
+          "time_unit": "ms"
+        }
+      ],
+      "median_ms": 1498.0452234546342,
+      "min_ms": 1464.3627554178238,
+      "max_ms": 2166.7308608690896,
+      "speedup_vs_dynamic_baseline": 1.0044523982029299,
+      "speedup_vs_fixed_b_full_a_full_k": 0.9624729115785572,
+      "speedup_vs_native_fixed_b": 1.0095220850649615,
+      "gflops": 11.468191290234612
+    }
+  ]
+}

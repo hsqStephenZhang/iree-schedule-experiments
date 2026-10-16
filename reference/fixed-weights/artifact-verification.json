@@ -1,0 +1,85 @@
+{
+  "directly_verified": [
+    {
+      "host": "magic.root",
+      "variant_modules_verified": 10,
+      "source_and_vmfb_sha256_match": true,
+      "a_stack_allocations_bytes": {
+        "2048/01_full_a_full_k": [],
+        "2048/02_full_a_panel": [],
+        "2048/03_panel_a_panel": [
+          65536
+        ],
+        "4096/01_full_a_full_k": [],
+        "4096/02_full_a_panel": [],
+        "4096/03_panel_a_panel": [
+          65536
+        ]
+      }
+    },
+    {
+      "host": "oracle.usa.amd1",
+      "variant_modules_verified": 5,
+      "source_and_vmfb_sha256_match": true,
+      "a_stack_allocations_bytes": {
+        "2048/01_full_a_full_k": [],
+        "2048/02_full_a_panel": [],
+        "2048/03_panel_a_panel": [
+          65536
+        ]
+      }
+    },
+    {
+      "host": "ss420e",
+      "variant_modules_verified": 10,
+      "source_and_vmfb_sha256_match": true,
+      "a_stack_allocations_bytes": {
+        "2048/01_full_a_full_k": [],
+        "2048/02_full_a_panel": [],
+        "2048/03_panel_a_panel": [
+          65536
+        ],
+        "4096/01_full_a_full_k": [],
+        "4096/02_full_a_panel": [],
+        "4096/03_panel_a_panel": [
+          65536
+        ]
+      }
+    },
+    {
+      "host": "ihciah",
+      "variant_modules_verified": 10,
+      "source_and_vmfb_sha256_match": true,
+      "a_stack_allocations_bytes": {
+        "2048/01_full_a_full_k": [],
+        "2048/02_full_a_panel": [],
+        "2048/03_panel_a_panel": [
+          65536
+        ],
+        "4096/01_full_a_full_k": [],
+        "4096/02_full_a_panel": [],
+        "4096/03_panel_a_panel": [
+          65536
+        ]
+      }
+    },
+    {
+      "host": "local M2 Pro",
+      "variant_modules_verified": 10,
+      "source_and_vmfb_sha256_match": true,
+      "a_stack_allocations_bytes": {
+        "2048/01_full_a_full_k": [],
+        "2048/02_full_a_panel": [],
+        "2048/03_panel_a_panel": [
+          65536
+        ],
+        "4096/01_full_a_full_k": [],
+        "4096/02_full_a_panel": [],
+        "4096/03_panel_a_panel": [
+          65536
+        ]
+      }
+    }
+  ],
+  "ci": "CI metadata/runtime audit validated by successful runner and report jobs; full binary artifact byte checks were not repeated locally."
+}

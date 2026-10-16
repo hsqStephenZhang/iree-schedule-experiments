@@ -1,0 +1,58 @@
+{
+  "magic-root": {
+    "packages": {
+      "iree-base-compiler": "3.12.0",
+      "iree-base-runtime": "3.12.0",
+      "numpy": "2.4.6"
+    },
+    "source": "read from the exact benchmark venv after completion"
+  },
+  "oracle": {
+    "packages": {
+      "iree-base-compiler": "3.12.0",
+      "iree-base-runtime": "3.12.0",
+      "numpy": "2.4.6"
+    },
+    "source": "read from the exact benchmark venv after completion"
+  },
+  "ss420e": {
+    "packages": {
+      "iree-base-compiler": "3.12.0",
+      "iree-base-runtime": "3.12.0",
+      "numpy": "2.4.6"
+    },
+    "source": "read from the exact benchmark venv after completion"
+  },
+  "ihciah": {
+    "packages": {
+      "iree-base-compiler": "3.12.0",
+      "iree-base-runtime": "3.12.0",
+      "numpy": "2.4.6"
+    },
+    "source": "read from the exact benchmark venv after completion"
+  },
+  "local M2 Pro": {
+    "packages": {
+      "iree-base-compiler": "3.12.0",
+      "iree-base-runtime": "3.12.0",
+      "numpy": "2.4.6"
+    },
+    "source": "exact benchmark venv"
+  },
+  "ubuntu-24.04": {
+    "packages": {
+      "iree-base-compiler": "3.12.0",
+      "iree-base-runtime": "3.12.0",
+      "numpy": "2.4.6"
+    },
+    "source": "CI 38948593054 installation log: 2026-10-16T18:36:33.1752399Z Successfully installed iree-base-compiler-3.12.0 iree-base-runtime-3.12.0 ml_dtypes-0.6.0 mpmath-1.3.0 numpy-2.4.6 sympy-1.14.0"
+  },
+  "macos-15": {
+    "packages": {
+      "iree-base-compiler": "3.12.0",
+      "iree-base-runtime": "3.12.0",
+      "numpy": "2.4.6"
+    },
+    "source": "CI 38948593054 installation log: 2026-10-16T18:36:36.2041930Z Successfully installed iree-base-compiler-3.12.0 iree-base-runtime-3.12.0 ml_dtypes-0.6.0 mpmath-1.3.0 numpy-2.4.6 sympy-1.14.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "algorithm_commit": "99784775ef5329e90b584fac0f241c8d61d783c6",
+  "sha256": "dbd0cb9f70df5dd033a5c1cfc7303bc4623333d1429a6edcffab4e889fc194da",
+  "files": {
+    "fixed_weights.py": "06f031ab4a414d2952707a713477a1ea88d33b98e983673ad354f33b65480171",
+    "build_fixed_weights.py": "7e3f8e94fc6de046b6efd650cc1b09cd5853be237e82bcd576a1018067783fe9",
+    "run_fixed_weights_job.py": "d137468d1852febdd2518f7dfde99bf15767e6aedcf14d9e735dfc029bb488d4",
+    "summarize_fixed_weights.py": "cf18dd9a4910dba16e100247ef4fc09a3848ea29e791c528b07384d8f1bc1cb1",
+    "common.py": "5b2844786ebb63284fbd33978063e381a441a68af692e4b875f2b0fced142273",
+    "host_platform.py": "2f7bbd67aa41ece8ec9d65cc1fd4b9892e468f7b12bc65a1b19b96e5a279be61",
+    "requirements.txt": "ebea65ec5f5502f7f3d15af9d9d73893aadae696b04425a26f34f8b610500cb3"
+  },
+  "purpose": "Standalone source bundle for the school EPYC 7662 manual run; includes measurement notes. Install requirements.txt into Python 3.11 then run run_fixed_weights_job.py."
+}

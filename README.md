@@ -5,6 +5,60 @@ tiling, interleaved panel packing, a custom AVX2/NEON microkernel, and the same
 microkernel with complete input packing. No IREE source checkout or compiler
 rebuild is required.
 
+The four-way benchmarks take runtime A and B inputs and include packing on
+each invocation. They do not measure the steady state of a model with
+persistent prepacked weights, or GEMV. See the
+[all-machine experiment summary](reference/experiment-overview/README.md) and
+[constant-weight analysis and compilation checks](reference/experiment-overview/constant-weights.md)
+for the measured scope, machine models, results, and remaining comparisons.
+
+## Fixed-weight B comparison
+
+The separate fixed-weight experiment keeps A dynamic and loads immutable B
+once per context. It includes the original dynamic baseline, a native IREE
+fixed-B baseline, and three controls using the same IREE 8×8×1 microkernel:
+
+| Variant | A packing on every call | Computation |
+| --- | --- | --- |
+| `00_dynamic_baseline` | Native full A and B packing | Native IREE |
+| `00_native_fixed_b` | Native full A packing; native B packing hoisted to initialization | Native IREE |
+| `01_full_a_full_k` | Full A, separate dispatch/transient | NC → MC, full K |
+| `02_full_a_panel` | Same full A packing | NC → KC → MC |
+| `03_panel_a_panel` | MC×KC scratch inside compute | Same NC → KC → MC |
+
+```sh
+# Uses the dependencies installed below; no Clang or IREE checkout needed.
+python run_fixed_weights_job.py --sizes 2048 4096 --rounds 10 --iterations 3 --output results/fixed-b
+python summarize_fixed_weights.py --dataset local=results/fixed-b/full/results.json --output results/fixed-b-summary
+```
+
+The job first runs a 512³ smoke test. Three controlled variants use the same
+prepacked B `[N/8,K,8,1]` parameter archive. A is packed as `[M/8,K,8,1]`
+when full-packed. MC=64, NC=128, KC=256; the panel-A variant repeats A
+packing across N/NC strips. Full A uses IREE transient memory, with only
+64 KiB of panel-A stack scratch. All three write the same tiled C transient
+and run the same output-unpack dispatch. The native baselines may select a
+different microkernel and are complete-configuration comparisons.
+
+B packing is performed once outside steady-state timing and its cost is
+recorded separately. The native fixed-B baseline packs raw B during context
+initialization using IREE's own hoisting. Benchmark contexts reuse the
+result across timed calls. No extra warmup duration is configured. A packing, GEMM, C unpack, dispatch,
+and output/transient allocation remain timed. Each module is validated
+against float64 NumPy with two different A tensors in the same context.
+Ten rotated/reversed rounds, three native Google Benchmark iterations each,
+record raw samples, hardware/compiler information, and module/source hashes.
+
+Compare ①/② for scheduling, ②/③ for the A strategy, and ①/③ overall.
+The A-strategy comparison includes allocation/dispatch, full versus panel
+stride, repeated packing and cache effects; it is not an isolated pack-call
+microbenchmark. All sizes here are square GEMM, not GEMV. The dedicated
+`Fixed-weight GEMM experiments` workflow runs on Linux and macOS and uploads
+a combined table together with raw artifacts. See the
+[fixed-B results across machines](reference/fixed-weights/README.md).
+The [measurement notes](reference/fixed-weights/NOTES.md) describe the fixed
+layouts, output workspace, initialization boundary, and manual EPYC command.
+
 ## Run on the current machine
 
 Supported native hosts are Intel/AMD x86-64 with AVX2/FMA and AArch64 with

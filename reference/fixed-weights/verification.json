@@ -1,0 +1,91 @@
+{
+  "environments": 7,
+  "variant_cases": 65,
+  "distinct_a_validations": 130,
+  "timed_gemm_calls": 1950,
+  "files": [
+    {
+      "host": "magic.root",
+      "file": "data/magic-root.json",
+      "file_sha256": "2ae879b7610a70052d1894655056479190f37ef0208becd141536ef370971817",
+      "sizes": [
+        2048,
+        4096
+      ],
+      "variant_cases": 10,
+      "distinct_a_validations": 20,
+      "algorithm_source_hashes_match": true
+    },
+    {
+      "host": "oracle.usa.amd1",
+      "file": "data/oracle.json",
+      "file_sha256": "ce7d3171828c20692140bc6340d112a934dc305c32463ddc1c98a435be6f5772",
+      "sizes": [
+        2048
+      ],
+      "variant_cases": 5,
+      "distinct_a_validations": 10,
+      "algorithm_source_hashes_match": true
+    },
+    {
+      "host": "ss420e",
+      "file": "data/ss420e.json",
+      "file_sha256": "88d402ffcc8fcffd0aee68985d79beeb4c8f57e9507803e223207e8ee99c6abd",
+      "sizes": [
+        2048,
+        4096
+      ],
+      "variant_cases": 10,
+      "distinct_a_validations": 20,
+      "algorithm_source_hashes_match": true
+    },
+    {
+      "host": "ihciah",
+      "file": "data/ihciah.json",
+      "file_sha256": "470e4f875bd8682fca7b20c73814b561fa2cae9c4206812965ad862db63df4c2",
+      "sizes": [
+        2048,
+        4096
+      ],
+      "variant_cases": 10,
+      "distinct_a_validations": 20,
+      "algorithm_source_hashes_match": true
+    },
+    {
+      "host": "local M2 Pro",
+      "file": "data/m2-pro.json",
+      "file_sha256": "9f0218f8d6cb98f3cae37329b01032652fc7d07b01fce6cbdeaf76e0559f4578",
+      "sizes": [
+        2048,
+        4096
+      ],
+      "variant_cases": 10,
+      "distinct_a_validations": 20,
+      "algorithm_source_hashes_match": true
+    },
+    {
+      "host": "ubuntu-24.04",
+      "file": "data/ubuntu-24.04.json",
+      "file_sha256": "5e9f7d1e2f44927d5646af746c6b1d1c78389e261a11e70313c130682dd57ee8",
+      "sizes": [
+        2048,
+        4096
+      ],
+      "variant_cases": 10,
+      "distinct_a_validations": 20,
+      "algorithm_source_hashes_match": true
+    },
+    {
+      "host": "macos-15",
+      "file": "data/macos-15.json",
+      "file_sha256": "2f6def4262c5e5aa2c077f8156e064323c5b6a2b27efc29443bfbeb49e28fd74",
+      "sizes": [
+        2048,
+        4096
+      ],
+      "variant_cases": 10,
+      "distinct_a_validations": 20,
+      "algorithm_source_hashes_match": true
+    }
+  ]
+}

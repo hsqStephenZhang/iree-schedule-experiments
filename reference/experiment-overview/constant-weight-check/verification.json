@@ -1,0 +1,121 @@
+{
+  "compiler": "IREE (https://iree.dev):\n  IREE compiler version 3.12.0rc20260917 @ 2b05c5dbb2f2ecb27c0d3941e80ee8d2f16e890d\n  LLVM version 24.0.0git\n  Optimized build\n",
+  "python": "3.11.11 (main, Mar 17 2025, 21:33:08) [Clang 20.1.0 ]",
+  "device": "local-sync",
+  "weights_b_sha256": "9f0fcd4f205d9ed1e32f860ff8d60306254523ec513f0cd57be7d3e1e47609d2",
+  "cases": [
+    {
+      "case": "dynamic",
+      "shape": {
+        "M": 32,
+        "K": 64,
+        "N": 64
+      },
+      "validation": "two distinct dynamic A inputs in one context; float64 reference, rtol=atol=1e-3",
+      "max_abs_errors": [
+        7.147545922236986e-06,
+        6.629741843511283e-06
+      ],
+      "runtime_gemm_dispatches": 3,
+      "initializer_dispatches": 0,
+      "initializer_execute_once": false,
+      "pack_ops_in_module": 2,
+      "compiled_ir_sha256": "707f4f82a5b03eceb14b393cfa309fa6bd3922977621438dc90e1be9bbdd8999",
+      "command": [
+        "/Users/zc/courses/compiler/iree-schedule-experiments/.venv/lib/python3.11/site-packages/iree/compiler/tools/../_mlir_libs/iree-compile",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/reference/experiment-overview/constant-weight-check/dynamic-compiled.mlir",
+        "--iree-hal-target-backends=llvm-cpu",
+        "--iree-llvmcpu-target-cpu=host",
+        "--iree-llvmcpu-enable-ukernels=all",
+        "--compile-from=executable-configurations",
+        "-o",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/results/constant-weight-check/dynamic.vmfb"
+      ]
+    },
+    {
+      "case": "constant-b",
+      "shape": {
+        "M": 32,
+        "K": 64,
+        "N": 64
+      },
+      "validation": "two distinct dynamic A inputs in one context; float64 reference, rtol=atol=1e-3",
+      "max_abs_errors": [
+        7.147545922236986e-06,
+        6.629741843511283e-06
+      ],
+      "runtime_gemm_dispatches": 2,
+      "initializer_dispatches": 1,
+      "initializer_execute_once": true,
+      "pack_ops_in_module": 2,
+      "compiled_ir_sha256": "82453ab90879e66970c9ed14baa41f807ebd5ad0d54da261e686d2f2ffbb4e84",
+      "command": [
+        "/Users/zc/courses/compiler/iree-schedule-experiments/.venv/lib/python3.11/site-packages/iree/compiler/tools/../_mlir_libs/iree-compile",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/reference/experiment-overview/constant-weight-check/constant-b-compiled.mlir",
+        "--iree-hal-target-backends=llvm-cpu",
+        "--iree-llvmcpu-target-cpu=host",
+        "--iree-llvmcpu-enable-ukernels=all",
+        "--compile-from=executable-configurations",
+        "-o",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/results/constant-weight-check/constant-b.vmfb"
+      ]
+    },
+    {
+      "case": "constant-b-no-consteval",
+      "shape": {
+        "M": 32,
+        "K": 64,
+        "N": 64
+      },
+      "validation": "two distinct dynamic A inputs in one context; float64 reference, rtol=atol=1e-3",
+      "max_abs_errors": [
+        7.147545922236986e-06,
+        6.629741843511283e-06
+      ],
+      "runtime_gemm_dispatches": 2,
+      "initializer_dispatches": 1,
+      "initializer_execute_once": true,
+      "pack_ops_in_module": 2,
+      "compiled_ir_sha256": "82453ab90879e66970c9ed14baa41f807ebd5ad0d54da261e686d2f2ffbb4e84",
+      "command": [
+        "/Users/zc/courses/compiler/iree-schedule-experiments/.venv/lib/python3.11/site-packages/iree/compiler/tools/../_mlir_libs/iree-compile",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/reference/experiment-overview/constant-weight-check/constant-b-no-consteval-compiled.mlir",
+        "--iree-hal-target-backends=llvm-cpu",
+        "--iree-llvmcpu-target-cpu=host",
+        "--iree-llvmcpu-enable-ukernels=all",
+        "--compile-from=executable-configurations",
+        "-o",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/results/constant-weight-check/constant-b-no-consteval.vmfb"
+      ]
+    },
+    {
+      "case": "constant-b-early-materialized",
+      "shape": {
+        "M": 32,
+        "K": 64,
+        "N": 64
+      },
+      "validation": "two distinct dynamic A inputs in one context; float64 reference, rtol=atol=1e-3",
+      "max_abs_errors": [
+        7.147545922236986e-06,
+        6.629741843511283e-06
+      ],
+      "runtime_gemm_dispatches": 3,
+      "initializer_dispatches": 0,
+      "initializer_execute_once": false,
+      "pack_ops_in_module": 1,
+      "compiled_ir_sha256": "92d2c830a23fdb7e6263ba3327e1a9a5e296c7d5d8e985d397d546cd960f6d79",
+      "command": [
+        "/Users/zc/courses/compiler/iree-schedule-experiments/.venv/lib/python3.11/site-packages/iree/compiler/tools/../_mlir_libs/iree-compile",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/reference/experiment-overview/constant-weight-check/constant-b-early-materialized-compiled.mlir",
+        "--iree-hal-target-backends=llvm-cpu",
+        "--iree-llvmcpu-target-cpu=host",
+        "--iree-llvmcpu-enable-ukernels=all",
+        "--compile-from=executable-configurations",
+        "-o",
+        "/Users/zc/courses/compiler/iree-schedule-experiments/results/constant-weight-check/constant-b-early-materialized.vmfb"
+      ]
+    }
+  ],
+  "note": "IR/correctness check only; no GEMM performance or GEMV measurements were made."
+}
