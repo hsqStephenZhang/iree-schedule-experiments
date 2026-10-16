@@ -1,0 +1,90 @@
+name: Fixed-weight GEMM experiments
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - fixed_weights.py
+      - build_fixed_weights.py
+      - run_fixed_weights_job.py
+      - summarize_fixed_weights.py
+      - .github/workflows/fixed-weights.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fixed-weights-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  benchmark:
+    name: Fixed B (${{ matrix.runner }})
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 40
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Portability and report tests
+        run: python -m unittest discover -s tests -v
+      - name: Smoke, validate distinct activations, and benchmark fixed B
+        run: >-
+          python -u run_fixed_weights_job.py --sizes 2048 4096
+          --rounds 10 --iterations 3 --output results/fixed-b
+      - name: Show progress and status
+        if: always()
+        shell: bash
+        run: |
+          cat results/fixed-b/job-status.json || true
+          tail -50 results/fixed-b/smoke.log || true
+          tail -80 results/fixed-b/full.log || true
+      - name: Upload raw results, inputs, IR and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: fixed-b-${{ matrix.runner }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 14
+
+  summary:
+    name: Fixed B combined results
+    if: always()
+    needs: benchmark
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          pattern: fixed-b-*
+          path: downloaded
+      - name: Combine both runners into one table
+        shell: bash
+        run: |
+          python summarize_fixed_weights.py --root downloaded --output combined-fixed-b --expected-hosts ubuntu-24.04 macos-15
+          cat combined-fixed-b/README.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload combined table and samples
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: fixed-b-combined
+          path: combined-fixed-b/
+          if-no-files-found: error
+          retention-days: 30
